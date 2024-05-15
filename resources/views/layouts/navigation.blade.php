@@ -17,11 +17,13 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
-                        Usuarios
-                    </x-nav-link>
-                </div>
+                @if(Auth::user()->id == 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
+                            Usuarios
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

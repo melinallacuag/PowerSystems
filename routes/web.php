@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuariosController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\ValidationRoleMiddleware;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -11,7 +12,6 @@ Route::get('/welcome', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
 
 
 Route::get('/', function () {
@@ -79,17 +79,17 @@ Route::middleware('auth')->group(function () {
     // vamos a tener 4 rutas de registrar, para listar usuarios, crear, editar, eliminar y guardar
 
     // este servira para listar usuarios
-    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index')->middleware([ValidationRoleMiddleware::class]);
     // creamos una ruta de tipo post, que sera una ruta para guardar la informacion
-    Route::post('/usuarios', [UsuariosController::class, 'save'])->name('usuarios.save');
+    Route::post('/usuarios', [UsuariosController::class, 'save'])->name('usuarios.save')->middleware([ValidationRoleMiddleware::class]);
     // este servira para la vista que te saldra cuando das click en un boton crear nuevo usuario
-    Route::get('/usuarios/crear', [UsuariosController::class, 'create'])->name('usuarios.create');
+    Route::get('/usuarios/crear', [UsuariosController::class, 'create'])->name('usuarios.create')->middleware([ValidationRoleMiddleware::class]);
     // otra ruta para mostrar la vista para editar usuarios
-    Route::get('/usuarios/{id}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit');
+    Route::get('/usuarios/{user}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit')->middleware([ValidationRoleMiddleware::class]);
     // ruta para actualizar la data
-    Route::get('/usuarios/{id}', [UsuariosController::class, 'update'])->name('usuarios.update');
+    Route::get('/usuarios/{user}', [UsuariosController::class, 'update'])->name('usuarios.update')->middleware([ValidationRoleMiddleware::class]);
     // ruta para elimina algo
-    Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('destroy.create');
+    Route::delete('/usuarios/{user}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy')->middleware([ValidationRoleMiddleware::class]);
 });
 
 // aqui ve creando tus rutas para tu pagina
