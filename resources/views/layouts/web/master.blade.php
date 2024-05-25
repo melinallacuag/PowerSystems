@@ -10,9 +10,9 @@
 
     <title>Power Group System</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('cliente/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('cliente/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('cliente/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('cliente/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('cliente/css/mystyle.css') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap"
@@ -25,9 +25,7 @@
 
 </head>
 
-<body url="{{ url('/') }}">
-
-    <div class="page-wrapper">
+<body>
 
         <!-- PageWrapper -->
         <div class="page-wrapper">
@@ -63,8 +61,7 @@
         <div id="chat-whatsapp">
             <a target="_blank"
                 href="https://api.whatsapp.com/send?phone=+51901716475&text=Hola!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.">
-                <img src=" {{ asset('cliente/images/icons/icono-whatsapp-color.png') }} " alt="Whatsapp"
-                    class="img-fluid">
+                <img src=" {{ asset('cliente/images/gallery/avatrChat.png') }} " alt="Whatsapp" class="img-fluid">
             </a>
         </div>
 

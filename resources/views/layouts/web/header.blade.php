@@ -128,31 +128,28 @@
                                                     / CONCEPT</a></li>
                                         </ul>
                                     </li>
-                                    <li class="{{ request()->is('servicios') ? 'current' : '' }}"><a
-                                            href="{{ asset('servicios') }}">Servicios</a></li>
+                                    <li class="{{ request()->is('servicios') ? 'current' : '' }}">
+                                        <a href="{{ asset('servicios') }}">Servicios</a>
+                                    </li>
 
-                                    <li class="{{ request()->is('noticias') ? 'current' : '' }}"><a
-                                            href="{{ asset('noticias') }}">Noticias</a></li>
+                                    <li class="{{ request()->is('noticias') ? 'current' : '' }}">
+                                        <a href="{{ asset('noticias') }}">Noticias</a>
+                                    </li>
 
-                                    <li><a class="btn btn-dark-cyan"
-                                            href="{{ asset('contactanos') }}">Contáctanos</a></li>
+                                    <li>
+                                        <a class="btn btn-dark-cyan" href="{{ asset('contactanos') }}">Contáctanos</a>
+                                    </li>
 
                                     <li>
                                         @if (Route::has('login'))
                                         <nav class="-mx-3 flex flex-1 justify-end">
                                             @auth
-                                                <a
-                                                    href="{{ url('/dashboard') }}"
-                                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                                >
+                                                <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                                     Dashboard
                                                 </a>
                                             @else
-                                                <a
-                                                    href="{{ route('login') }}"
-                                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                                >
-                                                    Login
+                                                <a href="{{ route('login') }}" class="btn btn-login-cyan rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                                    Iniciar Sesión
                                                 </a>
                                             @endauth
                                         </nav>

@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('usuarios.save') }}">
+                    <form method="POST" action="{{ route('usuarios.update', ['user' => $user]) }}">
                         @csrf
-                        <!-- este formulario es como un html normal puedes modificar el diseño  -->
-            
+                        @method('PUT')
+
                         <!-- Name -->
                         <div>
                             <x-input-label for="name" :value="__('Name')" />
@@ -21,11 +21,22 @@
                         </div>
 
                          <!-- Email Address -->
-                        <!--<div class="mt-4">
+                        <div class="mt-4">
                             <x-input-label for="role" :value="__('rol')" />
-                            <x-text-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')" required autocomplete="username" />
+                            <x-text-input id="role" class="block mt-1 w-full" type="text" name="role" :value="$user->rol" required autocomplete="username" />
                             <x-input-error :messages="$errors->get('role')" class="mt-2" />
-                        </div>-->
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="ruc" :value="__('ruc')" />
+                            <x-text-input id="ruc" class="block mt-1 w-full" type="text" name="ruc" :value="$user->ruc" required autocomplete="username" />
+                            <x-input-error :messages="$errors->get('ruc')" class="mt-2" />
+                        </div>
+                        <div class="mt-4">
+                            <x-input-label for="razon_social" :value="__('razon_social')" />
+                            <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social" :value="$user->razon_social" required autocomplete="razon_social" />
+                            <x-input-error :messages="$errors->get('razon_social')" class="mt-2" />
+                        </div>
 
                         <!-- Email Address -->
                         <div class="mt-4">

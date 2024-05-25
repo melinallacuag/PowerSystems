@@ -22,7 +22,7 @@
     gap: 2rem;
     transition: all 0.5s ease-in;
     margin-top: 1rem;
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
     letter-spacing: 0.85px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .sss > a:before{
-    background: #ffffff00 !important; 
+    background: #ffffff00 !important;
 }
 .btn-dark-cyan:hover {
     background: hsl(111, 91%, 27%) !important;
@@ -107,4 +107,229 @@
     color: #fff;
    font-size: 1rem;
    letter-spacing: 0.06rem;
+}
+
+.containers {
+    max-width: 12200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.main-video-container {
+    flex: 1 1 650px;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.main-video {
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+.main-vid-title {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: bold;
+}
+
+.video-list-container {
+    flex: 1 1 300px;
+    border-left: 2px solid #eee;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #1aa700;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.list:last-child {
+    margin-bottom: 0;
+}
+
+.list.active {
+    background-color: #1aa700;
+}
+
+.containers .video-list-container .list.active .list-title {
+    color: #fff;
+}
+
+.list-video {
+    width: 100px;
+    border-radius: 5px;
+}
+
+.list-title {
+    font-size: 17px;
+    color: #444;
+}
+
+@media (max-width:1200px) {
+    .containers {
+        margin: 0;
+    }
+
+    .video-list-container {
+        border: none !important;
+        padding: 15px !important;
+    }
+}
+
+@media(max-width:400px) {
+    .video-list-container {
+        border: none !important;
+        padding: 15px !important;
+    }
+
+    .main-vid-title {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .list {
+        flex-flow: column;
+        gap: 10px
+    }
+
+    .list-video {
+        width: 100%;
+    }
+
+    .list-title {
+        font-size: 15px;
+        text-align: center;
+
+    }
+}
+
+.wrapper {
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+}
+
+.collapsible {
+    max-width: 450px;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.collapsible input {
+    display: none;
+}
+
+.collapsible .collapsible-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    font-weight: 500;
+    background: #1aa700;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .1), 0 4px 11px 0 rgba(0, 0, 0, .08);
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 15px;
+    z-index: 1;
+    letter-spacing: 0.065rem;
+}
+
+.collapsible .collapsible-card img {
+    transition: transform 0.3s ease;
+    transform: rotate(0deg);
+    /* Agregamos transición para la rotación */
+}
+
+.collapsible .collapsible-card label:after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+}
+
+.collapsible input:checked+.collapsible-card label:after {
+    transform: rotate(90deg);
+}
+
+/* Agregamos regla para rotar la imagen cuando la clase 'rotated' está presente */
+.collapsible .collapsible-card img.rotated {
+    transform: rotate(90deg);
+}
+
+.collapsible-text {
+    max-height: 1px;
+    overflow: hidden;
+    border-radius: 4px;
+    line-height: 1.4;
+    position: relative;
+    top: -100%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.collapsible input:checked~.collapsible-text {
+    max-height: 100%;
+    padding-bottom: 20px;
+    background: #fff;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .1), 0 4px 11px 0 rgba(0, 0, 0, .08);
+    opacity: 1;
+    top: 0;
+    border: 1px solid #1aa700;
+    padding-top: 20px;
+    border-radius: 15px;
+    border-top: 5px solid #1aa700;
+}
+
+.collapsible-text h2 {
+    margin-bottom: 10px;
+    padding: 15px 15px 0;
+    color: #1c1c6b;
+}
+
+.collapsible-text p {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+    line-height: 1rem;
+    text-align: justify;
+    color: #333;
+}
+
+
+
+.btn-login-cyan {
+    background: hsl(0, 0%, 100%) !important;
+    border: 2px solid hsl(110.66deg 100% 32.75%) !important;
+    color: hsl(110.66deg 100% 32.75%) !important;
+}
+
+
+.btn-login-cyan:hover {
+    background: hsl(111, 91%, 27%) !important;
+    border: 2px solid hsl(0, 0%, 95%) !important;
+    color: hsl(0, 0%, 100%) !important;
+}
+
+/*************/
+
+.txt-mensaje{
+    margin-left: 0.8rem;
+    font-size: 0.8rem;
+    color: #747474;
 }

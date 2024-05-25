@@ -87,10 +87,13 @@ Route::middleware('auth')->group(function () {
     // otra ruta para mostrar la vista para editar usuarios
     Route::get('/usuarios/{user}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit')->middleware([ValidationRoleMiddleware::class]);
     // ruta para actualizar la data
-    Route::get('/usuarios/{user}', [UsuariosController::class, 'update'])->name('usuarios.update')->middleware([ValidationRoleMiddleware::class]);
+    Route::put('/usuarios/{user}', [UsuariosController::class, 'update'])->name('usuarios.update')->middleware([ValidationRoleMiddleware::class]);
     // ruta para elimina algo
+    // estas son todas tus rutas
+    Route::get('/usuarios/{user}/delete', [UsuariosController::class, 'delete'])->name('usuarios.delete')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/usuarios/{user}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy')->middleware([ValidationRoleMiddleware::class]);
 });
+
 
 // aqui ve creando tus rutas para tu pagina
 // revisar plantillas blade, extends, yield

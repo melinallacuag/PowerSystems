@@ -270,7 +270,7 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="{{ route('usuarios.destroy', ['user' => $usuario]) }}">eliminar</a>
+                                    <a href="{{ route('usuarios.delete', ['user' => $usuario]) }}">eliminar</a>
                                 </td>
 
                             </tr>
