@@ -13,6 +13,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/documentos', function () {
+    return view('documentos');
+})->middleware(['auth', 'verified'])->name('documentos');
+
 
 Route::get('/', function () {
     return view('layouts.web.inicio.index');

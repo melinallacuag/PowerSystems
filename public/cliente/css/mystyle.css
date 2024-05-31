@@ -184,6 +184,11 @@
         border: none !important;
         padding: 15px !important;
     }
+
+    .document-list-container{
+        border: none !important;
+        padding: 15px !important;
+    }
 }
 
 @media(max-width:400px) {
@@ -210,6 +215,19 @@
         font-size: 15px;
         text-align: center;
 
+    }
+
+    .document-list-container{
+        border: none !important;
+        padding: 15px !important;
+    }
+    .main-document-title{
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .list-document{
+        width: 100%;
     }
 }
 
@@ -324,12 +342,4 @@
     background: hsl(111, 91%, 27%) !important;
     border: 2px solid hsl(0, 0%, 95%) !important;
     color: hsl(0, 0%, 100%) !important;
-}
-
-/*************/
-
-.txt-mensaje{
-    margin-left: 0.8rem;
-    font-size: 0.8rem;
-    color: #747474;
 }

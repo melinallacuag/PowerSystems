@@ -16,10 +16,12 @@ class ValidationRoleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->id != 1) {
-            return redirect('dashboard');
+        if (Auth::user()->rol != 'admin') {
+            abort(401);
+            // return redirect('dashboard');
+
         }
-        
+
         return $next($request);
     }
 }
