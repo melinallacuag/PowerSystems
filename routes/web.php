@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DocumentosController;
 use App\Http\Middleware\ValidationRoleMiddleware;
 
 Route::get('/welcome', function () {
@@ -10,11 +15,18 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $categories = Category::with('videos')->has('videos')->get();
+      return view('dashboard', compact('categories'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/tutoriales', function () {
+    $categories = Category::with('videos')->has('videos')->get();
+      return view('tutoriales', compact('categories'));
+})->middleware(['auth', 'verified'])->name('tutoriales');
+
 Route::get('/documentos', function () {
-    return view('documentos');
+    $categories = Category::with('documentos')->has('documentos')->get();
+    return view('documentos', compact('categories'));
 })->middleware(['auth', 'verified'])->name('documentos');
 
 
@@ -73,29 +85,57 @@ Route::get('/sistema-telemedicion', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    // todo lo que va aqui esta protegido por autenticacion
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // aqui creamos la ruta register que queremos para registrar usuarios
-    // creamos un controlador en la carpeta controllers y hacemos que nuestra ruta apunte a ese controlador y al metodo index
-    // la clase del controlador - el metodo al que queremos apuntar
-    // vamos a tener 4 rutas de registrar, para listar usuarios, crear, editar, eliminar y guardar
 
-    // este servira para listar usuarios
-    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index')->middleware([ValidationRoleMiddleware::class]);
-    // creamos una ruta de tipo post, que sera una ruta para guardar la informacion
     Route::post('/usuarios', [UsuariosController::class, 'save'])->name('usuarios.save')->middleware([ValidationRoleMiddleware::class]);
-    // este servira para la vista que te saldra cuando das click en un boton crear nuevo usuario
-    Route::get('/usuarios/crear', [UsuariosController::class, 'create'])->name('usuarios.create')->middleware([ValidationRoleMiddleware::class]);
-    // otra ruta para mostrar la vista para editar usuarios
-    Route::get('/usuarios/{user}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit')->middleware([ValidationRoleMiddleware::class]);
-    // ruta para actualizar la data
     Route::put('/usuarios/{user}', [UsuariosController::class, 'update'])->name('usuarios.update')->middleware([ValidationRoleMiddleware::class]);
-    // ruta para elimina algo
-    // estas son todas tus rutas
     Route::get('/usuarios/{user}/delete', [UsuariosController::class, 'delete'])->name('usuarios.delete')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/usuarios/crear', [UsuariosController::class, 'create'])->name('usuarios.create')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/usuarios/{user}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/usuarios/{user}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy')->middleware([ValidationRoleMiddleware::class]);
+
+
+    Route::post('/videos', [VideosController::class, 'save'])->name('videos.save')->middleware([ValidationRoleMiddleware::class]);
+    Route::put('/videos/{video}', [VideosController::class, 'update'])->name('videos.update')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/videos/{video}/delete', [VideosController::class, 'delete'])->name('videos.delete')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::get('/videos', [VideosController::class, 'index'])->name('videos.index')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/videos/crear', [VideosController::class, 'create'])->name('videos.create')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/videos/{video}/editar', [VideosController::class, 'edit'])->name('videos.edit')->middleware([ValidationRoleMiddleware::class]);
+    Route::delete('/videos/{video}', [VideosController::class, 'destroy'])->name('videos.destroy')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::post('/categoria', [CategoriaController::class, 'save'])->name('categoria.save')->middleware([ValidationRoleMiddleware::class]);
+    Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/categoria/{categoria}/delete', [CategoriaController::class, 'delete'])->name('categoria.delete')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/categoria/crear', [CategoriaController::class, 'create'])->name('categoria.create')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/categoria/{categoria}/editar', [CategoriaController::class, 'edit'])->name('categoria.edit')->middleware([ValidationRoleMiddleware::class]);
+    Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categoria.destroy')->middleware([ValidationRoleMiddleware::class]);
+
+
+    Route::post('/archivos', [DocumentosController::class, 'save'])->name('archivos.save')->middleware([ValidationRoleMiddleware::class]);
+    Route::put('/archivos/{documento}', [DocumentosController::class, 'update'])->name('archivos.update')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/archivos/{documento}/delete', [DocumentosController::class, 'delete'])->name('archivos.delete')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::get('/archivos', [DocumentosController::class, 'index'])->name('archivos.index')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/archivos/crear', [DocumentosController::class, 'create'])->name('archivos.create')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/archivos/{documento}/editar', [DocumentosController::class, 'edit'])->name('archivos.edit')->middleware([ValidationRoleMiddleware::class]);
+    Route::delete('/archivos/{documento}', [DocumentosController::class, 'destroy'])->name('archivos.destroy')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::post('/clientes', [ClientesController::class, 'save'])->name('clientes.save')->middleware([ValidationRoleMiddleware::class]);
+    Route::put('/clientes/{clientes}', [ClientesController::class, 'update'])->name('clientes.update')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/clientes/{clientes}/delete', [ClientesController::class, 'delete'])->name('clientes.delete')->middleware([ValidationRoleMiddleware::class]);
+
+    Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/clientes/crear', [ClientesController::class, 'create'])->name('clientes.create')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/clientes/{clientes}/editar', [ClientesController::class, 'edit'])->name('clientes.edit')->middleware([ValidationRoleMiddleware::class]);
+    Route::delete('/clientes/{clientes}', [ClientesController::class, 'destroy'])->name('clientes.destroy')->middleware([ValidationRoleMiddleware::class]);
+
 });
 
 

@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between " style="height: 6rem;">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -10,26 +10,66 @@
                     </a>
                 </div>
 
-                <!-- Videos -->
+                @if(Auth::user()->rol != 'admin')
+                <!-- Dasboard -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dasboard') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- Videos -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('tutoriales')" :active="request()->routeIs('tutoriales')">
                         {{ __('Videos') }}
                     </x-nav-link>
                 </div>
 
-                <!-- Docuemntos -->
+                <!-- Documentos -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('documentos')" :active="request()->routeIs('documentos')">
                         {{ __('Documentos') }}
                     </x-nav-link>
                 </div>
+                @endif
 
                 @if(Auth::user()->rol == 'admin')
+
+                    <!-- Crear Usuarios -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
                             {{ __('Usuarios') }}
                         </x-nav-link>
                     </div>
+
+                    <!-- Crear Clientes -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
+                            {{ __('Clientes') }}
+                        </x-nav-link>
+                    </div>
+
+                    <!-- Crear Videos -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('videos.index')" :active="request()->routeIs('videos.index')">
+                            {{ __('Videos') }}
+                        </x-nav-link>
+                    </div>
+
+                    <!-- Crear Documentos -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('archivos.index')" :active="request()->routeIs('archivos.index')">
+                            {{ __('Documento') }}
+                        </x-nav-link>
+                    </div>
+
+                    <!-- Crear Categorías -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('categoria.index')" :active="request()->routeIs('categoria.index')">
+                            {{ __('Categoría') }}
+                        </x-nav-link>
+                    </div>
+
                 @endif
             </div>
             <!-- Settings Dropdown -->
@@ -80,16 +120,27 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+
+        @if(Auth::user()->rol != 'admin')
+
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Dasboard') }}
             </x-responsive-nav-link>
         </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('tutoriales')" :active="request()->routeIs('tutorialess')">
+                {{ __('Videos') }}
+            </x-responsive-nav-link>
+        </div>
+
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('documentos')" :active="request()->routeIs('documentos')">
                 {{ __('Documentos') }}
             </x-responsive-nav-link>
         </div>
+        @endif
 
         @if(Auth::user()->rol == 'admin')
             <div class="pt-2 pb-3 space-y-1">
@@ -97,6 +148,31 @@
                     {{ __('Usuarios') }}
                 </x-responsive-nav-link>
             </div>
+
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
+                    {{ __('Clientes') }}
+                </x-responsive-nav-link>
+            </div>
+
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('videos.index')" :active="request()->routeIs('videos.index')">
+                    {{ __('Videos') }}
+                </x-responsive-nav-link>
+            </div>
+
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('archivos.index')" :active="request()->routeIs('archivos.index')">
+                    {{ __('Documento') }}
+                </x-responsive-nav-link>
+            </div>
+
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('categoria.index')" :active="request()->routeIs('categoria.index')">
+                    {{ __('Categoría') }}
+                </x-responsive-nav-link>
+            </div>
+
         @endif
 
         <!-- Responsive Settings Options -->
