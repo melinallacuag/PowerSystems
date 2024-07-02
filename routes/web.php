@@ -110,6 +110,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/videos/{video}/editar', [VideosController::class, 'edit'])->name('videos.edit')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/videos/{video}', [VideosController::class, 'destroy'])->name('videos.destroy')->middleware([ValidationRoleMiddleware::class]);
 
+    /** Categoria */
     Route::post('/categoria', [CategoriaController::class, 'save'])->name('categoria.save')->middleware([ValidationRoleMiddleware::class]);
     Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/categoria/{categoria}/delete', [CategoriaController::class, 'delete'])->name('categoria.delete')->middleware([ValidationRoleMiddleware::class]);
