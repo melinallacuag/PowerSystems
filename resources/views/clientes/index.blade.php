@@ -34,12 +34,10 @@
                         <thead class="text-white">
                             <tr class="bg-green-800">
                                 <th class="px-4 py-2 border-b mobile-hidden">RUC</th>
-                                <th class="px-4 py-2 border-b">RAZON SOCIAL</th>
+                                <th class="px-4 py-2 border-b">RAZÓN SOCIAL</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">CARGO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">TELÉFONO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">CORREO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">FECHA INICIO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">FECHA FIN</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">FECHA DE CONTRATO</th>
+                                <th class="px-4 py-2 border-b">ESTADO</th>
                                 <th class="px-4 py-2 border-b">OPCIONES</th>
                             </tr>
                         </thead>
@@ -56,17 +54,37 @@
 
                                 </td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $cliente->cargo }}</td>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->telefono }}</td>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->correo }}</td>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_inicio }}</td>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_fin }}</td>
+                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_inicio . ' / ' . $cliente->fecha_fin}}</td>
                                 <td class="border px-4 py-2">
-                                    <x-primary-button class="text-center py-2">
-                                        <a href="{{ route('clientes.edit', ['clientes' => $cliente]) }}">Editar</a>
+                                    <div class="card-status text-center {{ 'estado-' . $cliente->estado }}">
+                                        {{ ucfirst($cliente->estado) }}
+                                    </div>
+                                </td>
+
+                                <td class="border px-4 py-2">
+
+                                    <x-primary-button class="text-center py-2 btn-botton">
+                                        <a href="{{ route('clientes.edit', ['clientes' => $cliente]) }}">
+                                            <img src="{{ asset('cliente/iconos/btn_edit.png') }}" alt="">
+                                        </a>
                                     </x-primary-button>
-                                    <x-danger-button class="text-center py-2">
-                                        <a href="{{ route('clientes.delete', ['clientes' => $cliente]) }}">Eliminar</a>
+                                    <x-danger-button class="text-center py-2 btn-botton">
+                                        <a href="{{ route('clientes.delete', ['clientes' => $cliente]) }}">
+                                            <img src="{{ asset('cliente/iconos/btn_delete.png') }}" alt="">
+                                        </a>
                                     </x-danger-button>
+
+                                    <x-segundary-button class="text-center py-2 btn-botton">
+                                        <a href="{{ route('clientes.confirmarPago', ['clientes' => $cliente]) }}">
+                                            <img src="{{ asset('cliente/iconos/btn_confirmar.png') }}" alt="">
+                                        </a>
+                                    </x-segundary-button>
+
+                                    <x-secondary-button class="text-center py-2 btn-botton" style="background: black">
+                                        <a href="{{ route('clientes.vista', ['clientes' => $cliente]) }}">
+                                            <img src="{{ asset('cliente/iconos/btn_ver.png') }}" alt="">
+                                        </a>
+                                    </x-secondary-button>
                                 </td>
                             </tr>
 
@@ -78,6 +96,7 @@
                                     <div>Correo: {{ $cliente->correo }}</div>
                                     <div>Fecha Inicio: {{ $cliente->fecha_inicio }}</div>
                                     <div>Fecha Fin: {{ $cliente->fecha_fin }}</div>
+                                    <div>Descripción: {{ $cliente->descripcion }}</div>
                                 </td>
                             </tr>
                             @endforeach
@@ -87,7 +106,6 @@
                 </div>
 
                 <div class="mt-4">
-                    {{ $clientes->appends(['search' => request('search')])->links() }}
                 </div>
         </div>
     </div>

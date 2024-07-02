@@ -136,6 +136,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/clientes/{clientes}/editar', [ClientesController::class, 'edit'])->name('clientes.edit')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/clientes/{clientes}', [ClientesController::class, 'destroy'])->name('clientes.destroy')->middleware([ValidationRoleMiddleware::class]);
 
+    Route::post('/clientes/buscarUsuario', [ClientesController::class, 'buscarUsuario'])->name('clientes.buscarUsuario');
+
+    Route::get('/clientes/{clientes}/vista', [ClientesController::class, 'vista'])->name('clientes.vista')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'updateConfirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
+    Route::post('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'confirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
+
 });
 
 

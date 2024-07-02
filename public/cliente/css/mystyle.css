@@ -175,6 +175,33 @@
     color: #444;
 }
 
+.flex-inputs{
+    display: flex;
+
+}
+.btn-buscar-align{
+    margin-top: 26px;
+    margin-left: 0.25rem;
+}
+.card-status{
+    background: #1ebf0c;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    color: white !important;
+}
+
+.estado-normal {
+    background: #1ebf0c !important;
+}
+
+.estado-pagar {
+    background: orange !important;
+}
+
+.estado-deuda {
+    background: red !important;
+}
+
 @media (max-width:1200px) {
     .containers {
         margin: 0;
@@ -191,6 +218,17 @@
     }
     .div{
         width: 100%;
+    }
+}
+
+@media(max-width:500px) {
+    .flex-inputs{
+        display: block !important;
+
+    }
+    .btn-buscar-align{
+        margin-top: 15px;
+        margin-left: 0rem;
     }
 }
 
@@ -235,6 +273,15 @@
 
     .div{
         width: 100%;
+    }
+
+    .flex-inputs{
+        display: block;
+
+    }
+    .btn-buscar-align{
+        margin-top: 15px;
+        margin-left: 0rem;
     }
 }
 
@@ -356,4 +403,8 @@
     background: hsl(111, 91%, 27%) !important;
     border: 2px solid hsl(0, 0%, 95%) !important;
     color: hsl(0, 0%, 100%) !important;
+}
+
+.btn-botton{
+    margin-bottom: 0.5rem;
 }
