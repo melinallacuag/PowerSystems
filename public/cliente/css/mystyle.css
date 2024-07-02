@@ -291,6 +291,40 @@
     }
 }
 
+@media (max-width: 768px) {
+    .details-row {
+        display: none;
+    }
+    .details-row.active {
+        display: table-row;
+    }
+    .toggle-details {
+        display: inline-block;
+        cursor: pointer;
+        color: #1c3faa;
+        text-decoration: none;
+    }
+    .mobile-hidden {
+        display: none;
+    }
+    .btn-mas{
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        border: 2px #009800 solid;
+        color: #009800;
+    }
+}
+@media (min-width: 769px) {
+    .toggle-details {
+        display: none;
+    }
+    .details-row {
+        display: none;
+    }
+
+}
+
 .wrapper {
     display: flex;
     padding: 15px;

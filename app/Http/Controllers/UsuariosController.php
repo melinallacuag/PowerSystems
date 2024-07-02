@@ -16,10 +16,6 @@ class UsuariosController extends Controller
 
     public function index(Request $request)
     {
-       // $videos = \App\Models\Video::first();
-        //$categories = \App\Models\Category::first();
-        //dump($categories->videos);
-
         $search = $request->input('search');
 
         $usuarios = User::when($search, function ($query, $search) {
@@ -40,7 +36,6 @@ class UsuariosController extends Controller
 
     public function save(Request $request)
     {
-
         $request->validate([
 
             'name' => ['required', 'string', 'max:255'],
@@ -52,6 +47,7 @@ class UsuariosController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
         ]);
+
         $user = new User();
 
         $user->name = $request->name;
@@ -69,6 +65,11 @@ class UsuariosController extends Controller
         }
 
         return redirect(route('usuarios.index'))->with('message', 'Se registro correctamente.');
+    }
+
+    public function vista(User $user)
+    {
+        return view('user.vista', compact('user'));
     }
 
     public function edit(User $user)

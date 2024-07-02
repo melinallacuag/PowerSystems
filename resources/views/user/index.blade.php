@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -14,26 +13,22 @@
             </div>
         </div>
     </div>
-
     @if (session('message'))
         <div class="notification fixed  hidden" id="notification">
             {{ session('message') }}
         </div>
     @endif
-
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex bg-white overflow-hidden shadow-s sm:rounded-lg" style="flex-direction: column">
-
                     <form method="GET" action="{{ route('usuarios.index') }}" class="flex items-center" style="gap: 1rem; padding: 1rem" >
-                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar Cliente ..." class="w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar Usuario ..." class="w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
                         <x-primary-button class="ml-2">Buscar</x-primary-button>
                     </form>
-
                     <table style="flex: auto">
                         <thead class="text-white">
                             <tr class="bg-green-800">
-                                <th class="px-4 py-2 border-b">NOMBRE</th>
+                                <th class="px-4 py-2 border-b">NOMBRE USUARIO</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">RUC</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">RAZÓN SOCIAL</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">CARGO</th>
@@ -41,9 +36,7 @@
                                 <th class="px-4 py-2 border-b">OPCIONES</th>
                             </tr>
                         </thead>
-
                         <tbody class="text-gray-600">
-
                             @foreach($usuarios as $index => $usuario)
                                 <tr>
                                     <td class="border px-4 py-2">
@@ -59,14 +52,22 @@
                                     <td class="border px-4 py-2 mobile-hidden">{{ $usuario->rol }}</td>
                                     <td class="border px-4 py-2">
                                         <x-primary-button class="text-center py-2">
-                                            <a href="{{ route('usuarios.edit', ['user' => $usuario]) }}">Editar</a>
+                                            <a href="{{ route('usuarios.edit', ['user' => $usuario]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_edit.png') }}" alt="">
+                                            </a>
                                         </x-primary-button>
                                         <x-danger-button class="text-center py-2">
-                                            <a href="{{ route('usuarios.delete', ['user' => $usuario]) }}">Eliminar</a>
+                                            <a href="{{ route('usuarios.delete', ['user' => $usuario]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_delete.png') }}" alt="">
+                                            </a>
                                         </x-danger-button>
+                                        <x-secondary-button class="text-center py-2 btn-botton" style="background: black">
+                                            <a href="{{ route('usuarios.vista', ['user' => $usuario]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_ver.png') }}" alt="">
+                                            </a>
+                                        </x-secondary-button>
                                     </td>
                                 </tr>
-
                                 <tr id="details{{ $index }}" class="details-row">
                                     <td colspan="4" class="border px-4 py-2">
                                         <div>RUC: {{ $usuario->ruc }}</div>
@@ -79,7 +80,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="mt-4">
                     {{ $usuarios->appends(['search' => request('search')])->links() }}
                 </div>
@@ -87,70 +87,33 @@
     </div>
 
 </x-app-layout>
-
-<style>
- @media (max-width: 768px) {
-    .details-row {
-        display: none;
-    }
-    .details-row.active {
-        display: table-row;
-    }
-    .toggle-details {
-        display: inline-block;
-        cursor: pointer;
-        color: #1c3faa;
-        text-decoration: none;
-    }
-    .mobile-hidden {
-        display: none;
-    }
-    .btn-mas{
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        border: 2px #009800 solid;
-        color: #009800;
-    }
-}
-@media (min-width: 769px) {
-    .toggle-details {
-        display: none;
-    }
-    .details-row {
-        display: none;
-    }
-
-}
-</style>
-
 <script>
 
-    /** Mostrar mensaje de alerta **/
-    document.addEventListener('DOMContentLoaded', function () {
-        const notification = document.getElementById('notification');
-            if (notification.innerText.trim() !== '') {
-                notification.classList.add('show');
+    /** Mostrar mensaje de alerta**/
+    const notification = document.getElementById('notification');
+    if (notification) {
+        if (notification.innerText.trim() !== '') {
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.add('hide');
                 setTimeout(() => {
-                    notification.classList.add('hide');
-                    setTimeout(() => {
-                        notification.style.display = 'none';
-                    }, 300);
-                }, 3000);
-            }
-    });
-
-    /** Mostrar datos **/
-    document.querySelectorAll('.toggle-details').forEach(button => {
-    button.addEventListener('click', () => {
-        const target = document.querySelector(button.getAttribute('data-target'));
-        if (target.classList.contains('active')) {
-            target.classList.remove('active');
-        } else {
-            document.querySelectorAll('.details-row').forEach(row => row.classList.remove('active'));
-            target.classList.add('active');
+                    notification.style.display = 'none';
+                }, 300);
+            }, 3000);
         }
+    }
+
+    /** Mostrar datos del Usuario en Mobile**/
+    document.querySelectorAll('.toggle-details').forEach(button => {
+        button.addEventListener('click', () => {
+            const target = document.querySelector(button.getAttribute('data-target'));
+            if (target.classList.contains('active')) {
+                target.classList.remove('active');
+            } else {
+                document.querySelectorAll('.details-row').forEach(row => row.classList.remove('active'));
+                target.classList.add('active');
+            }
+        });
     });
-});
 
 </script>

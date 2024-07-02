@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    /** Usuario */
     Route::post('/usuarios', [UsuariosController::class, 'save'])->name('usuarios.save')->middleware([ValidationRoleMiddleware::class]);
     Route::put('/usuarios/{user}', [UsuariosController::class, 'update'])->name('usuarios.update')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/usuarios/{user}/delete', [UsuariosController::class, 'delete'])->name('usuarios.delete')->middleware([ValidationRoleMiddleware::class]);
@@ -97,8 +98,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/usuarios/crear', [UsuariosController::class, 'create'])->name('usuarios.create')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/usuarios/{user}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/usuarios/{user}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy')->middleware([ValidationRoleMiddleware::class]);
+    Route::get('/usuarios/{user}/vista', [UsuariosController::class, 'vista'])->name('usuarios.vista')->middleware([ValidationRoleMiddleware::class]);
 
-
+     /** Videos */
     Route::post('/videos', [VideosController::class, 'save'])->name('videos.save')->middleware([ValidationRoleMiddleware::class]);
     Route::put('/videos/{video}', [VideosController::class, 'update'])->name('videos.update')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/videos/{video}/delete', [VideosController::class, 'delete'])->name('videos.delete')->middleware([ValidationRoleMiddleware::class]);
