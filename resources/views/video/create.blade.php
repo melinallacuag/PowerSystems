@@ -24,7 +24,7 @@
                 <div class="p-6 text-gray-900">
                     <form method="POST" action="{{ route('videos.save') }}" class="w-full max-w-lg"  enctype="multipart/form-data">
                         @csrf
-                        <!-- Alertas de Categoria -->
+                        <!-- Alertas de Video -->
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label :value="__(' ')" id="alert-area" class="font-semibold text-red-600" />
@@ -119,7 +119,7 @@
 
                 if(name === ''){
                     isValid = false;
-                    errorMessages.push('* El campo nombre de la categoría es obligatorio.');
+                    errorMessages.push('* El campo nombre del video es obligatorio.');
                 }else if(category_id === ''){
                     isValid = false;
                     errorMessages.push('* Seleccionar categoría.');

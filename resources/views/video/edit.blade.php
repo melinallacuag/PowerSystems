@@ -106,7 +106,7 @@
 
                 if(name === ''){
                     isValid = false;
-                    errorMessages.push('* El campo nombre de la categoría es obligatorio.');
+                    errorMessages.push('* El campo nombre del video es obligatorio.');
                 }else if(category_id === ''){
                     isValid = false;
                     errorMessages.push('* Seleccionar categoría.');
