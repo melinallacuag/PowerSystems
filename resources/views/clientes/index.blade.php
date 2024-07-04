@@ -104,55 +104,20 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="mt-4">
+                    {{ $clientes->appends(['search' => request('search')])->links() }}
                 </div>
         </div>
     </div>
 
 </x-app-layout>
 
-<style>
-    @media (max-width: 768px) {
-       .details-row {
-           display: none;
-       }
-       .details-row.active {
-           display: table-row;
-       }
-       .toggle-details {
-           display: inline-block;
-           cursor: pointer;
-           color: #1c3faa;
-           text-decoration: none;
-       }
-       .mobile-hidden {
-           display: none;
-       }
-       .btn-mas{
-           border-radius: 50%;
-           width: 30px;
-           height: 30px;
-           border: 2px #009800 solid;
-           color: #009800;
-       }
-   }
-   @media (min-width: 769px) {
-       .toggle-details {
-           display: none;
-       }
-       .details-row {
-           display: none;
-       }
-
-   }
-   </style>
-
 <script>
 
     /** Mostrar mensaje de alerta **/
     document.addEventListener('DOMContentLoaded', function () {
         const notification = document.getElementById('notification');
+        if (notification) {
             if (notification.innerText.trim() !== '') {
                 notification.classList.add('show');
                 setTimeout(() => {
@@ -162,6 +127,7 @@
                     }, 300);
                 }, 3000);
             }
+        }
     });
 
     /** Mostrar datos **/

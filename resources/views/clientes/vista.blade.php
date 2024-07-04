@@ -19,19 +19,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
                         <!-- Datos del Cliente -->
                         <div class="flex flex-wrap -mx-3 mb-12">
-
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Datos del Cliente con Contrata: ')" class="font-semibold text-green-600" />
                             </div>
-
                         </div>
-
-
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-
                             <!-- RUC -->
                             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
                                 <div class="flex-inputs">
@@ -42,26 +36,21 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <!-- Razón Social -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="razon_social" :value="__('Razón Social')" />
                                 <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social" :value="$clientes->razon_social" disabled autocomplete="razon_social" />
                                 <x-input-error :messages="$errors->get('razon_social')" class="mt-2" />
                             </div>
-
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12">
-
                             <!-- Cargo -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="cargo" :value="__('Cargo')" />
                                 <x-text-input id="cargo" class="block mt-1 w-full" type="text" name="cargo" :value="$clientes->cargo" disabled autocomplete="cargo" />
                                     <x-input-error :messages="$errors->get('cargo')" class="mt-2" />
                             </div>
-
                             <!-- Telefono -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="telefono" :value="__('Teléfono')" />
@@ -71,7 +60,6 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-
                             <!-- Correo Electrónico -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="correo" :value="__('Correo Electrónico')" />
@@ -79,34 +67,29 @@
                                 <x-input-error :messages="$errors->get('correo')" class="mt-2" />
                                     <span class="txt-mensaje">  *Ejemplo de usuario: usuario@ejemplo.com </span>
                             </div>
-
-                             <!-- Descripcion -->
-                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <!-- Descripcion -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="descripcion" :value="__('Descripción')" />
                                 <x-text-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"  :value="$clientes->descripcion"  disabled autocomplete="name"/>
                                 <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
                             </div>
-
                         </div>
 
-                           <!-- Credencial del Cliente -->
-                           <div class="flex flex-wrap -mx-3 mb-12">
-
+                        <!-- Credencial del Cliente -->
+                        <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Fecha del Contrato: ')" class="font-semibold text-green-600" />
                             </div>
-
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-
                             <!-- Fecha Inicio -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_inicio" :value="__('Fecha Inicio')" />
                                 <x-text-input id="fecha_inicio" class="block mt-1 w-full" type="date" name="fecha_inicio" :value="$clientes->fecha_inicio" disabled autocomplete="username" />
                                 <x-input-error :messages="$errors->get('fecha_inicio')" class="mt-2" />
                             </div>
-
+                            <!-- Fecha Fin -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_fin" :value="__('Fecha Fin')" />
                                 <x-text-input id="fecha_fin" class="block mt-1 w-full" type="date" name="fecha_fin" :value="$clientes->fecha_fin" disabled autocomplete="username" />
@@ -117,11 +100,9 @@
 
                          <!-- Historial de Pago -->
                          <div class="flex flex-wrap -mx-3 mb-12">
-
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Historial de Pago: ')" class="font-semibold text-green-600" />
                             </div>
-
                         </div>
 
                         <table style="flex: auto" class="w-full">
