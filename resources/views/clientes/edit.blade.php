@@ -42,7 +42,7 @@
                                         <x-text-input id="ruc" class="block mt-1 w-full" type="number" name="ruc" :value="$clientes->ruc" maxlength="11" oninput="limitDigits(this, 11)"  required autocomplete="username" />
                                     </div>
                                     <div class="w-full md:w-2/3 mb-4 md:mb-0 btn-buscar-align">
-                                        <x-segundary-button type="button" id="btnBuscarCliente" class="btn-register w-full text-center btn-large">
+                                        <x-segundary-button type="button" id="btnBuscarCliente" class="w-full text-center btn-large">
                                             <span class="w-full">BUSCAR</span>
                                         </x-segundary-button>
                                     </div>
@@ -141,16 +141,16 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        document.getElementById('razon_social').value = data.usuario.razon_social;
-                        document.getElementById('cargo').value = data.usuario.cargo;
-                        document.getElementById('correo').value = data.usuario.email;
+                        if (data.usuario) {
+                            document.getElementById('razon_social').value = data.usuario.razon_social;
+                        } else if (data.clientes) {
+                            document.getElementById('razon_social').value = data.clientes.razon_social;
+                        }
                         alertArea.classList.add('hidden');
                         alertArea.textContent = '';
                     } else {
                         document.getElementById('razon_social').value = '';
-                        document.getElementById('cargo').value = '';
-                        document.getElementById('correo').value = '';
-                        alertArea.textContent = '* Usuario no encontrado.';
+                        alertArea.textContent = '* Razón Social no encontrado.';
                         alertArea.classList.remove('hidden');
                     }
                 })

@@ -77,6 +77,15 @@ class ClientesController extends Controller
             ]);
         }
 
+        $clientes = Clientes::where('ruc', $request->ruc)->first();
+
+        if ($clientes) {
+            return response()->json([
+                'success' => true,
+                'clientes' => $clientes,
+            ]);
+        }
+
         return response()->json([
             'success' => false,
             'message' => 'Usuario no encontrado.',

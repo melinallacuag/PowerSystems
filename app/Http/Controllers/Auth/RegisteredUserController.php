@@ -44,9 +44,10 @@ class RegisteredUserController extends Controller
         $request->validate([
 
             'name'         => ['required', 'string', 'max:255'],
+            'dni'          => ['required', 'string', 'max:8'],
             'ruc'          => ['required', 'string', 'max:11'],
             'razon_social' => ['required', 'string', 'max:255'],
-            'cargo'        => ['required', 'string', 'max:180'],
+            //'cargos_id'        => ['required', 'string', 'max:180'],
             'role'          => ['required', 'string', 'max:180'],
             'email'        => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password'     => ['required', 'confirmed', Rules\Password::defaults()],
@@ -55,13 +56,13 @@ class RegisteredUserController extends Controller
         $user = new User();
 
         $user->name           = $request->name;
+        $user->dni            = $request->dni;
         $user->ruc            = $request->ruc;
         $user->razon_social   = $request->razon_social;
-        $user->cargo          = $request->cargo;
         $user->rol            = $request->role;
         $user->email          = $request->email;
         $user->password       = Hash::make($request->password);
-
+        $user->cargos_id      = 1;
         $user->save();
 
 

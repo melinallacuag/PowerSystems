@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CargosController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideosController;
@@ -100,6 +101,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/usuarios/{user}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/usuarios/{user}/vista', [UsuariosController::class, 'vista'])->name('usuarios.vista')->middleware([ValidationRoleMiddleware::class]);
 
+    Route::post('/usuarios/buscarCliente', [UsuariosController::class, 'buscarCliente'])->name('usuarios.buscarCliente');
+
      /** Videos */
     Route::post('/videos', [VideosController::class, 'save'])->name('videos.save')->middleware([ValidationRoleMiddleware::class]);
     Route::put('/videos/{video}', [VideosController::class, 'update'])->name('videos.update')->middleware([ValidationRoleMiddleware::class]);
@@ -119,6 +122,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/categoria/crear', [CategoriaController::class, 'create'])->name('categoria.create')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/categoria/{categoria}/editar', [CategoriaController::class, 'edit'])->name('categoria.edit')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categoria.destroy')->middleware([ValidationRoleMiddleware::class]);
+
+     /** Cargos */
+     Route::post('/cargos', [CargosController::class, 'save'])->name('cargos.save')->middleware([ValidationRoleMiddleware::class]);
+     Route::put('/cargos/{cargos}', [CargosController::class, 'update'])->name('cargos.update')->middleware([ValidationRoleMiddleware::class]);
+     Route::get('/cargos/{cargos}/delete', [CargosController::class, 'delete'])->name('cargos.delete')->middleware([ValidationRoleMiddleware::class]);
+
+     Route::get('/cargos', [CargosController::class, 'index'])->name('cargos.index')->middleware([ValidationRoleMiddleware::class]);
+     Route::get('/cargos/crear', [CargosController::class, 'create'])->name('cargos.create')->middleware([ValidationRoleMiddleware::class]);
+     Route::get('/cargos/{cargos}/editar', [CargosController::class, 'edit'])->name('cargos.edit')->middleware([ValidationRoleMiddleware::class]);
+     Route::delete('/cargos/{cargos}', [CargosController::class, 'destroy'])->name('cargos.destroy')->middleware([ValidationRoleMiddleware::class]);
 
 
     Route::post('/archivos', [DocumentosController::class, 'save'])->name('archivos.save')->middleware([ValidationRoleMiddleware::class]);

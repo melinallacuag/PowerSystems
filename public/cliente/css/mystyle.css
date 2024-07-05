@@ -202,6 +202,14 @@
     background: red !important;
 }
 
+.rol-admin{
+    background: #0cbfa1 !important;
+}
+
+.rol-user{
+    background: orange !important;
+}
+
 @media (max-width:1200px) {
     .containers {
         margin: 0;

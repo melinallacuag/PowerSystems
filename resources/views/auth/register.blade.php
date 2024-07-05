@@ -19,6 +19,12 @@
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Ingresar Nombre" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
+
+            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                <x-input-label for="dni" :value="__('DNI *')" />
+                <x-text-input id="dni" class="block mt-1 w-full" type="text" name="dni" :value="old('dni')" required autofocus autocomplete="name" placeholder="Ingresar Nombre" />
+                <x-input-error :messages="$errors->get('dni')" class="mt-2" />
+            </div>
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-12">
@@ -43,9 +49,9 @@
 
             <!-- Cargo -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <x-input-label for="cargo" :value="__('Cargo *')" />
-                <x-text-input id="cargo" class="block mt-1 w-full" type="text" name="cargo" :value="old('cargo')" required autofocus autocomplete="name" placeholder="Ingresar Cargo"/>
-                <x-input-error :messages="$errors->get('cargo')" class="mt-2" />
+                <x-input-label for="cargos_id " :value="__('Cargo *')" />
+                <x-text-input id="cargos_id" class="block mt-1 w-full" type="text" name="cargos_id" :value="old('cargos_id')" required autofocus autocomplete="name" placeholder="Ingresar Cargo"/>
+                <x-input-error :messages="$errors->get('cargos_id')" class="mt-2" />
             </div>
 
             <!-- Rol -->

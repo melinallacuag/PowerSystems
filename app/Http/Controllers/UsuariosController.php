@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Cargos;
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
@@ -19,19 +21,48 @@ class UsuariosController extends Controller
         $search = $request->input('search');
 
         $usuarios = User::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%")
-                        ->orWhere('ruc', 'like', "%{$search}%")
-                        ->orWhere('razon_social', 'like', "%{$search}%")
-                        ->orWhere('cargo', 'like', "%{$search}%")
-                        ->orWhere('rol', 'like', "%{$search}%");
+            return $query->where('name', 'like', "%{$search}%");
         })->paginate(5);
 
         return view('user.index', compact('usuarios', 'search'));
     }
 
+    public function buscarCliente(Request $request)
+    {
+        $request->validate([
+            'ruc' => 'required|string|max:11',
+        ]);
+
+        $clientes = Clientes::where('ruc', $request->ruc)->first();
+
+        if ($clientes) {
+            return response()->json([
+                'success' => true,
+                'clientes' => $clientes,
+            ]);
+        }
+
+        $usuario = User::where('ruc', $request->ruc)->first();
+
+        if ($usuario) {
+            return response()->json([
+                'success' => true,
+                'usuario' => $usuario,
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Clientes no encontrado.',
+        ]);
+    }
+
+
+
     public function create()
     {
-        return view('user.create');
+        $cargos = Cargos::all();
+        return view('user.create' , compact('cargos'));
     }
 
     public function save(Request $request)
@@ -39,24 +70,26 @@ class UsuariosController extends Controller
         $request->validate([
 
             'name' => ['required', 'string', 'max:255'],
+            'dni' => ['required', 'string', 'max:8'],
             'ruc' => ['required', 'string', 'max:11'],
             'razon_social' => ['required', 'string', 'max:255'],
-            'cargo' => ['required', 'string', 'max:180'],
             'role' => ['required', 'string', 'max:180'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'cargos_id'  => 'required|string',
 
         ]);
 
         $user = new User();
 
         $user->name = $request->name;
+        $user->dni = $request->dni;
         $user->ruc = $request->ruc;
         $user->razon_social = $request->razon_social;
-        $user->cargo = $request->cargo;
         $user->rol = $request->role;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->cargos_id = $request->cargos_id;
 
         $user->save();
 
@@ -74,26 +107,29 @@ class UsuariosController extends Controller
 
     public function edit(User $user)
     {
-        return view('user.edit', compact('user'));
+        $cargos = Cargos::all();
+        return view('user.edit', compact('user', 'cargos'));
     }
 
     public function update(Request $request, User $user)
     {
         $request->validate([
             'name'         => ['required', 'string', 'max:255'],
+            'dni'          => ['required', 'string', 'max:8'],
             'ruc'          => ['required', 'string', 'max:11'],
             'razon_social' => ['required', 'string', 'max:255'],
-            'cargo'        => ['required', 'string', 'max:180'],
             'role'         => ['required', 'string', 'max:180'],
             'email'        => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($user->id),],
+            'cargos_id'    => 'required|string',
         ]);
 
-        $user->name         = $request->name;
-        $user->ruc          = $request->ruc;
+        $user->name = $request->name;
+        $user->dni = $request->dni;
+        $user->ruc = $request->ruc;
         $user->razon_social = $request->razon_social;
-        $user->cargo        = $request->cargo;
-        $user->rol          = $request->role;
-        $user->email        = $request->email;
+        $user->rol = $request->role;
+        $user->email = $request->email;
+        $user->cargos_id = $request->cargos_id;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);

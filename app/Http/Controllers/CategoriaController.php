@@ -77,6 +77,13 @@ class CategoriaController extends Controller
 
      public function destroy(Category $categoria)
      {
+
+        if ($categoria->videos()->exists()) {
+            return redirect(route('categoria.index'))->withErrors(['error' => 'No se puede eliminar el categoria porque está asociado a uno o más videos.']);
+        }else if($categoria->documentos()->exists()) {
+            return redirect(route('categoria.index'))->withErrors(['error' => 'No se puede eliminar el categoria porque está asociado a uno o más documentos.']);
+        }
+
         $categoria->delete();
 
         return redirect(route('categoria.index'))->with('message', 'Se elimino correctamente.');

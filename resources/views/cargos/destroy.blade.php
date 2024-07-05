@@ -4,10 +4,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class=" flex items-center p-4 text-gray-900" style="gap: 0.5rem; margin-left:0.5rem;">
                     <p class="font-semibold text-sm text-green-600 leading-tight">
-                        <a href="{{ route('usuarios.index') }}">Usuarios</a>
+                        <a href="{{ route('cargos.index') }}">Cargos</a>
                     </p>
                     <p class="text-sm text-gray-500 leading-tight">
-                        > Eliminar usuario
+                        > Eliminar cargo
                     </p>
                 </div>
             </div>
@@ -17,14 +17,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('usuarios.destroy', ['user' => $user]) }}">
+                    <form method="POST" action="{{ route('cargos.destroy', ['cargos' => $cargos]) }}">
                         @csrf
                         @method('DELETE')
-                        <!-- Mensaje de alerta -->
-                        <div class="text-sm font-medium text-gray-900">¿Está seguro de que desea eliminar al usuario <strong class="text-red-600">{{ $user->dni }}  {{ $user->name }}</strong>  ? </div>
-
+                        <!-- Mensaje de alaerta -->
+                        <div class="text-sm font-medium text-gray-900">¿Está seguro de que desea eliminar el cargo <strong class="text-red-600">{{ $cargos->name }}</strong>  ? </div>
+                        <!-- Boton Eliminar Cargos -->
                         <div  class="flex items-center justify-end -mx-3 mb-12">
-                            <!-- Boton Eliminar Usuario -->
                             <div class="md:w-2/3 px-3 mb-4 md:mb-0">
                                 <x-danger-button class="btn-register w-full text-center btn-large">
                                     <span class="w-full">ELIMINAR</span>

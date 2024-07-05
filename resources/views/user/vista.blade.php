@@ -25,11 +25,17 @@
                                 <x-input-label for="name" :value="__('Datos del Usuario: ')" class="font-semibold text-green-600" />
                             </div>
                         </div>
-                        <!-- Nombre del Usuario-->
-                        <div class="flex flex-wrap -mx-3 mb-12">
+
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                            <!-- Nombres y Apellidos-->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="name" :value="__('Nombre del Usuario')" />
+                                <x-input-label for="name" :value="__('Nombres y Apellidos')" />
                                 <x-text-input class="block mt-1 w-full" type="text"  :value="$user->name" disabled/>
+                            </div>
+                             <!-- DNI-->
+                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="dni" :value="__('DNI')" />
+                                <x-text-input class="block mt-1 w-full" type="text"  :value="$user->dni" disabled/>
                             </div>
                         </div>
 
@@ -51,7 +57,7 @@
                             <!-- Cargo -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="cargo" :value="__('Cargo')" />
-                                <x-text-input class="block mt-1 w-full" type="text" :value="$user->cargo" disabled/>
+                                <x-text-input class="block mt-1 w-full" type="text" :value="$user->cargos->name" disabled/>
                             </div>
                             <!-- Rol -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
