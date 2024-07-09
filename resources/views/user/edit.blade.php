@@ -73,7 +73,7 @@
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="cargo" :value="__('Cargo *')" />
                                 <select id="cargos_id" name="cargos_id" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
-                                    <option value="" disabled>Seleccionar Categoria del Video</option>
+                                    <option value="" disabled>Seleccionar Cargo</option>
                                     @foreach($cargos as $cargo)
                                         <option value="{{ $cargo->id }}" {{ $user->cargos_id == $cargo->id ? 'selected' : '' }}>
                                             {{ $cargo->name }}
@@ -85,7 +85,7 @@
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="role" :value="__('Rol *')" />
                                 <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
-                                    <option value="" disabled>Seleccione un Rol</option>
+                                    <option value="" disabled>Seleccionar Rol</option>
                                     <option value="admin" {{ $user->rol === 'admin' ? 'selected' : '' }}>Admin</option>
                                     <option value="user"  {{ $user->rol === 'user' ? 'selected' : '' }}>User</option>
                                 </select>
@@ -228,7 +228,7 @@
                     errorMessages.push('* Seleccionar cargo.');
                 }else if(role === ''){
                     isValid = false;
-                    errorMessages.push('* Seleccionar el rol.');
+                    errorMessages.push('* Seleccionar rol.');
                 }else if(email === ''){
                     isValid = false;
                     errorMessages.push('* El campo correo electrónico es obligatorio');

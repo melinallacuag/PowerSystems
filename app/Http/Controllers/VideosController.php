@@ -54,6 +54,7 @@ class VideosController extends Controller
         $video->name = $request->name;
         $video->url = $path;
         $video->category_id = $request->category_id;
+        $video->is_visible = $request->input('is_visible') == '1' ? 1 : 0;
 
         $video->save();
 
@@ -87,6 +88,7 @@ class VideosController extends Controller
 
         $video->name = $request->name;
         $video->category_id = $request->category_id;
+        $video->is_visible = $request->input('is_visible') == '1' ? 1 : 0;
         $video->save();
 
         return redirect(route('videos.index'))->with('message', 'Se actualizo correctamente.');

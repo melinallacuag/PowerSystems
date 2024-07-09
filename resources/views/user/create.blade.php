@@ -77,7 +77,7 @@
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="cargos_id " :value="__('Cargo *')" />
                                 <select id="cargos_id" name="cargos_id" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
-                                    <option value="" disabled selected>Seleccionar Categoria del Video</option>
+                                    <option value="" disabled selected>Seleccionar Cargo</option>
                                     @foreach($cargos as $cargo)
                                         <option value="{{ $cargo->id }}">{{ $cargo->name }}</option>
                                     @endforeach
@@ -87,7 +87,7 @@
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="role" :value="__('Rol *')" />
                                 <select id="role" name="role" :value="old('role')"class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
-                                    <option value="" disabled selected>Seleccione un Rol</option>
+                                    <option value="" disabled selected>Seleccionar Rol</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
                                 </select>
@@ -237,7 +237,7 @@
                     errorMessages.push('* Seleccionar Cargo.');
                 }else if(role === ''){
                     isValid = false;
-                    errorMessages.push('* Seleccionar el rol.');
+                    errorMessages.push('* Seleccionar Rol.');
                 }else if(email === ''){
                     isValid = false;
                     errorMessages.push('* El campo correo electrónico del usuario es obligatorio');

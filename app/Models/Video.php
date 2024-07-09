@@ -19,6 +19,7 @@ class Video extends Model
         'name',
         'url',
         'category_id',
+        'is_visible',
     ];
 
     public function category()

@@ -31,6 +31,7 @@
                                 <th class="px-4 py-2 border-b">NOMBRE VIDEO</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">NOMBRE CATEGORÍA</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">VIDEO</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">VISIBLE</th>
                                 <th class="px-4 py-2 border-b">OPCIONES</th>
                             </tr>
                         </thead>
@@ -47,6 +48,18 @@
                                 </td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $video->category->name }}</td>
                                 <td class="border px-4 py-2 mobile-hidden"><a href="{{ asset('storage/' . $video->url) }}" target="_blank">{{ $video->url }}</a></td>
+                                <td class="border px-4 py-2 mobile-hidden">
+                                    <form method="POST" action="{{ route('videos.update', ['video' => $video]) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="name" value="{{ $video->name }}">
+                                        <input type="hidden" name="category_id" value="{{ $video->category_id }}">
+                                        <input type="hidden" name="is_visible" value="{{ $video->is_visible ? '0' : '1' }}">
+                                        <button type="submit" class="px-4 py-2 rounded {{ $video->is_visible ? 'bg-green-800 text-white' : 'bg-red-600 text-white' }}">
+                                            {{ $video->is_visible ? 'Ocultar' : 'Mostrar' }}
+                                        </button>
+                                    </form>
+                                </td>
                                 <td class="border px-4 py-2">
                                     <x-primary-button class="text-center py-2">
                                         <a href="{{ route('videos.edit', ['video' => $video]) }}">
@@ -65,6 +78,18 @@
                                 <td colspan="2" class="border px-4 py-2">
                                     <div>Categoría Video: {{ $video->category->name }}</div>
                                     <div>URL: {{ $video->url }}</div>
+                                    <div>
+                                        <form method="POST" action="{{ route('videos.update', ['video' => $video]) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="name" value="{{ $video->name }}">
+                                            <input type="hidden" name="category_id" value="{{ $video->category_id }}">
+                                            <input type="hidden" name="is_visible" value="{{ $video->is_visible ? '0' : '1' }}">
+                                            <button type="submit" class="px-4 py-2 rounded {{ $video->is_visible ? 'bg-green-800 text-white' : 'bg-red-600 text-white' }}">
+                                                {{ $video->is_visible ? 'Ocultar' : 'Mostrar' }}
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

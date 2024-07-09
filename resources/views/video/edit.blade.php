@@ -53,23 +53,33 @@
                             </div>
                         </div>
                         <!-- Subir Video -->
-                        <div class="flex flex-wrap -mx-3 mb-12">
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="url" :value="__('Subir Video')" />
+                                <x-input-label for="url" :value="__('Subir Video *')" />
                                 <input id="url" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm" type="file" name="url" accept="video/*" />
                             </div>
-                        </div>
-                        <!-- Video Actual -->
-                        @if($video->url)
-                            <div class="flex flex-wrap -mx-3 mb-12">
-                                <div class="w-full  md:w-1/2 mb-4 md:mb-0">
-                                    <x-input-label for="current_video" :value="__('Video Actual')" />
-                                    <video controls class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm" src="{{ asset('storage/' . $video->url) }}"></video>
-                                    <input type="checkbox" id="remove_video" name="remove_video" class="mr-2">
-                                    <label for="remove_video">Eliminar video actual</label>
-                                </div>
+                            <!-- Mostrat o Ocultar -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="name" :value="__('Mostrar o Ocultar Video *')" />
+                                <input type="hidden" name="is_visible" value="0">
+                                <input type="checkbox" name="is_visible" id="is_visible" value="1" {{ $video->is_visible ? 'checked' : '' }}>
                             </div>
-                        @endif
+                        </div>
+
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                            <!-- Video Actual -->
+                                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                    @if($video->url)
+                                        <x-input-label for="current_video" :value="__('Video Actual')" />
+                                        <video controls class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm" src="{{ asset('storage/' . $video->url) }}"></video>
+                                    @endif
+                                </div>
+                                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                    <x-input-label for="name" :value="__('Eliminar video actual *')" />
+                                    <input type="checkbox" id="remove_video" name="remove_video" class="mr-2">
+                                </div>
+                        </div>
+
                         <!-- Boton Editar Usuario -->
                         <div  class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">

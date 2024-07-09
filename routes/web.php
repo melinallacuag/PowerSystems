@@ -21,9 +21,19 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/tutoriales', function () {
+    $categories = Category::with(['videos' => function($query) {
+        $query->where('is_visible', 1);
+    }])->whereHas('videos', function($query) {
+        $query->where('is_visible', 1);
+    })->get();
+
+    return view('tutoriales', compact('categories'));
+})->middleware(['auth', 'verified'])->name('tutoriales');
+
+/*Route::get('/tutoriales', function () {
     $categories = Category::with('videos')->has('videos')->get();
       return view('tutoriales', compact('categories'));
-})->middleware(['auth', 'verified'])->name('tutoriales');
+})->middleware(['auth', 'verified'])->name('tutoriales');*/
 
 Route::get('/documentos', function () {
     $categories = Category::with('documentos')->has('documentos')->get();
@@ -112,7 +122,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/videos/crear', [VideosController::class, 'create'])->name('videos.create')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/videos/{video}/editar', [VideosController::class, 'edit'])->name('videos.edit')->middleware([ValidationRoleMiddleware::class]);
     Route::delete('/videos/{video}', [VideosController::class, 'destroy'])->name('videos.destroy')->middleware([ValidationRoleMiddleware::class]);
-
     /** Categoria */
     Route::post('/categoria', [CategoriaController::class, 'save'])->name('categoria.save')->middleware([ValidationRoleMiddleware::class]);
     Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update')->middleware([ValidationRoleMiddleware::class]);
