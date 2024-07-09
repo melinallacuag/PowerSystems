@@ -17,8 +17,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="containers">
                         <div class="main-video-container">
-
-                            <object type="application/pdf" data="{{ asset('cliente/docs/APPSVEN Documentación de Versiones.pdf#toolbar=0') }}" class="main-video" width="500" height="500" sandbox="allow-same-origin"></object>
+                            <object type="application/pdf" data="{{ asset('cliente/images/resource/APPSVEN Documentación de Versiones.pdf#toolbar=0') }}" class="main-video" width="500" height="500" sandbox="allow-same-origin"></object>
                         </div>
                         <div class="div">
                             @foreach($categories as $category)

@@ -9,7 +9,9 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DocumentosController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ValidationRoleMiddleware;
+use App\Models\Service;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -153,6 +155,18 @@ Route::middleware('auth')->group(function () {
      Route::delete('/cargos/{cargos}', [CargosController::class, 'destroy'])->name('cargos.destroy')->middleware([ValidationRoleMiddleware::class]);
 
 
+      /** Service */
+      Route::post('/service', [ServiceController::class, 'save'])->name('service.save')->middleware([ValidationRoleMiddleware::class]);
+      Route::put('/service/{service}', [ServiceController::class, 'update'])->name('service.update')->middleware([ValidationRoleMiddleware::class]);
+      Route::get('/service/{service}/delete', [ServiceController::class, 'delete'])->name('service.delete')->middleware([ValidationRoleMiddleware::class]);
+
+      Route::get('/service', [ServiceController::class, 'index'])->name('service.index')->middleware([ValidationRoleMiddleware::class]);
+      Route::get('/service/crear', [ServiceController::class, 'create'])->name('service.create')->middleware([ValidationRoleMiddleware::class]);
+      Route::get('/service/{service}/editar', [ServiceController::class, 'edit'])->name('service.edit')->middleware([ValidationRoleMiddleware::class]);
+      Route::delete('/service/{service}', [ServiceController::class, 'destroy'])->name('service.destroy')->middleware([ValidationRoleMiddleware::class]);
+
+
+      /** Archivos */
     Route::post('/archivos', [DocumentosController::class, 'save'])->name('archivos.save')->middleware([ValidationRoleMiddleware::class]);
     Route::put('/archivos/{documento}', [DocumentosController::class, 'update'])->name('archivos.update')->middleware([ValidationRoleMiddleware::class]);
     Route::get('/archivos/{documento}/delete', [DocumentosController::class, 'delete'])->name('archivos.delete')->middleware([ValidationRoleMiddleware::class]);
