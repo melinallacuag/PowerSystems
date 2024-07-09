@@ -38,7 +38,7 @@ class DocumentosController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:50',
-            'documento' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+            'documento' => 'nullable|file|mimes:pdf,doc,docx',
             'category_id' => 'required|string',
         ]);
 
@@ -53,6 +53,7 @@ class DocumentosController extends Controller
         $documento->name = $request->name;
         $documento->documento = $path;
         $documento->category_id = $request->category_id;
+        $documento->is_visible = $request->input('is_visible') == '1' ? 1 : 0;
 
         $documento->save();
 
@@ -73,14 +74,14 @@ class DocumentosController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:50',
-            'documento' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+            'documento' => 'nullable|file|mimes:pdf,doc,docx',
             'category_id' => 'required|string',
         ]);
 
 
 
         if ($request->hasFile('documento')) {
-            $path = $request->file('documento')->store('documents', 'public'); // Almacena en una carpeta 'documents'
+            $path = $request->file('documento')->store('documents', 'public');
             $documento->documento = $path;
         } elseif ($request->input('remove_documento')) {
             $documento->documento = null;
@@ -89,6 +90,7 @@ class DocumentosController extends Controller
 
         $documento->name = $request->name;
         $documento->category_id = $request->category_id;
+        $documento->is_visible = $request->input('is_visible') == '1' ? 1 : 0;
         $documento->save();
 
         return redirect(route('archivos.index'))->with('message', 'Se actualizo correctamente.');

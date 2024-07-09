@@ -28,10 +28,11 @@
                     <table style="flex: auto">
                         <thead class="text-white">
                             <tr class="bg-green-800">
-                                <th class="px-4 py-2 border-b">NOMBRE DOCUMENTO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">NOMBRE CATEGORÍA</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">DOCUMENTO</th>
-                                <th class="px-4 py-2 border-b">OPCIONES</th>
+                                <th class="px-4 py-2 border-b">Nombre del Documentos</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Categoría</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Documento</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Mostrar o Ocultar</th>
+                                <th class="px-4 py-2 border-b">Opciones</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600">
@@ -46,6 +47,18 @@
                                 </td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $document->category->name }}</td>
                                 <td class="border px-4 py-2 mobile-hidden"><a href="{{ asset('storage/' . $document->documento) }}" target="_blank">{{ $document->documento }}</a></td>
+                                <td class="border px-4 py-2 mobile-hidden">
+                                    <form method="POST" action="{{ route('archivos.update', ['documento' => $document]) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="name" value="{{ $document->name }}">
+                                        <input type="hidden" name="category_id" value="{{ $document->category_id }}">
+                                        <input type="hidden" name="is_visible" value="{{ $document->is_visible ? '0' : '1' }}">
+                                        <button type="submit" class="px-4 py-2 rounded {{ $document->is_visible ? 'bg-green-800 text-white' : 'bg-red-600 text-white' }}">
+                                            {{ $document->is_visible ? 'Ocultar' : 'Mostrar' }}
+                                        </button>
+                                    </form>
+                                </td>
                                 <td class="border px-4 py-2">
                                     <x-primary-button class="text-center py-2">
                                         <a href="{{ route('archivos.edit', ['documento' => $document]) }}">
@@ -63,6 +76,18 @@
                                 <td colspan="2" class="border px-4 py-2">
                                     <div>Categoría Documento: {{ $document->category->name }}</div>
                                     <div>URL: {{ $document->documento }}</div>
+                                    <div>
+                                        <form method="POST" action="{{ route('archivos.update', ['documento' => $document]) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="name" value="{{ $document->name }}">
+                                            <input type="hidden" name="category_id" value="{{ $document->category_id }}">
+                                            <input type="hidden" name="is_visible" value="{{ $document->is_visible ? '0' : '1' }}">
+                                            <button type="submit" class="px-4 py-2 rounded {{ $document->is_visible ? 'bg-green-800 text-white' : 'bg-red-600 text-white' }}">
+                                                {{ $document->is_visible ? 'Ocultar' : 'Mostrar' }}
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

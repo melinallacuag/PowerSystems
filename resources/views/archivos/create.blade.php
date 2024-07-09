@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-12">
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                             <!-- Nombre del Documentos -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Nombre del Documento *')" />
@@ -55,11 +55,17 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-12">
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                             <!-- Subir Documentos -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="documento" :value="__('Subir Documento *')" />
                                 <input id="documento" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm" type="file" name="documento" accept=".pdf,.doc,.docx"/>
+                            </div>
+                            <!-- Mostrat o Ocultar -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="name" :value="__('Mostrar o Ocultar Documento *')" />
+                                <input type="hidden" name="is_visible" value="0">
+                                <input type="checkbox" name="is_visible" id="is_visible" value="1">
                             </div>
                         </div>
 
@@ -142,6 +148,12 @@
                 }else if(documento === ''){
                     isValid = false;
                     errorMessages.push('* Seleccionar documentos.');
+                }else {
+                    const fileSize = documentoInput.files[0].size / 1024 / 1024;
+                    if (fileSize > 50) {
+                        isValid = false;
+                        errorMessages.push('* El tamaño del documento no debe exceder los 50MB.');
+                    }
                 }
 
                 if (!isValid) {

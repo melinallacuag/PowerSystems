@@ -36,9 +36,19 @@ Route::get('/tutoriales', function () {
 })->middleware(['auth', 'verified'])->name('tutoriales');*/
 
 Route::get('/documentos', function () {
-    $categories = Category::with('documentos')->has('documentos')->get();
+    $categories = Category::with(['documentos' => function($query) {
+        $query->where('is_visible', 1);
+    }])->whereHas('documentos', function($query) {
+        $query->where('is_visible', 1);
+    })->get();
+
     return view('documentos', compact('categories'));
 })->middleware(['auth', 'verified'])->name('documentos');
+
+/*Route::get('/documentos', function () {
+    $categories = Category::with('documentos')->has('documentos')->get();
+    return view('documentos', compact('categories'));
+})->middleware(['auth', 'verified'])->name('documentos');*/
 
 
 Route::get('/', function () {

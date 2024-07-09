@@ -28,11 +28,11 @@
                     <table style="flex: auto">
                         <thead class="text-white">
                             <tr class="bg-green-800">
-                                <th class="px-4 py-2 border-b">NOMBRE VIDEO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">NOMBRE CATEGORÍA</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">VIDEO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">VISIBLE</th>
-                                <th class="px-4 py-2 border-b">OPCIONES</th>
+                                <th class="px-4 py-2 border-b">Nombre del Video</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Categoría</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Video</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Mostrar o Ocultar</th>
+                                <th class="px-4 py-2 border-b">Opciones</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600">

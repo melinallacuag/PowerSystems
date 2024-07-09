@@ -36,8 +36,8 @@
                     <table style="flex: auto">
                         <thead class="text-white">
                             <tr class="bg-green-800">
-                                <th class="px-4 py-2 border-b">NOMBRE CATEGORÍA</th>
-                                <th class="px-4 py-2 border-b">OPCIONES</th>
+                                <th class="px-4 py-2 border-b">Nombre de la Categoría</th>
+                                <th class="px-4 py-2 border-b">Oopciones</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600">

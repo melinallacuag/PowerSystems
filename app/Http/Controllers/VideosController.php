@@ -38,7 +38,7 @@ class VideosController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:50',
-            'url' => 'required|file|mimes:mp4,mov,ogg,qt|max:50000',
+            'url' => 'required|file|mimes:mp4,mov,ogg,qt',
             'category_id' => 'required|string',
         ]);
 
@@ -75,7 +75,7 @@ class VideosController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:50',
-            'url' => 'nullable|file|mimes:mp4,mov,ogg,qt|max:50000',
+            'url' => 'nullable|file|mimes:mp4,mov,ogg,qt',
             'category_id' => 'required|string',
         ]);
 

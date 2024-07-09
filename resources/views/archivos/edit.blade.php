@@ -33,7 +33,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-12">
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                            <!-- Nombre del Video -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Nombre del Documento  *')" />
@@ -53,26 +53,37 @@
                             </div>
                         </div>
 
-                        <!-- Subir Documento -->
                         <div class="flex flex-wrap -mx-3 mb-12">
+                             <!-- Subir Documento -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="documento" :value="__('Subir Documento *')" />
                                 <input id="documento" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm" type="file" name="documento" accept=".pdf,.doc,.docx" />
                             </div>
+                             <!-- Mostrat o Ocultar -->
+                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="name" :value="__('Mostrar o Ocultar Video *')" />
+                                <input type="hidden" name="is_visible" value="0">
+                                <input type="checkbox" name="is_visible" id="is_visible" value="1" {{ $documento->is_visible ? 'checked' : '' }}>
+                            </div>
                         </div>
                          <!-- Documento Actual -->
-                         @if($documento->documento)
+
                          <div class="flex flex-wrap -mx-3 mb-12">
-                             <div class="w-full md:w-1/2 mb-4 md:mb-0">
+                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                @if($documento->documento)
                                  <x-input-label for="current_documento" :value="__('Documento Actual')" />
                                  <a href="{{ asset('storage/' . $documento->documento) }}" target="_blank" class="block mt-1 w-full text-green-500">
                                     Click para ver documento
                                  </a>
-                                 <input type="checkbox" id="remove_documento" name="remove_documento" class="mr-2 mt-2">
-                                 <label for="remove_documento">Eliminar documento actual</label>
+                                 @endif
                              </div>
+                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="current_documento" :value="__('Eliminar Documento Actual')" />
+                                <input type="checkbox" id="remove_documento" name="remove_documento" class="mr-2 mt-2">
+                            </div>
                          </div>
-                        @endif
+
+
                         <div  class="flex flex-wrap -mx-3 mb-12">
                             <!-- Boton Editar Documento -->
                             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
