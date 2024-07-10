@@ -81,8 +81,8 @@ class ServiceController extends Controller
      public function destroy(Service $service)
      {
 
-        if ($service->users()->exists()) {
-            return redirect(route('service.index'))->withErrors(['error' => 'No se puede eliminar el cargo porque está asociado a uno o más usuarios.']);
+        if ($service->clientes()->exists()) {
+            return redirect(route('service.index'))->withErrors(['error' => 'No se puede eliminar el servicio porque está asociado a uno o más clientes.']);
         }
 
         $service->delete();

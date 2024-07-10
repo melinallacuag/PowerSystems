@@ -45,8 +45,7 @@
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_pago" :value="__('Fecha y Hora de Confirmación *')" />
-                                <x-text-input id="fecha_pago" class="block mt-1 w-full" type="text" name="fecha_pago" :value="$fechaHoraActual" disabled />
-                                <x-input-error :messages="$errors->get('fecha_pago')" class="mt-2" />
+                                <x-text-input id="fecha_pago" class="block mt-1 w-full" type="text" name="fecha_pago" :value="$fechaHoraActual" disabled/>
                             </div>
                         </div>
 
@@ -61,14 +60,12 @@
                             <!-- Fecha Inicio -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_inicio" :value="__('Fecha Inicio *')" />
-                                <x-text-input id="fecha_inicio" class="block mt-1 w-full" type="date" name="fecha_inicio" :value="old('fecha_inicio', $clientes->fecha_inicio)" required />
-                                <x-input-error :messages="$errors->get('fecha_inicio')" class="mt-2" />
+                                <x-text-input id="fecha_inicio" class="block mt-1 w-full" type="date" name="fecha_inicio" :value="old('fecha_inicio', $clientes->fecha_inicio)" />
                             </div>
                             <!-- Fecha Fin -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_fin" :value="__('Fecha Fin *')" />
-                                <x-text-input id="fecha_fin" class="block mt-1 w-full" type="date" name="fecha_fin" :value="old('fecha_fin', $clientes->fecha_fin)" required />
-                                <x-input-error :messages="$errors->get('fecha_fin')" class="mt-2" />
+                                <x-text-input id="fecha_fin" class="block mt-1 w-full" type="date" name="fecha_fin" :value="old('fecha_fin', $clientes->fecha_fin)" />
                             </div>
                         </div>
 
@@ -106,5 +103,45 @@
 
     setInterval(updateFechaHora, 1000);
     updateFechaHora();
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        let inputContinueRegister = document.querySelector('#continue-register');
+        let btnRegister = document.querySelectorAll('.btn-register');
+
+        btnRegister.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+
+                const alertArea = document.getElementById('alert-area');
+                const fecha_inicio = document.getElementById('fecha_inicio').value.trim();
+                const fecha_fin = document.getElementById('fecha_fin').value.trim();
+
+                let isValid = true;
+                let errorMessages = [];
+
+                if(fecha_inicio === ''){
+                    isValid = false;
+                    errorMessages.push('* El campo fecha inicio de contrata es obligatorio');
+                }else if(fecha_fin === ''){
+                    isValid = false;
+                    errorMessages.push('* El campo fecha fin de contrata  es obligatorio');
+                }
+
+                if (!isValid) {
+                    e.preventDefault();
+                    alertArea.innerHTML = errorMessages.join('<br>');
+                } else {
+                    if (btn.getAttribute('data-continue-register') == 'enabled') {
+                        inputContinueRegister.value = 'enabled';
+                    } else {
+                        inputContinueRegister.value = 'disabled';
+                    }
+
+                    document.getElementById('user-form').submit();
+                }
+            });
+        });
+    });
+
 </script>
 

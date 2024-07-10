@@ -55,33 +55,62 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-12">
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                            <!-- Nombre Comercial -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="nom_comercial" :value="__('Nombre Comercial *')" />
+                                <x-text-input id="nom_comercial" class="block mt-1 w-full" type="text" name="nom_comercial" :value="$clientes->nom_comercial" />
+                            </div>
+                             <!-- Nombre de Contacto -->
+                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="nom_contacto" :value="__('Nombre de Contacto *')" />
+                                <x-text-input id="nom_contacto" class="block mt-1 w-full" type="text" name="nom_contacto"  :value="$clientes->nom_contacto" />
+                            </div>
+
+                        </div>
+
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                             <!-- Cargo -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="cargo" :value="__('Cargo *')" />
-                                <x-text-input id="cargo" class="block mt-1 w-full" type="text" name="cargo" :value="$clientes->cargo" required autocomplete="cargo" />
-                            </div>
-                            <!-- Telefono -->
+                               <x-input-label for="cargo" :value="__('Cargo *')" />
+                               <select id="cargos_id" name="cargos_id" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
+                                   <option value="" disabled>Seleccionar Cargo</option>
+                                   @foreach($cargos as $cargo)
+                                       <option value="{{ $cargo->id }}" {{ $clientes->cargos_id == $cargo->id ? 'selected' : '' }}>
+                                           {{ $cargo->name }}
+                                       </option>
+                                   @endforeach
+                               </select>
+                           </div>
+                            <!-- Cargo -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="telefono" :value="__('Teléfono *')" />
-                                <x-text-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="$clientes->telefono" required autocomplete="telefono" />
-                            </div>
-                        </div>
+                               <x-input-label for="service" :value="__('Servicios *')" />
+                               <select id="service_id" name="service_id" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
+                                   <option value="" disabled>Seleccionar Servicios</option>
+                                   @foreach($services as $service)
+                                       <option value="{{ $service->id }}" {{ $clientes->service_id == $service->id ? 'selected' : '' }}>
+                                           {{ $service->name }}
+                                       </option>
+                                   @endforeach
+                               </select>
+                           </div>
+                       </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-12">
-                            <!-- Correo Electrónico -->
-                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="correo" :value="__('Correo Electrónico *')" />
-                                <x-text-input id="correo" class="block mt-1 w-full" type="email" name="correo" :value="$clientes->correo" required autocomplete="correo" />
-                                <span class="txt-mensaje">  *Ejemplo de usuario: usuario@ejemplo.com </span>
-                            </div>
-                             <!-- Descripcion -->
-                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="descripcion" :value="__('Descripción')" />
-                                <x-text-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"  :value="$clientes->descripcion" autocomplete="name"/>
-                            </div>
-
+                       <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                        <!-- Telefono -->
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <x-input-label for="telefono" :value="__('Teléfono')" />
+                            <x-text-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="$clientes->telefono" />
                         </div>
+                        <!-- Correo Electrónico -->
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <x-input-label for="correo" :value="__('Correo Electrónico')" />
+                            <x-text-input id="correo" class="block mt-1 w-full" type="email" name="correo" :value="$clientes->correo" />
+                            <span class="txt-mensaje">  *Ejemplo de usuario: usuario@ejemplo.com </span>
+                        </div>
+                    </div>
+
+
                         <!-- Credencial del Cliente -->
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -174,10 +203,11 @@
                     const alertArea = document.getElementById('alert-area');
                     const ruc = document.getElementById('ruc').value.trim();
                     const razon_social = document.getElementById('razon_social').value.trim();
-                    const cargo = document.getElementById('cargo').value.trim();
-                    const telefono = document.getElementById('telefono').value.trim();
+                    const nom_comercial = document.getElementById('nom_comercial').value.trim();
+                    const nom_contacto = document.getElementById('nom_contacto').value.trim();
+                    const cargos_id = document.getElementById('cargos_id').value.trim();
+                    const service_id = document.getElementById('service_id').value.trim();
                     const correo = document.getElementById('correo').value.trim();
-                    const descripcion = document.getElementById('descripcion').value.trim();
                     const fecha_inicio = document.getElementById('fecha_inicio').value.trim();
                     const fecha_fin = document.getElementById('fecha_fin').value.trim();
 
@@ -193,18 +223,18 @@
                     }else if(razon_social === ''){
                         isValid = false;
                         errorMessages.push('* El campo razón social es obligatorio.');
-                    }else if(cargo === ''){
+                    }else if(nom_comercial === ''){
                         isValid = false;
-                        errorMessages.push('* El campo cargo es obligatorio.');
-                    }else if(telefono === ''){
+                        errorMessages.push('* El campo nombre comercial es obligatorio.');
+                    }else if(nom_contacto === ''){
                         isValid = false;
-                        errorMessages.push('* El campo teléfono es obligatorio.');
-                    }else if(telefono.length !== 9){
+                        errorMessages.push('* El campo nombre contacto es obligatorio.');
+                    }else if(cargos_id === ''){
                         isValid = false;
-                        errorMessages.push('* El teléfono debe tener 9 dígitos.');
-                    }else if(correo === ''){
+                        errorMessages.push('* Seleccionar Cargo.');
+                    }else if(service_id === ''){
                         isValid = false;
-                        errorMessages.push('* El campo correo electrónico es obligatorio');
+                        errorMessages.push('* Seleccionar Sservicio.');
                     }else if(fecha_inicio === ''){
                         isValid = false;
                         errorMessages.push('* El campo fecha inicio de contrata es obligatorio');

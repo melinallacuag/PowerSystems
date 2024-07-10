@@ -23,7 +23,7 @@
                         @csrf
                         @method('DELETE')
 
-                        <div class="text-sm font-medium text-gray-900">¿Está seguro de que desea eliminar al usuario <strong class="text-red-600">{{ $clientes->razon_social }}</strong>  ? </div>
+                        <div class="text-sm font-medium text-gray-900">¿Está seguro de que desea eliminar al cliente <strong class="text-red-600">{{ $clientes->ruc }} {{ $clientes->razon_social }}</strong>  ? </div>
 
                         <div  class="flex items-center justify-end -mx-3 mb-12">
 

@@ -20,9 +20,9 @@ class Service extends Model
 
     protected $table = 'service';
 
-     public function users()
+     public function clientes()
     {
-        return $this->hasMany(User::class, 'service_id');
+        return $this->hasMany(Clientes::class, 'service_id');
     }
 
 }

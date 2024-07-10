@@ -33,70 +33,79 @@
                     <table style="flex: auto">
                         <thead class="text-white">
                             <tr class="bg-green-800">
-                                <th class="px-4 py-2 border-b mobile-hidden">RUC</th>
-                                <th class="px-4 py-2 border-b">RAZÓN SOCIAL</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">CARGO</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">FECHA DE CONTRATO</th>
-                                <th class="px-4 py-2 border-b">ESTADO</th>
-                                <th class="px-4 py-2 border-b">OPCIONES</th>
+                                <th class="px-4 py-2 border-b">Empresa</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Contacto</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Cargo</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Servicio</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Fecha Inicio / Fin</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Estado</th>
+                                <th class="px-4 py-2 border-b">Opciones</th>
                             </tr>
                         </thead>
 
                         <tbody class="text-gray-600">
                             @foreach($clientes as $index => $cliente)
                             <tr>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->ruc }}</td>
                                 <td class="border px-4 py-2">
                                     <button class="text-blue-500 hover:underline toggle-details btn-mas" data-target="#details{{ $index }}">
                                         +
                                      </button>
-                                    {{ $cliente->razon_social }}
+                                     {{ $cliente->ruc }} - {{ $cliente->razon_social }}
 
                                 </td>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->cargo }}</td>
+                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->nom_contacto  }}</td>
+                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->cargos->name  }}</td>
+                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->service->name }}</td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_inicio . ' / ' . $cliente->fecha_fin}}</td>
-                                <td class="border px-4 py-2">
+                                <td class="border px-4 py-2 mobile-hidden">
                                     <div class="card-status text-center {{ 'estado-' . $cliente->estado }}">
                                         {{ ucfirst($cliente->estado) }}
                                     </div>
                                 </td>
 
                                 <td class="border px-4 py-2">
+                                    <div>
+                                        <x-primary-button class="text-center py-2 btn-botton">
+                                            <a href="{{ route('clientes.edit', ['clientes' => $cliente]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_edit.png') }}" alt="">
+                                            </a>
+                                        </x-primary-button>
+                                        <x-danger-button class="text-center py-2 btn-botton">
+                                            <a href="{{ route('clientes.delete', ['clientes' => $cliente]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_delete.png') }}" alt="">
+                                            </a>
+                                        </x-danger-button>
 
-                                    <x-primary-button class="text-center py-2 btn-botton">
-                                        <a href="{{ route('clientes.edit', ['clientes' => $cliente]) }}">
-                                            <img src="{{ asset('cliente/iconos/btn_edit.png') }}" alt="">
-                                        </a>
-                                    </x-primary-button>
-                                    <x-danger-button class="text-center py-2 btn-botton">
-                                        <a href="{{ route('clientes.delete', ['clientes' => $cliente]) }}">
-                                            <img src="{{ asset('cliente/iconos/btn_delete.png') }}" alt="">
-                                        </a>
-                                    </x-danger-button>
+                                        <x-segundary-button class="text-center py-2 btn-botton">
+                                            <a href="{{ route('clientes.confirmarPago', ['clientes' => $cliente]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_confirmar.png') }}" alt="">
+                                            </a>
+                                        </x-segundary-button>
 
-                                    <x-segundary-button class="text-center py-2 btn-botton">
-                                        <a href="{{ route('clientes.confirmarPago', ['clientes' => $cliente]) }}">
-                                            <img src="{{ asset('cliente/iconos/btn_confirmar.png') }}" alt="">
-                                        </a>
-                                    </x-segundary-button>
+                                        <x-secondary-button class="text-center py-2 btn-botton" style="background: black">
+                                            <a href="{{ route('clientes.vista', ['clientes' => $cliente]) }}">
+                                                <img src="{{ asset('cliente/iconos/btn_ver.png') }}" alt="">
+                                            </a>
+                                        </x-secondary-button>
+                                    </div>
 
-                                    <x-secondary-button class="text-center py-2 btn-botton" style="background: black">
-                                        <a href="{{ route('clientes.vista', ['clientes' => $cliente]) }}">
-                                            <img src="{{ asset('cliente/iconos/btn_ver.png') }}" alt="">
-                                        </a>
-                                    </x-secondary-button>
+
                                 </td>
                             </tr>
 
                             <tr id="details{{ $index }}" class="details-row">
-                                <td colspan="4" class="border px-4 py-2">
-                                    <div>RUC: {{ $cliente->ruc }}</div>
-                                    <div>Cargo: {{ $cliente->cargo }}</div>
-                                    <div>Teléfono: {{ $cliente->telefono }}</div>
-                                    <div>Correo: {{ $cliente->correo }}</div>
+                                <td colspan="5" class="border px-4 py-2">
+                                    <div>Nom. Contacto: {{ $cliente->nom_contacto  }}</div>
+                                    <div>Cargo: {{ $cliente->cargos->name }}</div>
+                                    <div>Servicio: {{ $cliente->service->name }}</div>
                                     <div>Fecha Inicio: {{ $cliente->fecha_inicio }}</div>
                                     <div>Fecha Fin: {{ $cliente->fecha_fin }}</div>
-                                    <div>Descripción: {{ $cliente->descripcion }}</div>
+                                    <div>
+                                        <br>
+                                        <div class="card-status text-center {{ 'estado-' . $cliente->estado }}">
+                                            {{ ucfirst($cliente->estado) }}
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

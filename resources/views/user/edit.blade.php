@@ -52,7 +52,7 @@
                                 <div class="flex-inputs">
                                     <div class="w-full md:w-1/3 mb-4 md:mb-0">
                                         <x-input-label for="ruc" :value="__('RUC *')" />
-                                        <x-text-input id="ruc" class="block mt-1 w-full" type="number" name="ruc" :value="$user->ruc" maxlength="11" oninput="limitDigits(this, 11)"  required autocomplete="username" />
+                                        <x-text-input id="ruc" class="block mt-1 w-full" type="number" name="ruc" :value="$user->ruc" maxlength="11" oninput="limitDigits(this, 11)" />
                                     </div>
                                     <div class="w-full md:w-2/3 mb-4 md:mb-0 btn-buscar-align">
                                         <x-segundary-button type="button" id="btnBuscarCliente" class="w-full text-center btn-large">
@@ -64,7 +64,7 @@
                             <!-- Razón Social -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="razon_social" :value="__('Razón Social *')" />
-                                <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social" :value="$user->razon_social" required autocomplete="razon_social" />
+                                <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social" :value="$user->razon_social"  />
                             </div>
                         </div>
 

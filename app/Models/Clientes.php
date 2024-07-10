@@ -20,15 +20,26 @@ class Clientes extends Model
     protected $fillable = [
         'ruc',
         'razon_social',
-        'cargo',
+        'nom_comercial',
+        'nom_contacto',
         'telefono',
         'correo',
         'fecha_inicio',
         'fecha_fin',
         'estado',
-        'descripcion',
+        'cargos_id',
+        'service_id	',
     ];
 
+    public function cargos()
+    {
+        return $this->belongsTo(Cargos::class, 'cargos_id');
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'service_id');
+    }
 
     protected $dates = [
         'fecha_inicio',

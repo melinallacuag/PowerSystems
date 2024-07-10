@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Pagos;
+use App\Models\Cargos;
 use App\Models\Clientes;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
@@ -94,7 +96,9 @@ class ClientesController extends Controller
 
     public function create()
     {
-        return view('clientes.create');
+        $cargos = Cargos::all();
+        $services = Service::all();
+        return view('clientes.create' , compact('cargos','services'));
     }
 
     public function save(Request $request)
@@ -103,26 +107,29 @@ class ClientesController extends Controller
        //dd($request->all());
 
         $request->validate([
-            'ruc'          => ['required', 'string', 'max:11'],
+            'ruc' => ['required', 'string', 'max:11'],
             'razon_social' => ['required', 'string', 'max:255'],
-            'cargo'        => ['required', 'string', 'max:180'],
-            'telefono'     => ['required', 'string', 'max:180'],
-            'correo'       => ['required', 'string', 'email', 'max:255', 'unique:clientes,correo'],
+            'nom_comercial' => ['required', 'string', 'max:255'],
+            'nom_contacto' => ['required', 'string', 'max:255'],
+            'correo' => ['nullable', 'string', 'email', 'max:255'],
             'fecha_inicio' => ['required', 'date'],
-            'fecha_fin'    => ['required', 'date'],
+            'fecha_fin' => ['required', 'date'],
+            'cargos_id' => 'required|string',
+            'service_id' => 'required|string',
         ]);
-
 
         $clientes = new Clientes();
 
         $clientes->ruc = $request->ruc;
         $clientes->razon_social = $request->razon_social;
-        $clientes->cargo = $request->cargo;
+        $clientes->nom_comercial = $request->nom_comercial;
+        $clientes->nom_contacto = $request->nom_contacto;
         $clientes->telefono = $request->telefono;
         $clientes->correo = $request->correo;
         $clientes->fecha_inicio = $request->fecha_inicio;
         $clientes->fecha_fin = $request->fecha_fin;
-        $clientes->descripcion = $request->descripcion;
+        $clientes->cargos_id = $request->cargos_id;
+        $clientes->service_id = $request->service_id;
 
         //dd($clientes);
         $clientes->actualizarEstado();
@@ -143,30 +150,36 @@ class ClientesController extends Controller
 
     public function edit(Clientes $clientes)
     {
-        return view('clientes.edit', compact('clientes'));
+        $cargos = Cargos::all();
+        $services = Service::all();
+        return view('clientes.edit', compact('clientes', 'cargos' ,'services'));
     }
 
     public function update(Request $request, Clientes $clientes)
     {
         $request->validate([
-            'ruc'          => ['required', 'string', 'max:11'],
+            'ruc' => ['required', 'string', 'max:11'],
             'razon_social' => ['required', 'string', 'max:255'],
-            'cargo'        => ['required', 'string', 'max:180'],
-            'telefono'     => ['required', 'string', 'max:180'],
-            'correo'        => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('clientes')->ignore($clientes->id),],
+            'nom_comercial' => ['required', 'string', 'max:255'],
+            'nom_contacto' => ['required', 'string', 'max:255'],
+            'correo' => ['nullable', 'string', 'email', 'max:255'],
             'fecha_inicio' => ['required', 'date'],
-            'fecha_fin'    => ['required', 'date'],
+            'fecha_fin' => ['required', 'date'],
+            'cargos_id' => 'required|string',
+            'service_id' => 'required|string',
         ]);
 
 
         $clientes->ruc = $request->ruc;
         $clientes->razon_social = $request->razon_social;
-        $clientes->cargo = $request->cargo;
+        $clientes->nom_comercial = $request->nom_comercial;
+        $clientes->nom_contacto = $request->nom_contacto;
         $clientes->telefono = $request->telefono;
         $clientes->correo = $request->correo;
         $clientes->fecha_inicio = $request->fecha_inicio;
         $clientes->fecha_fin = $request->fecha_fin;
-        $clientes->descripcion = $request->descripcion;
+        $clientes->cargos_id = $request->cargos_id;
+        $clientes->service_id = $request->service_id;
 
         $clientes->actualizarEstado();
         $clientes->save();
