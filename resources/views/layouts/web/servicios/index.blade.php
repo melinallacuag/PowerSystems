@@ -2,7 +2,7 @@
 @section('cuerpo')
     <!-- Page Title -->
     <section class="page-title img-encabezado"
-        style="background-image:url({{ asset('cliente/images/background/background_about.png') }});">
+        style="background-image:url({{ asset('cliente/img/background/background_about.png') }});">
         <div class="auto-container">
             <h2>Servicios</h2>
             <ul class="bread-crumb clearfix">
@@ -25,7 +25,7 @@
                         <!-- Slide -->
                         <div class="slide">
                             <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/images/resource/desarrollo.webp') }}"
+                                    src="{{ asset('cliente/img/negocios/desarrollo.webp') }}"
                                     alt="Sistema para Estaciones de Servicios | Power Group System | desarrollo"></figure>
                             <div class="fluid-one_content">
 
@@ -45,7 +45,7 @@
                         <!-- Slide -->
                         <div class="slide">
                             <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/images/background/mesadeayuda_resultado.webp') }}"
+                                    src="{{ asset('cliente/img/negocios/mesadeayuda_resultado.webp') }}"
                                     alt="Sistema para Estaciones de Servicios | Power Group System | ayuda"
                                     style="height: 100%"></figure>
                             <div class="fluid-one_content">
@@ -65,7 +65,7 @@
                         <!-- Slide -->
                         <div class="slide">
                             <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/images/resource/servicios-sunat.png') }}"
+                                    src="{{ asset('cliente/img/negocios/servicios-sunat.png') }}"
                                     alt="Sistema para Estaciones de Servicios | Power Group System | facturacion-resultado"
                                     style="height: 100%"></figure>
                             <div class="fluid-one_content">
@@ -85,7 +85,7 @@
                         <!-- Slide -->
                         <div class="slide">
                             <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/images/resource/hardware.png') }}"
+                                    src="{{ asset('cliente/img/negocios/hardware.png') }}"
                                     alt="Sistema para Estaciones de Servicios | Power Group System | computadora"
                                     style="height: 100%"></figure>
                             <div class="fluid-one_content">
@@ -105,7 +105,7 @@
                         <!-- Slide -->
                         <div class="slide">
                             <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/images/background/rt.webp') }}"
+                                    src="{{ asset('cliente/img/negocios/rt.webp') }}"
                                     alt="Sistema para Estaciones de Servicios | Power Group System | rt"
                                     style="height: 100%"></figure>
                             <div class="fluid-one_content">

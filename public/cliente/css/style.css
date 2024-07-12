@@ -9114,8 +9114,8 @@
 }
 
   .lista-soluciones:hover, .lista-soluciones ul:hover, .lista-soluciones li:hover, .lista-soluciones a:hover{
-	cursor: url(../images/cursor.webp), auto;
-	cursor-size: 30px 20px;
+	cursor: url(../iconos/cursor.png), auto;
+	cursor-size: 20px 20px;
 	cursor-position: 10px 10px;
   }
   .video-clip{

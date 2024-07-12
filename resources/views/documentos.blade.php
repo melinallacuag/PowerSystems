@@ -17,7 +17,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="containers">
                         <div class="main-video-container">
-                            <object type="application/pdf" data="{{ asset('cliente/images/resource/APPSVEN Documentación de Versiones.pdf#toolbar=0') }}" class="main-video" width="500" height="500" sandbox="allow-same-origin"></object>
+                            <object type="application/pdf" data="{{ asset('cliente/img/videos/APPSVEN Documentación de Versiones.pdf#toolbar=0') }}" class="main-video" width="500" height="500" sandbox="allow-same-origin"></object>
                         </div>
                         <div class="div">
                             @foreach($categories as $category)
@@ -26,7 +26,7 @@
                                         <input type="checkbox" id="collapsible-head-{{ $category->id }}">
                                         <div class="collapsible-card">
                                             <label for="collapsible-head-{{ $category->id }}">{{ $category->name }}</label>
-                                            <img src="{{ asset('cliente/images/icons/icons8-flecha.png') }}" alt="Flecha">
+                                            <img src="{{ asset('cliente/img/icons/icons8-flecha.png') }}" alt="Flecha">
                                         </div>
                                         <div class="collapsible-text">
                                             <div class="video-list-container" id="videosList{{ $category->id }}">

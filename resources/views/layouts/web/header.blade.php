@@ -61,16 +61,16 @@
                 <ul class="header-social_box">
                     <li><a target="_blank"
                             href="https://www.facebook.com/profile.php?id=100092632664470&sfnsn=wa&mibextid=RUbZ1f"><img
-                                src="{{ asset('cliente/images/icons/facebook.webp') }}" width="30px"
+                                src="{{ asset('cliente/img/icons/facebook.webp') }}" width="30px"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | facebook"></a></li>
                     <li><a target="_blank" href="https://www.facebook.com/"><img
-                                src="{{ asset('cliente/images/icons/twitter.webp') }}" width="30px"
+                                src="{{ asset('cliente/img/icons/twitter.webp') }}" width="30px"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | twitter"></a></li>
                     <li><a target="_blank" href="https://www.linkedin.com/"><img
-                                src="{{ asset('cliente/images/icons/linkedin.webp') }}" width="30px"
+                                src="{{ asset('cliente/img/icons/linkedin.webp') }}" width="30px"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | linkedin"></a></li>
                     <li><a target="_blank" href="https://instagram.com/"><img
-                                src="{{ asset('cliente/images/icons/instagram.webp') }}" width="30px"
+                                src="{{ asset('cliente/img/icons/instagram.webp') }}" width="30px"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | instagram"></a></li>
                 </ul>
             </div>
@@ -83,7 +83,7 @@
         <div class="auto-container">
             <div class="inner-container d-flex justify-content-center">
                 <!-- Logo Box -->
-                <div class="logo"><a href="index.html"><img src="{{ asset('cliente/images/LOGO-PAG-BLANCO.png') }} "
+                <div class="logo"><a href="index.html"><img src="{{ asset('cliente/img/logos/LOGO-PAG-BLANCO.png') }} "
                             alt="Sistema para Estaciones de Servicios | Power Group System | logo img"
                             title=""></a></div>
 
@@ -145,7 +145,7 @@
                                         <nav class="-mx-3 flex flex-1 justify-end">
                                             @auth
                                                 <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                                    Dashboard
+                                                    Ingresar
                                                 </a>
                                             @else
                                                 <a href="{{ route('login') }}" class="btn btn-login-cyan rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
@@ -175,7 +175,7 @@
                 <!-- Logo -->
                 <div class="logo">
                     <a href="index.html" title="">
-                        <img class="logo-secundario" src="{{ asset('cliente/images/LOGO-PAG.png') }}"
+                        <img class="logo-secundario" src="{{ asset('cliente/img/logos/LOGO-PAG.png') }}"
                             alt="Sistema para Estaciones de Servicios | Power Group System | 2do logo" title="">
                     </a>
                 </div>
@@ -199,7 +199,7 @@
         <div class="menu-backdrop"></div>
         <div class="close-btn"><span class="icon flaticon-020-x-mark"></span></div>
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="{{ asset('cliente/images/LOGO-PAG.png') }}"
+            <div class="nav-logo"><a href="index.html"><img src="{{ asset('cliente/img/logos/LOGO-PAG.png') }}"
                         style="height: 60px;" title=""
                         alt="Sistema para Estaciones de Servicios | Power Group System | "></a></div>
             <div class="menu-outer"></div>

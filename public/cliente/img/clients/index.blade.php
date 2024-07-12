@@ -835,7 +835,7 @@
                                 <div class="author-box">
                                     <div class="box-inner">
                                         <span class="author-image">
-                                            <img src="{{ asset('cliente/img/clients/g.robles_resultado.webp') }}"
+                                            <img src="{{ asset('cliente/images/resource/g.robles_resultado.webp') }}"
                                                 alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
                                         </span>
                                         <h5>Servicento ROBLES</h5>
@@ -861,7 +861,7 @@
                                 <div class="author-box">
                                     <div class="box-inner">
                                         <span class="author-image">
-                                            <img src="{{ asset('cliente/img/clients/soria.png') }}"
+                                            <img src="{{ asset('cliente/images/resource/soria.png') }}"
                                                 alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
                                         </span>
                                         <h5>Grifo SORIA</h5>
@@ -887,7 +887,7 @@
                                 <div class="author-box">
                                     <div class="box-inner">
                                         <span class="author-image">
-                                            <img src="{{ asset('cliente/img/clients/petrox.jpg') }}"
+                                            <img src="{{ asset('cliente/images/resource/petrox.jpg') }}"
                                                 alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
                                         </span>
                                         <h5> Estación de Servicios PETROX</h5>
@@ -913,7 +913,7 @@
                                 <div class="author-box">
                                     <div class="box-inner">
                                         <span class="author-image">
-                                            <img src=" {{ asset('cliente/img/clients/shatu_resultado.webp') }} "
+                                            <img src=" {{ asset('cliente/images/resource/shatu_resultado.webp') }} "
                                                 alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
                                         </span>
                                         <h5>Grifo SHATU</h5>
@@ -939,7 +939,7 @@
                                 <div class="author-box">
                                     <div class="box-inner">
                                         <span class="author-image">
-                                            <img src=" {{ asset('cliente/img/clients/TsP_resultado.webp') }} "
+                                            <img src=" {{ asset('cliente/images/resource/TsP_resultado.webp') }} "
                                                 alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
                                         </span>
                                         <h5>Estación de Servicios T&P</h5>

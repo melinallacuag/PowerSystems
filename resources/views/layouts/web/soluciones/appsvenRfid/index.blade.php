@@ -2,7 +2,7 @@
 @section('cuerpo')
     <!-- Page Title -->
     <section class="page-title img-encabezado"
-        style="background-image:url({{ asset('cliente/images/background/background_about.png') }})">
+        style="background-image:url({{ asset('cliente/img/background/background_about.png') }})">
         <div class="auto-container">
             <h2>Sistema De Control De Flotas, Descuentos corporativos Y Fidelización RFID</h2>
             <ul class="bread-crumb clearfix">
@@ -35,7 +35,7 @@
                         <!-- Contact Widget -->
                         <div class="sidebar-widget contact-widget d-none d-lg-block">
                             <div class="widget-content"
-                                style="background-image:url({{ asset('cliente/images/background/8.jpg') }})">
+                                style="background-image:url({{ asset('cliente/img/background/8.jpg') }})">
                                 <div class="help">Contáctanos</div>
                                 <div class="py-1">
                                     <a target="_blank" class="phone"
@@ -72,10 +72,10 @@
                         <div class="inner-box">
                             <div class="image">
                                 <img autoplay muted loop
-                                    src="{{ asset('cliente/images/images/gif/APPSVEN_Afiliacion.gif') }}" width="100%" />
+                                    src="{{ asset('cliente/img/videos/APPSVEN_Afiliacion.gif') }}" width="100%" />
                             </div>
                             <section id="descripcion">
-                                <h3><span class="px-2"><img src="{{ asset('cliente/images/icons/descripcion.png') }}"
+                                <h3><span class="px-2"><img src="{{ asset('cliente/img/icons/descripcion.png') }}"
                                             alt="Sistema para Estaciones de Servicios | Power Group System | icono"></span>Descripción
                                 </h3>
                                 <p>Este es un conjunto de sistemas que permiten la gestión y control de los despachos de las
@@ -88,7 +88,7 @@
                             </section>
 
                             <section id="requisitos">
-                                <h3><span class="px-2"><img src="images/icons/requisitos.png"
+                                <h3><span class="px-2"><img src="{{ asset('cliente/img/icons/requisitos.png') }}"
                                             alt="Sistema para Estaciones de Servicios | Power Group System | icono"></span>Requisitos
                                     Previos</h3>
                                 <!-- <p>Con más de una década de experiencia, nos hemos consolidado como una de las agencias pioneras en la región. Nuestras estructuras y procesos pequeños, flexibles, ágiles y basados ​​en el diseño nos permiten ser altamente receptivos e innovadores. Estamos formados por líderes, estrategas, gerentes, desarrolladores, animadores y diseñadores apasionados que trabajan juntos bajo un mismo paraguas. Somos una agencia creativa de servicio completo dirigida digitalmente. Combinamos estrategia, marketing, diseño.</p> -->
@@ -108,7 +108,7 @@
                             </section>
 
                             <section id="implementacion">
-                                <h3><span class="px-2"><img src="{{ asset('cliente/images/icons/implementacion.png') }}"
+                                <h3><span class="px-2"><img src="{{ asset('cliente/img/icons/implementacion.png') }}"
                                             alt="Sistema para Estaciones de Servicios | Power Group System | icono"></span>Implementación
                                 </h3>
                                 <!-- <p>Con más de una década de experiencia, nos hemos consolidado como una de las agencias pioneras en la región. Nuestras estructuras y procesos pequeños, flexibles, ágiles y basados ​​en el diseño nos permiten ser altamente receptivos e innovadores. Estamos formados por líderes, estrategas, gerentes, desarrolladores, animadores y diseñadores apasionados que trabajan juntos bajo un mismo paraguas. Somos una agencia creativa de servicio completo dirigida digitalmente. Combinamos estrategia, marketing, diseño.</p> -->
@@ -138,7 +138,7 @@
 
             <!-- Contact Widget -->
             <div class="sidebar-widget contact-widget ">
-                <div class="widget-content" style="background-image:url({{ asset('cliente/images/background/8.jpg') }})">
+                <div class="widget-content" style="background-image:url({{ asset('cliente/img/background/8.jpg') }})">
                     <div class="help">Contáctanos</div>
                     <div class="py-1">
                         <a target="_blank" class="phone"

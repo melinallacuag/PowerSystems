@@ -2,7 +2,7 @@
 @section('cuerpo')
     <!-- Page Title -->
     <section class="page-title img-encabezado"
-        style="background-image:url({{ asset('cliente/images/background/background_about.png') }})">
+        style="background-image:url({{ asset('cliente/img/background/background_about.png') }})">
         <div class="auto-container">
             <h2>Contacto</h2>
             <ul class="bread-crumb clearfix">
@@ -14,7 +14,7 @@
     <!-- End Page Title -->
 
     <!-- Contact One -->
-    <section class="contact-one" style="background-image:url({{ asset('cliente/images/background/map-1.png') }})">
+    <section class="contact-one">
         <div class="auto-container">
             <!-- Sec Title -->
             <div class="sec-title center">

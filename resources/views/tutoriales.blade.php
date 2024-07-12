@@ -19,7 +19,7 @@
 
                     <div class="containers">
                         <div class="main-video-container">
-                            <video src="{{ asset('cliente/images/resource/clip.mp4') }}" loop autoplay controls controlsList="nodownload" class="main-video"></video>
+                            <video src="{{ asset('cliente/img/videos/clip.mp4') }}" loop autoplay controls controlsList="nodownload" class="main-video"></video>
                             <h3 class="main-vid-title">APPSVEN</h3>
                         </div>
 
@@ -31,7 +31,7 @@
 
                                     <div class="collapsible-card">
                                         <label for="collapsible-head-{{ $category->id }}">{{ $category->name }}</label>
-                                        <img src="{{ asset('cliente/images/icons/icons8-flecha.png') }}" alt="Flecha">
+                                        <img src="{{ asset('cliente/img/icons/icons8-flecha.png') }}" alt="Flecha">
                                     </div>
                                     <div class="collapsible-text">
                                         <div class="video-list-container" id="videosList{{ $category->id }}">

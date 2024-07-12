@@ -20,8 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
 
-    <link rel="shortcut icon" href="{{ asset('cliente/images/logoicon.png') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('cliente/images/logoicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('cliente/img/logos/logoicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('cliente/img/logos/logoicon.png') }}" type="image/x-icon">
 
 </head>
 
@@ -61,7 +61,7 @@
         <div id="chat-whatsapp">
             <a target="_blank"
                 href="https://api.whatsapp.com/send?phone=+51901716475&text=Hola!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.">
-                <img src=" {{ asset('cliente/images/gallery/avatrChat.png') }} " alt="Whatsapp" class="img-fluid">
+                <img src=" {{ asset('cliente/img/avatar/avatrChat.png') }} " alt="Whatsapp" class="img-fluid">
             </a>
         </div>
 

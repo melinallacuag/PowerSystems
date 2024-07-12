@@ -2,7 +2,7 @@
 @section('cuerpo')
     <!-- Page Title -->
     <section class="page-title img-encabezado"
-        style="background-image:url({{ asset('cliente/images/background/background_about.png') }})">
+        style="background-image:url({{ asset('cliente/img/background/background_about.png') }})">
         <div class="auto-container">
             <h2>Noticias</h2>
             <ul class="bread-crumb clearfix">

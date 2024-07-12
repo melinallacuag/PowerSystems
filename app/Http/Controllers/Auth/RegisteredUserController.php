@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cargos;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $cargos = Cargos::all(); // Obtén todos los cargos
+        return view('auth.register', compact('cargos'));
     }
 
     /**
@@ -29,17 +31,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //    'name' => ['required', 'string', 'max:255'],
-        //    'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        //    'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        //]);
-
-        //$user = User::create([
-        //    'name' => $request->name,
-        //    'email' => $request->email,
-        //    'password' => Hash::make($request->password),
-        //]);
 
         $request->validate([
 
@@ -47,10 +38,10 @@ class RegisteredUserController extends Controller
             'dni'          => ['required', 'string', 'max:8'],
             'ruc'          => ['required', 'string', 'max:11'],
             'razon_social' => ['required', 'string', 'max:255'],
-            //'cargos_id'        => ['required', 'string', 'max:180'],
-            'role'          => ['required', 'string', 'max:180'],
+            'role'         => ['required', 'string', 'max:180'],
             'email'        => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password'     => ['required', 'confirmed', Rules\Password::defaults()],
+            'cargos_id'    => ['required', 'string', 'max:180'],
 
         ]);
         $user = new User();
@@ -62,7 +53,7 @@ class RegisteredUserController extends Controller
         $user->rol            = $request->role;
         $user->email          = $request->email;
         $user->password       = Hash::make($request->password);
-        $user->cargos_id      = 1;
+        $user->cargos_id      = $request->cargos_id;
         $user->save();
 
 

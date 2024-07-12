@@ -2,7 +2,7 @@
 @section('cuerpo')
     <!-- Page Title -->
     <section class="page-title img-encabezado"
-        style="background-image:url({{ asset('cliente/images/background/background_about.png') }})">
+        style="background-image:url({{ asset('cliente/img/background/background_about.png') }})">
         <div class="auto-container">
             <h2>Nosotros</h2>
             <ul class="bread-crumb clearfix">
@@ -16,7 +16,7 @@
     <!-- About One -->
     <section class="about-one">
         <div class="services-one_pattern-layer position_background"
-            style="background-image: url({{ asset('cliente/images/background/pattern-14.png') }}));"></div>
+            style="background-image: url({{ asset('cliente/img/main-slider/pattern-14.png') }}));"></div>
         <div class="auto-container">
             <div class="row clearfix">
                 <!-- Content Column -->
@@ -89,24 +89,24 @@
                 <div class="about-one_image-column-two col-lg-6 col-md-12 col-sm-12">
                     <div class="about-one-image-inner-two">
                         <div class="about-cicle_layer-two">
-                            <img src="{{ asset('cliente/images/background/pattern-45.png') }}"
+                            <img src="{{ asset('cliente/img/main-slider/pattern-45.png') }}"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | fondo" />
                         </div>
                         <div class="about-one_image-two">
                             <!-- Counter Column -->
                             <div class="about-one_counter-block">
                                 <div class="dots-layer"
-                                    style="background-image:url({{ asset('cliente/images/icons/about-dots.png') }} )"></div>
+                                    style="background-image:url({{ asset('cliente/img/icons/about-dots.png') }} )"></div>
                                 <div class="about-one_counter-number"><span class="odometer" data-count="12"></span></div>
                                 <div class="about-one_counter-text">años de <br> experiencia</div>
                             </div>
-                            <img src="{{ asset('cliente/images/background/gg_resultado.webp') }} "
+                            <img src="{{ asset('cliente/img/background/about-resultado.webp') }} "
                                 alt="Sistema para Estaciones de Servicios | Power Group System | img"
                                 style="height: 320px;width: 450px; border-radius: 20px;" />
                             <div class="about-one_award">
                                 <div class="about-one_award-inner">
                                     <div class="about-one_award-icon">
-                                        <img src="{{ asset('cliente/images/icons/software.png') }}"
+                                        <img src="{{ asset('cliente/img/icons/software.png') }}"
                                             alt="Sistema para Estaciones de Servicios | Power Group System | icono" />
                                     </div>
                                     <strong>Mejor Empresa en Soluciones Tecnológicas</strong>
@@ -136,7 +136,7 @@
                 <div class="team_one col-lg-4 col-md-6 col-sm-12">
                     <div class="team_one-inner wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="team_one-image">
-                            <img src="{{ asset('cliente/images/resource/equipo-1.webp') }}"
+                            <img src="{{ asset('cliente/img/equipo/equipo-1.webp') }}"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | Miembro de equipo" />
                             <div class="team_one-content">
                                 <h5 class="team-one_title text-white"><a>Jhon Pino</a></h5>
@@ -159,7 +159,7 @@
                 <div class="team_one col-lg-4 col-md-6 col-sm-12">
                     <div class="team_one-inner wow fadeInUp" data-wow-delay="150ms" data-wow-duration="1500ms">
                         <div class="team_one-image">
-                            <img src="{{ asset('cliente/images/resource/equipo-2.webp') }}"
+                            <img src="{{ asset('cliente/img/equipo/equipo-2.webp') }}"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | Miembro de equipo" />
                             <div class="team_one-content">
                                 <h5 class="team-one_title text-white"><a>Eder Muedas</a></h5>
@@ -181,33 +181,9 @@
 
                 <!-- Team One -->
                 <div class="team_one col-lg-4 col-md-6 col-sm-12">
-                    <div class="team_one-inner wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        <div class="team_one-image">
-                            <img src="{{ asset('cliente/images/resource/equipo-3.webp') }}"
-                                alt="Sistema para Estaciones de Servicios | Power Group System | Miembro de equipo" />
-                            <div class="team_one-content">
-                                <h5 class="team-one_title text-white"><a>David Eslava</a></h5>
-                                <div class="team-one_designation">Consultor de Sistemas</div>
-                            </div>
-
-                            <div class="team_one-overlay">
-                                <div class="team-one_overlay-content">
-                                    <div class="team_one-text">Se especializa en la implementación y gestión de soluciones
-                                        tecnológicas, asegurando su correcto funcionamiento y adaptación a las necesidades
-                                        de la empresa.</div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team One -->
-                <div class="team_one col-lg-4 col-md-6 col-sm-12">
                     <div class="team_one-inner wow fadeInUp" data-wow-delay="450ms" data-wow-duration="1500ms">
                         <div class="team_one-image">
-                            <img src="{{ asset('cliente/images/resource/equipo-4.webp') }}"
+                            <img src="{{ asset('cliente/img/equipo/equipo-4.webp') }}"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | Miembro de equipo" />
                             <div class="team_one-content">
                                 <h5 class="team-one_title text-white"><a>Humberto Rojas</a></h5>
@@ -232,7 +208,7 @@
                 <div class="team_one col-lg-4 col-md-6 col-sm-12">
                     <div class="team_one-inner wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <div class="team_one-image">
-                            <img src="{{ asset('cliente/images/resource/equipo-5.webp') }}"
+                            <img src="{{ asset('cliente/img/equipo/equipo-5.webp') }}"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | Miembro de equipo" />
                             <div class="team_one-content">
                                 <h5 class="team-one_title text-white"><a>Melina Llacua</a></h5>
@@ -256,7 +232,7 @@
                 <div class="team_one col-lg-4 col-md-6 col-sm-12">
                     <div class="team_one-inner wow fadeInUp" data-wow-delay="450ms" data-wow-duration="1500ms">
                         <div class="team_one-image">
-                            <img src="{{ asset('cliente/images/resource/equipo-6.webp') }}"
+                            <img src="{{ asset('cliente/img/equipo/equipo-6.webp') }}"
                                 alt="Sistema para Estaciones de Servicios | Power Group System | Miembro de equipo" />
                             <div class="team_one-content">
                                 <h5 class="team-one_title text-white"><a>Ellim Avila</a></h5>
@@ -283,7 +259,10 @@
     <section class="counter-one pb-5">
         <div class="auto-container">
             <div class="counter-one_inner-container"
-                style="background-image:url({{ asset('cliente/images/background/1.jpg') }})">
+                style="background-image:linear-gradient(
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.9)
+      ),url({{ asset('cliente/img/background/grifo.jpg') }})">
                 <div class="row clearfix">
 
                     <!-- Counter Column -->

@@ -1,4 +1,4 @@
-<footer class="main-footer" style="background-image:url( {{ asset('cliente/images/background/pattern-11.png') }})">
+<footer class="main-footer" style="background-image:url( {{ asset('cliente/img/background/pattern-11.png') }})">
 
     <div class="auto-container">
 
@@ -15,7 +15,7 @@
                             <div class="footer-widget logo-widget">
                                 <div class="logo-iconoimg">
                                     <a href="index.html" class="aligm_img"><img
-                                            src=" {{ asset('cliente/images/LOGO-PAG-BLANCO.png') }}"
+                                            src=" {{ asset('cliente/img/logos/LOGO-PAG-BLANCO.png') }}"
                                             alt="Sistema para Estaciones de Servicios | Power Group System | logo-empresa"
                                             width="50%" /></a>
                                 </div>
@@ -75,22 +75,22 @@
                                     <ul class="header-social_box">
                                         <li><a target="_blank"
                                                 href="https://www.facebook.com/profile.php?id=100092632664470&sfnsn=wa&mibextid=RUbZ1f"><img
-                                                    src="{{ asset('cliente/images/icons/facebook.webp') }}"
+                                                    src="{{ asset('cliente/img/icons/facebook.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | facebook"></a>
                                         </li>
                                         <li><a target="_blank" href="https://www.facebook.com/"><img
-                                                    src="{{ asset('cliente/images/icons/twitter.webp') }}"
+                                                    src="{{ asset('cliente/img/icons/twitter.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | twitter"></a>
                                         </li>
                                         <li><a target="_blank" href="https://www.linkedin.com/"><img
-                                                    src="{{ asset('cliente/images/icons/linkedin.webp') }}"
+                                                    src="{{ asset('cliente/img/icons/linkedin.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | linkedin"></a>
                                         </li>
                                         <li><a target="_blank" href="https://instagram.com/"><img
-                                                    src="{{ asset('cliente/images/icons/instagram.webp') }}"
+                                                    src="{{ asset('cliente/img/icons/instagram.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | instagram"></a>
                                         </li>
