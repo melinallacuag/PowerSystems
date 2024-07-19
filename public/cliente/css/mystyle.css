@@ -461,3 +461,9 @@
     background-position: center center;
     background-repeat: no-repeat;
 }
+
+.fondo-bacbroung{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

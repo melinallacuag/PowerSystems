@@ -27,6 +27,11 @@ class User extends Authenticatable
         'cargos_id',
     ];
 
+    public function clientes()
+    {
+        return $this->hasOne(Clientes::class, 'ruc', 'ruc');
+    }
+
     public function cargos()
     {
         return $this->belongsTo(Cargos::class, 'cargos_id');

@@ -20,7 +20,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 fondo-bacbroung"  style="  background-image:  linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.8)
+          ),url({{ asset('cliente/img/background/grifo.jpg') }});" >
             @include('layouts.navigation')
 
             <!-- Page Heading -->

@@ -10,11 +10,64 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller
 {
     const REGISTER_DISABLED = 'disabled';
     const REGISTER_ENABLED = 'enabled';
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+        $cliente = Clientes::where('ruc', $user->ruc)->first();
+
+        if ($cliente) {
+
+            $meses_espanol = [
+                1 => 'Enero',
+                2 => 'Febrero',
+                3 => 'Marzo',
+                4 => 'Abril',
+                5 => 'Mayo',
+                6 => 'Junio',
+                7 => 'Julio',
+                8 => 'Agosto',
+                9 => 'Septiembre',
+                10 => 'Octubre',
+                11 => 'Noviembre',
+                12 => 'Diciembre',
+            ];
+
+            $fechaInicio = new \DateTime($cliente->fecha_inicio);
+            $fechaFin = new \DateTime($cliente->fecha_fin);
+
+            $cliente->fecha_inicio_dia = $fechaInicio->format('d');
+             $cliente->fecha_inicio_mes = $meses_espanol[$fechaInicio->format('n')];
+            $cliente->fecha_inicio_ano = $fechaInicio->format('Y');
+
+            $cliente->fecha_fin_dia = $fechaFin->format('d');
+            $cliente->fecha_fin_mes = $meses_espanol[$fechaFin->format('n')];
+            $cliente->fecha_fin_ano = $fechaFin->format('Y');
+
+            switch ($cliente->estado) {
+                case 'deuda':
+                    $cliente->avatar = asset('cliente/img/avatar/avatar_llorando.png');
+                    break;
+                case 'normal':
+                    $cliente->avatar = asset('cliente/img/avatar/avatar_alegre.png');
+                    break;
+                case 'pagar':
+                    $cliente->avatar = asset('cliente/img/avatar/avatar_alterado.png');
+                    break;
+                default:
+                    $cliente->avatar = asset('cliente/img/avatar/avatar_default.png');
+                    break;
+            }
+        }
+
+        return view('dashboard', compact('user', 'cliente'));
+    }
 
     public function index(Request $request)
     {
