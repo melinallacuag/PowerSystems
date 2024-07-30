@@ -32,8 +32,9 @@ class DashboardController extends Controller
 
 
         $proximosAPagar = Clientes::whereIn('estado', ['deuda', 'pagar'])
-        ->orderBy('fecha_fin')
-        ->get(['razon_social', 'estado', 'fecha_fin']);
+                                    ->with('service')
+                                    ->orderBy('fecha_fin')
+                                    ->get(['razon_social', 'estado', 'fecha_fin','service_id']);
 
         // Convertir datos a formato adecuado para el gráfico
         $proximosAPagar = $proximosAPagar->map(function($cliente) {
@@ -41,7 +42,8 @@ class DashboardController extends Controller
             return [
                 'razon_social' => $cliente->razon_social,
                 'fecha_fin' => $fecha_fin->format('Y-m-d'),  // Formato de fecha para Chart.js
-                'estado' => $cliente->estado
+                'estado' => $cliente->estado,
+                'service' => $cliente->service ? $cliente->service->name : 'No asignado'  // Incluir el nombre del servicio
             ];
         });
 

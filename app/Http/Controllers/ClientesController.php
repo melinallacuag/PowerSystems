@@ -75,8 +75,10 @@ class ClientesController extends Controller
         $search = $request->input('search');
 
         $clientes = Clientes::when($search, function ($query, $search) {
-            return $query->where('razon_social', 'like', "%{$search}%");
-        })->with('pagos')->paginate(5);
+            return $query->where('razon_social', 'like', "%{$search}%")
+                        ->orWhere('estado', 'like', "%{$search}%")
+                        ->orWhere('ruc', 'like', "%{$search}%");
+        })->with('pagos')->orderBy('created_at', 'desc')->paginate(5);
 
         return view('clientes.index',compact('clientes', 'search'));
     }

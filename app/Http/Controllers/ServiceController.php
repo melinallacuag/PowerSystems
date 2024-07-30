@@ -23,7 +23,7 @@ class ServiceController extends Controller
 
         $service = Service::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->paginate(5);
+        })->orderBy('created_at', 'desc')->paginate(5);
 
         return view('service.index',compact('service', 'search'));
     }

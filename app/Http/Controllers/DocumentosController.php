@@ -22,7 +22,7 @@ class DocumentosController extends Controller
 
         $documento = Documento::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->paginate(5);
+        })->orderBy('created_at', 'desc')->paginate(5);
 
         return view('archivos.index',compact('documento', 'search'));
     }

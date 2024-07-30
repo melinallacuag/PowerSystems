@@ -24,8 +24,9 @@ class UsuariosController extends Controller
         $search = $request->input('search');
 
         $usuarios = User::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%");
-        })->paginate(5);
+            return $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('rol', 'like', "%{$search}%");
+        })->orderBy('created_at', 'desc')->paginate(5);
 
         return view('user.index', compact('usuarios', 'search'));
     }

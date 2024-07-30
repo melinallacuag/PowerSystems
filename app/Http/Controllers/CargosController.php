@@ -22,7 +22,7 @@ class CargosController extends Controller
 
         $cargos = Cargos::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->paginate(5);
+        })->orderBy('created_at', 'desc')->paginate(5);
 
         return view('cargos.index',compact('cargos', 'search'));
     }

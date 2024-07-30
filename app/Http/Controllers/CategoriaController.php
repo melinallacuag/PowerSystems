@@ -21,7 +21,7 @@ class CategoriaController extends Controller
 
         $categoria = Category::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->paginate(5);
+        })->orderBy('created_at', 'desc')->paginate(5);
 
         return view('categoria.index',compact('categoria', 'search'));
     }

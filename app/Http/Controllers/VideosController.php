@@ -22,7 +22,7 @@ class VideosController extends Controller
 
         $videos = Video::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->paginate(5);
+        })->orderBy('created_at', 'desc')->paginate(5);
 
         return view('video.index',compact('videos', 'search'));
     }
