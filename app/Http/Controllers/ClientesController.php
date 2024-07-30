@@ -25,6 +25,23 @@ class ClientesController extends Controller
         return view('clientes.confirmarPago', compact('clientes'));
     }
 
+    public function estadisticas()
+    {
+        $totalClientes = Clientes::count();
+        $clientesConDeuda = Clientes::where('estado', 'deuda')->count();
+        $clientesNormales = Clientes::where('estado', 'normal')->count();
+        $clientesPagar = Clientes::where('estado', 'pagar')->count();
+
+        $estadisticas = [
+            'total' => $totalClientes,
+            'deuda' => $clientesConDeuda,
+            'normal' => $clientesNormales,
+            'pagar' => $clientesPagar,
+        ];
+
+        return view('clientes.estadisticas', compact('estadisticas'));
+    }
+
 
     public function confirmarPago(Request $request, Clientes $clientes)
     {
@@ -64,7 +81,7 @@ class ClientesController extends Controller
         return view('clientes.index',compact('clientes', 'search'));
     }
 
-    public function buscarUsuario(Request $request)
+    public function buscarCliente(Request $request)
     {
         $request->validate([
             'ruc' => 'required|string|max:11',

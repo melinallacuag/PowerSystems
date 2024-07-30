@@ -17,7 +17,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('usuarios.update', ['user' => $user]) }}">
+                    <form method="POST" action="{{ route('usuarios.update', ['user' => $user]) }}" id="user-form" >
                         @csrf
                         @method('PUT')
                         <!-- Alertas del Usuario -->
@@ -137,56 +137,55 @@
 
 <script>
 
-    /** Numero RUC **/
     function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {
             element.value = element.value.slice(0, maxDigits);
         }
     }
 
-    function buscarCliente() {
-        let ruc = document.getElementById('ruc').value;
-        const alertArea = document.getElementById('alert-area');
+    document.getElementById('btnBuscarCliente').addEventListener('click', function () {
+            let ruc = document.getElementById('ruc').value;
+            const alertArea = document.getElementById('alert-area');
 
-        if (ruc.length === 11) {
-            fetch('{{ route("usuarios.buscarCliente") }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({ ruc: ruc })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (data.usuario) {
-                        document.getElementById('razon_social').value = data.usuario.razon_social;
-                    } else if (data.clientes) {
-                        document.getElementById('razon_social').value = data.clientes.razon_social;
+            if (ruc.length === 11) {
+                fetch('{{ route("usuarios.buscarCliente") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ ruc: ruc })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (data.usuario) {
+                            document.getElementById('razon_social').value = data.usuario.razon_social;
+                        } else if (data.clientes) {
+                            document.getElementById('razon_social').value = data.clientes.razon_social;
+                        }
+                        alertArea.classList.add('hidden');
+                        alertArea.textContent = '';
+                    } else {
+                        document.getElementById('razon_social').value = '';
+                        alertArea.textContent = '* Razón Social no encontrado.';
+                        alertArea.classList.remove('hidden');
                     }
-                    alertArea.classList.add('hidden');
-                    alertArea.textContent = '';
-                } else {
-                    document.getElementById('razon_social').value = '';
-                    alertArea.textContent = '* Razón Social no encontrado.';
-                    alertArea.classList.remove('hidden');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        } else {
-            alertArea.textContent = '* El RUC debe tener 11 dígitos.';
-            alertArea.classList.remove('hidden');
-        }
-    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alertArea.textContent = '* El RUC debe tener 11 dígitos.';
+                alertArea.classList.remove('hidden');
+            }
+    });
 
-    document.getElementById('btnBuscarCliente').addEventListener('click', buscarCliente);
 
     document.addEventListener('DOMContentLoaded', function () {
 
         let btnRegister = document.querySelectorAll('.btn-register');
+        const userForm = document.getElementById('user-form');
 
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
@@ -246,17 +245,18 @@
                     errorMessages.push('* El campo contraseña debe contener al menos 8 caracteres.');
                 }
 
+
                 if (!isValid) {
                     e.preventDefault();
                     alertArea.innerHTML = errorMessages.join('<br>');
+                    alertArea.classList.remove('hidden');
                 } else {
-                    if (btn.getAttribute('data-continue-register') == 'enabled') {
-                        inputContinueRegister.value = 'enabled';
-                    } else {
-                        inputContinueRegister.value = 'disabled';
-                    }
-                    document.getElementById('user-form').submit();
+                    alertArea.classList.add('hidden');
+                    userForm.submit();
                 }
+
+                return isValid;
+
             });
         });
 

@@ -146,11 +146,49 @@
 </x-app-layout>
 
 <script>
+
     function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {
             element.value = element.value.slice(0, maxDigits);
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const notification = document.getElementById('notification');
+        if (notification) {
+            if (notification.innerText.trim() !== '') {
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.add('hide');
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        let inputContinueRegister = document.querySelector('#continue-register');
+        let btnRegister = document.querySelectorAll('.btn-register');
+
+        btnRegister.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (validateForm()) {
+                    if (btn.getAttribute('data-continue-register') == 'enabled') {
+                        inputContinueRegister.value = 'enabled';
+                    } else {
+                        inputContinueRegister.value = 'disabled';
+                    }
+                    document.getElementById('user-form').submit();
+                }
+            });
+        });
+
+        document.getElementById('btnBuscarCliente').addEventListener('click', function () {
+            buscarCliente();
+        });
+
+    });
 
     function buscarCliente() {
         let ruc = document.getElementById('ruc').value;
@@ -190,101 +228,72 @@
         }
     }
 
-    document.getElementById('btnBuscarCliente').addEventListener('click', buscarCliente);
+    function validateForm() {
 
-    document.addEventListener('DOMContentLoaded', function () {
+        const alertArea = document.getElementById('alert-area');
+        const name = document.getElementById('name').value.trim();
+        const dni = document.getElementById('dni').value.trim();
+        const ruc = document.getElementById('ruc').value.trim();
+        const razon_social = document.getElementById('razon_social').value.trim();
+        const cargos_id = document.getElementById('cargos_id').value.trim();
+        const role = document.getElementById('role').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const password_confirmation = document.getElementById('password_confirmation').value.trim();
 
-        let inputContinueRegister = document.querySelector('#continue-register');
-        let btnRegister = document.querySelectorAll('.btn-register');
+            let isValid = true;
+            let errorMessages = [];
 
-        btnRegister.forEach(btn => {
-            btn.addEventListener('click', function (e) {
+            if(name === ''){
+                isValid = false;
+                errorMessages.push('* El campo nombres y apellidos es obligatorio.');
+            }else if(dni === ''){
+                isValid = false;
+                errorMessages.push('* El campo DNI es obligatorio.');
+            }else if (dni.length !== 8) {
+                isValid = false;
+                errorMessages.push('* El DNI debe tener 8 dígitos.');
+            }else if(ruc === ''){
+                isValid = false;
+                errorMessages.push('* El campo RUC es obligatorio.');
+            }else if (ruc.length !== 11) {
+                isValid = false;
+                errorMessages.push('* El RUC debe tener 11 dígitos.');
+            }else if(razon_social === ''){
+                isValid = false;
+                errorMessages.push('* El campo razón social es obligatorio.');
+            }else if(cargos_id === ''){
+                isValid = false;
+                errorMessages.push('* Seleccionar Cargo.');
+            }else if(role === ''){
+                isValid = false;
+                errorMessages.push('* Seleccionar Rol.');
+            }else if(email === ''){
+                isValid = false;
+                errorMessages.push('* El campo correo electrónico del usuario es obligatorio');
+            }else if(password === ''){
+                isValid = false;
+                errorMessages.push('* El campo contraseña es obligatorio');
+            }else if(password_confirmation === ''){
+                isValid = false;
+                errorMessages.push('* El campo confirmar contraseña es obligatorio');
+            }else if(password !== password_confirmation){
+                isValid = false;
+                errorMessages.push('* Las contraseña son distintas');
+            }else if(password.length < 8){
+                isValid = false;
+                errorMessages.push('* El campo contraseña debe contener al menos 8 caracteres.');
+            }
 
-                const alertArea = document.getElementById('alert-area');
-                const name = document.getElementById('name').value.trim();
-                const dni = document.getElementById('dni').value.trim();
-                const ruc = document.getElementById('ruc').value.trim();
-                const razon_social = document.getElementById('razon_social').value.trim();
-                const cargos_id = document.getElementById('cargos_id').value.trim();
-                const role = document.getElementById('role').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const password = document.getElementById('password').value.trim();
-                const password_confirmation = document.getElementById('password_confirmation').value.trim();
+            if (!isValid) {
+                alertArea.innerHTML = errorMessages.join('<br>');
+                alertArea.classList.remove('hidden');
+            } else {
+                alertArea.classList.add('hidden');
+                alertArea.innerHTML = '';
+            }
 
-                let isValid = true;
-                let errorMessages = [];
-
-                if(name === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo nombres y apellidos es obligatorio.');
-                }else if(dni === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo DNI es obligatorio.');
-                }else if (dni.length !== 8) {
-                    isValid = false;
-                    errorMessages.push('* El DNI debe tener 8 dígitos.');
-                }else if(ruc === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo RUC es obligatorio.');
-                }else if (ruc.length !== 11) {
-                    isValid = false;
-                    errorMessages.push('* El RUC debe tener 11 dígitos.');
-                }else if(razon_social === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo razón social es obligatorio.');
-                }else if(cargos_id === ''){
-                    isValid = false;
-                    errorMessages.push('* Seleccionar Cargo.');
-                }else if(role === ''){
-                    isValid = false;
-                    errorMessages.push('* Seleccionar Rol.');
-                }else if(email === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo correo electrónico del usuario es obligatorio');
-                }else if(password === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo contraseña es obligatorio');
-                }else if(password_confirmation === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo confirmar contraseña es obligatorio');
-                }else if(password !== password_confirmation){
-                    isValid = false;
-                    errorMessages.push('* Las contraseña son distintas');
-                }else if(password.length < 8){
-                    isValid = false;
-                    errorMessages.push('* El campo contraseña debe contener al menos 8 caracteres.');
-                }
-
-                if (!isValid) {
-                    e.preventDefault();
-                    alertArea.innerHTML = errorMessages.join('<br>');
-                } else {
-                    if (btn.getAttribute('data-continue-register') == 'enabled') {
-                        inputContinueRegister.value = 'enabled';
-                    } else {
-                        inputContinueRegister.value = 'disabled';
-                    }
-
-                    document.getElementById('user-form').submit();
-                }
-            });
-        });
-
-    });
-
-    const notification = document.getElementById('notification');
-
-    if (notification) {
-        if (notification.innerText.trim() !== '') {
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.add('hide');
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 300);
-            }, 3000);
-        }
+            return isValid;
     }
-
 
 </script>

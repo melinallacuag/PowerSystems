@@ -22,7 +22,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('clientes.save') }}" class="w-full max-w-lg">
+                    <form method="POST" action="{{ route('clientes.save') }}"  id="user-form" class="w-full max-w-lg">
                         @csrf
                         <!-- Alertas del Cliente -->
                         <div class="flex flex-wrap -mx-3 mb-12">
@@ -154,6 +154,7 @@
 </x-app-layout>
 
 <script>
+
     function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {
             element.value = element.value.slice(0, maxDigits);
@@ -173,82 +174,92 @@
                 }, 3000);
             }
         }
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
 
         let inputContinueRegister = document.querySelector('#continue-register');
         let btnRegister = document.querySelectorAll('.btn-register');
 
+
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
-
-                const alertArea = document.getElementById('alert-area');
-                const ruc = document.getElementById('ruc').value.trim();
-                const razon_social = document.getElementById('razon_social').value.trim();
-                const nom_comercial = document.getElementById('nom_comercial').value.trim();
-                const nom_contacto = document.getElementById('nom_contacto').value.trim();
-                const cargos_id = document.getElementById('cargos_id').value.trim();
-                const service_id = document.getElementById('service_id').value.trim();
-                const telefono = document.getElementById('telefono').value.trim();
-                const correo = document.getElementById('correo').value.trim();
-                const fecha_inicio = document.getElementById('fecha_inicio').value.trim();
-                const fecha_fin = document.getElementById('fecha_fin').value.trim();
-
-                let isValid = true;
-                let errorMessages = [];
-
-                if(ruc === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo RUC es obligatorio.');
-                }else if (ruc.length !== 11) {
-                    isValid = false;
-                    errorMessages.push('* El RUC debe tener 11 dígitos.');
-                }else if(razon_social === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo razón social es obligatorio.');
-                }else if(nom_comercial === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo nombre comercial es obligatorio.');
-                }else if(nom_contacto === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo nombre contacto es obligatorio.');
-                }else if(cargos_id === ''){
-                    isValid = false;
-                    errorMessages.push('* Seleccionar Cargo.');
-                }else if(service_id === ''){
-                    isValid = false;
-                    errorMessages.push('* Seleccionar Tipo de Servicio.');
-                }else if(fecha_inicio === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo fecha inicio de contrata es obligatorio');
-                }else if(fecha_fin === ''){
-                    isValid = false;
-                    errorMessages.push('* El campo fecha fin de contrata  es obligatorio');
-                }
-
-                if (!isValid) {
-                    e.preventDefault();
-                    alertArea.innerHTML = errorMessages.join('<br>');
-                } else {
+                e.preventDefault();
+                if (validateForm()) {
                     if (btn.getAttribute('data-continue-register') == 'enabled') {
                         inputContinueRegister.value = 'enabled';
                     } else {
                         inputContinueRegister.value = 'disabled';
                     }
-
                     document.getElementById('user-form').submit();
                 }
             });
         });
+
+        document.getElementById('btnBuscarCliente').addEventListener('click', function () {
+            buscarCliente();
+        });
+
     });
+
+
+    function validateForm() {
+        const alertArea = document.getElementById('alert-area');
+        const ruc = document.getElementById('ruc').value.trim();
+        const razon_social = document.getElementById('razon_social').value.trim();
+        const nom_comercial = document.getElementById('nom_comercial').value.trim();
+        const nom_contacto = document.getElementById('nom_contacto').value.trim();
+        const cargos_id = document.getElementById('cargos_id').value.trim();
+        const service_id = document.getElementById('service_id').value.trim();
+        const fecha_inicio = document.getElementById('fecha_inicio').value.trim();
+        const fecha_fin = document.getElementById('fecha_fin').value.trim();
+
+        let isValid = true;
+        let errorMessages = [];
+
+        if (ruc === '') {
+            isValid = false;
+            errorMessages.push('* El campo RUC es obligatorio.');
+        } else if (ruc.length !== 11) {
+            isValid = false;
+            errorMessages.push('* El RUC debe tener 11 dígitos.');
+        }else if (razon_social === '') {
+            isValid = false;
+            errorMessages.push('* El campo razón social es obligatorio.');
+        }else if (nom_comercial === '') {
+            isValid = false;
+            errorMessages.push('* El campo nombre comercial es obligatorio.');
+        }else if (nom_contacto === '') {
+            isValid = false;
+            errorMessages.push('* El campo nombre contacto es obligatorio.');
+        }else if (cargos_id === '') {
+            isValid = false;
+            errorMessages.push('* Seleccionar Cargo.');
+        }else if (service_id === '') {
+            isValid = false;
+            errorMessages.push('* Seleccionar Tipo de Servicio.');
+        }else if (fecha_inicio === '') {
+            isValid = false;
+            errorMessages.push('* El campo fecha inicio de contrato es obligatorio.');
+        }else if (fecha_fin === '') {
+            isValid = false;
+            errorMessages.push('* El campo fecha fin de contrato es obligatorio.');
+        }
+
+        if (!isValid) {
+            alertArea.innerHTML = errorMessages.join('<br>');
+            alertArea.classList.remove('hidden');
+        } else {
+            alertArea.classList.add('hidden');
+            alertArea.innerHTML = '';
+        }
+
+        return isValid;
+    }
 
     function buscarCliente() {
         let ruc = document.getElementById('ruc').value;
         const alertArea = document.getElementById('alert-area');
 
         if (ruc.length === 11) {
-            fetch('{{ route("clientes.buscarUsuario") }}', {
+            fetch('{{ route("clientes.buscarCliente") }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -280,7 +291,5 @@
             alertArea.classList.remove('hidden');
         }
     }
-
-    document.getElementById('btnBuscarCliente').addEventListener('click', buscarCliente);
 
 </script>

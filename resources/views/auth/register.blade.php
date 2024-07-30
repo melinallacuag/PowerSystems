@@ -1,10 +1,18 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="w-full max-w-lg">
+    <form method="POST" action="{{ route('register') }}" class="w-full max-w-lg" id="user-form">
         @csrf
+
         <!-- Alertas del Usuario -->
         <div class="flex flex-wrap -mx-3 mb-12">
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label :value="__(' ')" id="alert-area" class="font-semibold text-red-600" />
+                @if ($errors->any())
+                    <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                        @foreach ($errors->all() as $error)
+                            <li>El correo electrónico ya está registrado.</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
         <!-- Datos del Cliente -->
@@ -29,10 +37,20 @@
 
         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
             <!-- RUC y Botón de Buscar Cliente-->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <x-input-label for="ruc" :value="__('RUC *')" />
-                <x-text-input id="ruc" class="block mt-1 w-full" type="number" maxlength="11" oninput="limitDigits(this, 11)"  name="ruc" :value="old('ruc')" placeholder="Ingresar RUC" />
+            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                <div class="flex-inputs">
+                    <div class="w-full md:w-1/3 mb-4 md:mb-0">
+                        <x-input-label for="ruc" :value="__('RUC *')" />
+                        <x-text-input id="ruc" class="block mt-1 w-full" type="number" maxlength="11" oninput="limitDigits(this, 11)"  name="ruc" :value="old('ruc')" placeholder="Ingresar RUC" />
+                    </div>
+                    <div class="w-full md:w-2/3 mb-4 md:mb-0 btn-buscar-align">
+                        <x-segundary-button type="button" id="btnBuscarCliente" class="w-full text-center btn-large">
+                            <span class="w-full">BUSCAR</span>
+                        </x-segundary-button>
+                    </div>
+                </div>
             </div>
+
             <!-- Razón Social -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label for="razon_social" :value="__('Razón Social *')" />
@@ -54,7 +72,7 @@
             <!-- Rol -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label for="role" :value="__('Rol ')" />
-                <select id="role" name="role" disabled class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm" required>
+                <select id="role" name="role" disabled class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
                     <option value="user" selected>User</option>
                 </select>
                 <input type="hidden" name="role" value="user">
@@ -72,7 +90,7 @@
             <!-- Correo Electronico -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label for="email" :value="__('Usuario *')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="Ingresar Usuario" required/>
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="Ingresar Usuario"/>
                 <span style="font-size: 1rem">  *Ejemplo de usuario: usuario@ejemplo.com </span>
             </div>
         </div>
@@ -132,16 +150,55 @@
 
 </style>
 <script>
+
      function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {
             element.value = element.value.slice(0, maxDigits);
         }
     }
 
+    document.getElementById('btnBuscarCliente').addEventListener('click', function () {
+        let ruc = document.getElementById('ruc').value;
+        const alertArea = document.getElementById('alert-area');
+
+        if (ruc.length === 11) {
+            fetch('{{ route("register.buscarCliente") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ ruc: ruc })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.usuario) {
+                        document.getElementById('razon_social').value = data.usuario.razon_social;
+                    } else if (data.clientes) {
+                        document.getElementById('razon_social').value = data.clientes.razon_social;
+                    }
+                    alertArea.classList.add('hidden');
+                    alertArea.textContent = '';
+                } else {
+                    document.getElementById('razon_social').value = '';
+                    alertArea.textContent = '* Razón Social no encontrado.';
+                    alertArea.classList.remove('hidden');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            alertArea.textContent = '* El RUC debe tener 11 dígitos.';
+            alertArea.classList.remove('hidden');
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', function () {
 
-        let inputContinueRegister = document.querySelector('#continue-register');
         let btnRegister = document.querySelectorAll('.btn-register');
+        const userForm = document.getElementById('user-form');
 
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
@@ -203,16 +260,15 @@
 
                 if (!isValid) {
                     e.preventDefault();
-                    alertArea.innerHTML = errorMessages.join('<br>');
+                        alertArea.innerHTML = errorMessages.join('<br>');
+                        alertArea.classList.remove('hidden');
                 } else {
-                    if (btn.getAttribute('data-continue-register') == 'enabled') {
-                        inputContinueRegister.value = 'enabled';
-                    } else {
-                        inputContinueRegister.value = 'disabled';
-                    }
-
-                    document.getElementById('user-form').submit();
+                    alertArea.classList.add('hidden');
+                    userForm.submit();
                 }
+
+                return isValid;
+
             });
         });
 

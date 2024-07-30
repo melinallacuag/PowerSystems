@@ -22,7 +22,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('clientes.confirmarPago', ['clientes' => $clientes]) }}">
+                    <form method="POST" action="{{ route('clientes.confirmarPago', ['clientes' => $clientes]) }}" id="user-form" >
                         @csrf
                         <!-- Alertas del Cliente -->
                         <div class="flex flex-wrap -mx-3 mb-12">
@@ -108,6 +108,7 @@
 
         let inputContinueRegister = document.querySelector('#continue-register');
         let btnRegister = document.querySelectorAll('.btn-register');
+        const userForm = document.getElementById('user-form');
 
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
@@ -130,14 +131,10 @@
                 if (!isValid) {
                     e.preventDefault();
                     alertArea.innerHTML = errorMessages.join('<br>');
+                    alertArea.classList.remove('hidden');
                 } else {
-                    if (btn.getAttribute('data-continue-register') == 'enabled') {
-                        inputContinueRegister.value = 'enabled';
-                    } else {
-                        inputContinueRegister.value = 'disabled';
-                    }
-
-                    document.getElementById('user-form').submit();
+                    alertArea.classList.add('hidden');
+                    userForm.submit();
                 }
             });
         });

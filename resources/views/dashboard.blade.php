@@ -162,6 +162,24 @@
     .margin-rigth{
         margin-right: 0.75rem;
     }
+
+    .color-left-cliente{
+        border-left: 10px solid rgb(24 178 16);
+    }
+
+    .color-left-usuario{
+        border-left:10px solid rgb(255 83 0);
+    }
+
+    .color-left-video{
+        border-left: 10px solid rgb(136, 32, 232);
+    }
+
+    .color-left-documento{
+        border-left: 10px solid rgb(7 208 192);
+    }
+
+
 </style>
 
 <x-app-layout>
@@ -177,6 +195,7 @@
         </div>
     </div>
 
+    @if(Auth::user()->rol != 'admin')
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg">
@@ -283,4 +302,353 @@
 
 
     </div>
+    @endif
+
+    @if(Auth::user()->rol == 'admin')
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="px-6 text-gray-900">
+                        <div class="flex flex-wrap -mx-3 flex-inputs" style="align-items: center">
+                            <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <div class="bg-white bg-card  color-left-cliente shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
+                                    <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                      </div>
+                                      <div>
+                                        <h2 class="text-secondary-foreground">Total Usuarios</h2>
+                                        <p class="text-secondary-foreground text-2xl font-bold">{{ $totalUsuarios }}</p>
+                                      </div>
+                                  </div>
+                            </div>
+
+                            <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <div class="bg-white bg-card color-left-usuario shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
+                                    <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                      </div>
+                                      <div>
+                                        <h2 class="text-secondary-foreground">Total Clientes</h2>
+                                        <p class="text-secondary-foreground text-2xl font-bold">{{$totalClientes}}</p>
+                                      </div>
+                                  </div>
+                            </div>
+
+                            <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <div class="bg-white bg-card color-left-video shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
+                                    <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                      </div>
+                                      <div>
+                                        <h2 class="text-secondary-foreground">Total Videos</h2>
+                                        <p class="text-secondary-foreground text-2xl font-bold">{{$totalVideos}}</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <div class="bg-white bg-card color-left-documento shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
+                                    <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                      </div>
+                                      <div>
+                                        <h2 class="text-secondary-foreground">Total Documentos</h2>
+                                        <p class="text-secondary-foreground text-2xl font-bold">{{$totalDocumentos}}</p>
+                                      </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="px-6 text-gray-900">
+                    <div class="flex flex-wrap -mx-3 flex-inputs" style="align-items: center">
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <div class="bg-white bg-card shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
+                            <canvas id="clientesChart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <div class="bg-white bg-card shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
+                            <canvas id="proximosPagarChart" width="400" height="400"></canvas>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endif
+
 </x-app-layout>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-3d"></script>
+
+<script>
+
+function createGradient(ctx, colorStart, colorEnd) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, colorStart);
+            gradient.addColorStop(1, colorEnd);
+            return gradient;
+        }
+
+       var ctx1 = document.getElementById('clientesChart').getContext('2d');
+
+       var gradientDeuda = createGradient(ctx1, 'rgba(255, 0, 0, 0.5)', 'rgba(255,  0, 0, 1)');
+        var gradientNormal = createGradient(ctx1, 'rgba(30, 191, 12, 0.5)', 'rgba(30, 191, 12, 1)');
+        var gradientPagar = createGradient(ctx1, 'rgba(255, 165, 0, 0.5)', 'rgba(255, 165, 0, 1)');
+
+
+        var clientesChart = new Chart(ctx1, {
+            type: 'pie', // Cambiado a 'pie' para gráfico circular
+            data: {
+                labels: ['Deuda', 'Normal', 'Pagar'],
+                datasets: [{
+                    label: 'Clientes',
+                    data: [
+                        {{ $estadisticas['deuda'] }},
+                        {{ $estadisticas['normal'] }},
+                        {{ $estadisticas['pagar'] }}
+                    ],
+                    backgroundColor: [
+                        gradientDeuda,
+                        gradientNormal,
+                        gradientPagar
+                    ],
+                    borderColor: [
+                        'rgba(255, 0, 0, 1)',
+                        'rgba(30, 191, 12, 1)',
+                        'rgba(255, 165, 0, 1)'
+                    ],
+                    borderWidth: 1,
+                    hoverBorderWidth: 4,
+                    hoverBorderColor: 'rgba(0, 0, 0, 0.4)'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    datalabels: {
+                        color: 'white',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        },
+                        formatter: (value, ctx) => {
+                            return ctx.chart.data.labels[ctx.dataIndex];
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: 'black'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 16
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                var label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.raw;
+
+                                // Información adicional que quieres mostrar
+                                var additionalInfo = '';
+                                if (context.label === 'Deuda') {
+                                    additionalInfo = ' (Clientes en deuda)';
+                                } else if (context.label === 'Normal') {
+                                    additionalInfo = ' (Clientes normales)';
+                                } else if (context.label === 'Pagar') {
+                                    additionalInfo = ' (Clientes que pagan)';
+                                }
+
+                                return label + additionalInfo;
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Distribución de Clientes por Estado',
+                        font: {
+                            size: 22,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 15,
+                            bottom: 15
+                        },
+                        color: 'black'
+                    },
+                    chart3d: {
+                        depth: 50,
+                        angle: 45,
+                        zScale: 0.5
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        });
+
+
+        var ctx = document.getElementById('proximosPagarChart').getContext('2d');
+        var proximosAPagar = @json($proximosAPagar);
+
+        var labels = proximosAPagar.map(cliente => cliente.fecha_fin);
+        var data = proximosAPagar.map(cliente => {
+            switch(cliente.estado) {
+                case 'deuda': return 1;
+                case 'pagar': return 2;
+                default: return 0;
+            }
+        });
+
+        var nombres = proximosAPagar.map(cliente => cliente.razon_social);
+        function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+var backgroundColors = proximosAPagar.map(() => getRandomColor());
+var borderColors = backgroundColors;
+
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Estados de Clientes',
+                    data: data,
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors,
+                    borderWidth: 1,
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                plugins: {
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 16
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                var fecha = context.label;
+                                var estado = context.raw;
+                                var nombre = nombres[context.dataIndex];
+                                var estadoTexto = '';
+                                switch(estado) {
+                                    case 1: estadoTexto = 'Deuda'; break;
+                                    case 2: estadoTexto = 'Pagar'; break;
+                                    default: estadoTexto = 'Desconocido'; break;
+                                }
+                                return ` Nombre: ${nombre}`;
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Proximas Fechas a Pagar',
+                        font: {
+                            size: 22,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 15,
+                            bottom: 15
+                        },
+                        color: 'black'
+                    }, legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: 'black'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        //type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'll'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Fecha de Pago',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            color: 'black'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Estado del Cliente',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            color: 'black'
+                        },
+                        ticks: {
+                            font: {
+                                weight: 'bold',
+                                size: 12
+                            },
+                            color: 'black',
+                            callback: function(value, index, values) {
+
+                                switch(value) {
+                                    case 1: return 'Deuda';
+                                    case 2: return 'Pagar';
+                                    default: return ;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+</script>

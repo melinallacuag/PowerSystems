@@ -23,6 +23,10 @@
                             <h3 class="main-vid-title">APPSVEN</h3>
                         </div>
 
+                        <div class="percentage-viewed">
+                            <p id="percentage-viewed-text">0% de videos vistos</p>
+                        </div>
+
                         <div class="div">
                             @foreach($categories as $category)
                             <div class="wrapper">
@@ -57,6 +61,14 @@
 
     </div>
 </x-app-layout>
+<style>
+    .percentage-viewed {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #4caf50;
+}
+    </style>
 
 <script>
 
@@ -147,5 +159,8 @@
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
+
+
+
 
 </script>

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\Cargos;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Cargos;
+use App\Models\Clientes;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 
 class RegisteredUserController extends Controller
 {
@@ -22,6 +23,36 @@ class RegisteredUserController extends Controller
     {
         $cargos = Cargos::all(); // Obtén todos los cargos
         return view('auth.register', compact('cargos'));
+    }
+
+    public function buscarCliente(Request $request)
+    {
+        $request->validate([
+            'ruc' => 'required|string|max:11',
+        ]);
+
+        $usuario = User::where('ruc', $request->ruc)->first();
+
+        if ($usuario) {
+            return response()->json([
+                'success' => true,
+                'usuario' => $usuario,
+            ]);
+        }
+
+        $clientes = Clientes::where('ruc', $request->ruc)->first();
+
+        if ($clientes) {
+            return response()->json([
+                'success' => true,
+                'clientes' => $clientes,
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Usuario no encontrado.',
+        ]);
     }
 
     /**
@@ -44,6 +75,11 @@ class RegisteredUserController extends Controller
             'cargos_id'    => ['required', 'string', 'max:180'],
 
         ]);
+
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->withErrors(['email' => 'El correo electrónico ya está registrado.']);
+        }
+
         $user = new User();
 
         $user->name           = $request->name;

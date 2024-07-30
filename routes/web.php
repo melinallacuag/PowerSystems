@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\CargosController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CargosController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentosController;
-use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ValidationRoleMiddleware;
 
 Route::get('/welcome', function () {
@@ -99,7 +100,7 @@ Route::get('/sistema-telemedicion', function () {
 Route::middleware('auth')->group(function () {
 
         /* Dasboard */
-        Route::get('/dashboard', [UsuariosController::class, 'dashboard'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         /* Perfil de Usuario */
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -179,11 +180,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/clientes/{clientes}/editar', [ClientesController::class, 'edit'])->name('clientes.edit')->middleware([ValidationRoleMiddleware::class]);
         Route::delete('/clientes/{clientes}', [ClientesController::class, 'destroy'])->name('clientes.destroy')->middleware([ValidationRoleMiddleware::class]);
 
-        Route::post('/clientes/buscarUsuario', [ClientesController::class, 'buscarUsuario'])->name('clientes.buscarUsuario');
+        Route::post('/clientes/buscarCliente', [ClientesController::class, 'buscarCliente'])->name('clientes.buscarCliente');
 
         Route::get('/clientes/{clientes}/vista', [ClientesController::class, 'vista'])->name('clientes.vista')->middleware([ValidationRoleMiddleware::class]);
         Route::get('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'updateConfirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
         Route::post('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'confirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
+
 
 });
 

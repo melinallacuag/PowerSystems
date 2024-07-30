@@ -17,7 +17,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('clientes.update', ['clientes' => $clientes]) }}">
+                    <form method="POST" action="{{ route('clientes.update', ['clientes' => $clientes]) }}" id="user-form" >
                         @csrf
                         @method('PUT')
                         <!-- Alertas del Cliente -->
@@ -147,7 +147,6 @@
 
 <script>
 
-    /** Numero RUC **/
     function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {
             element.value = element.value.slice(0, maxDigits);
@@ -159,7 +158,7 @@
             const alertArea = document.getElementById('alert-area');
 
             if (ruc.length === 11) {
-                fetch('{{ route("clientes.buscarUsuario") }}', {
+                fetch('{{ route("clientes.buscarCliente") }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -194,8 +193,8 @@
 
         document.addEventListener('DOMContentLoaded', function () {
 
-            let inputContinueRegister = document.querySelector('#continue-register');
             let btnRegister = document.querySelectorAll('.btn-register');
+            const userForm = document.getElementById('user-form');
 
             btnRegister.forEach(btn => {
                 btn.addEventListener('click', function (e) {
@@ -246,15 +245,14 @@
                     if (!isValid) {
                         e.preventDefault();
                         alertArea.innerHTML = errorMessages.join('<br>');
+                        alertArea.classList.remove('hidden');
                     } else {
-                        if (btn.getAttribute('data-continue-register') == 'enabled') {
-                            inputContinueRegister.value = 'enabled';
-                        } else {
-                            inputContinueRegister.value = 'disabled';
-                        }
-
-                        document.getElementById('user-form').submit();
+                        alertArea.classList.add('hidden');
+                        userForm.submit();
                     }
+
+                    return isValid;
+
                 });
             });
         });
