@@ -311,51 +311,59 @@
                 <div class="px-6 text-gray-900">
                         <div class="flex flex-wrap -mx-3 flex-inputs" style="align-items: center">
                             <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <a href="{{route('usuarios.index')}}"  class="card-link">
                                 <div class="bg-white bg-card  color-left-cliente shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
                                     <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                        <img aria-hidden="true" alt="credit-card" src="{{ asset('cliente/iconos/icons-usuarios.png') }}" />
                                       </div>
                                       <div>
-                                        <h2 class="text-secondary-foreground">Total Usuarios</h2>
+                                        <h2 class="text-secondary-foreground font-bold">Total Usuarios</h2>
                                         <p class="text-secondary-foreground text-2xl font-bold">{{ $totalUsuarios }}</p>
                                       </div>
                                   </div>
+                                </a>
                             </div>
 
                             <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <a href="{{route('clientes.index')}}"  class="card-link">
                                 <div class="bg-white bg-card color-left-usuario shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
                                     <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                        <img aria-hidden="true" alt="credit-card" src="{{ asset('cliente/iconos/icons-clientes.png') }}" />
                                       </div>
                                       <div>
-                                        <h2 class="text-secondary-foreground">Total Clientes</h2>
+                                        <h2 class="text-secondary-foreground font-bold">Total Clientes</h2>
                                         <p class="text-secondary-foreground text-2xl font-bold">{{$totalClientes}}</p>
                                       </div>
                                   </div>
+                                </a>
                             </div>
 
                             <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <a href="{{route('videos.index')}}"  class="card-link">
                                 <div class="bg-white bg-card color-left-video shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
                                     <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                        <img aria-hidden="true" alt="credit-card" src="{{ asset('cliente/iconos/icons-videos.png') }}" />
                                       </div>
                                       <div>
-                                        <h2 class="text-secondary-foreground">Total Videos</h2>
+                                        <h2 class="text-secondary-foreground font-bold">Total Videos</h2>
                                         <p class="text-secondary-foreground text-2xl font-bold">{{$totalVideos}}</p>
                                       </div>
                                 </div>
+                            </a>
                             </div>
 
                             <div class="w-full md:w-1/3 px-6 mb-4 md:mb-0 ">
+                                <a href="{{route('archivos.index')}}"  class="card-link">
                                 <div class="bg-white bg-card color-left-documento shadow-lg  bg-secondary p-4 rounded-lg shadow-md text-center flex items-center space-evenly">
                                     <div class="bg-primary-foreground w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                        <img aria-hidden="true" alt="credit-card" src="https://openui.fly.dev/openui/24x24.svg?text=💳" />
+                                        <img aria-hidden="true" alt="credit-card" src="{{ asset('cliente/iconos/icons-documentos.png') }}" />
                                       </div>
                                       <div>
-                                        <h2 class="text-secondary-foreground">Total Documentos</h2>
+                                        <h2 class="text-secondary-foreground font-bold">Total Documentos</h2>
                                         <p class="text-secondary-foreground text-2xl font-bold">{{$totalDocumentos}}</p>
                                       </div>
                                 </div>
+                            </a>
                             </div>
 
                         </div>
