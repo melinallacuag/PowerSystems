@@ -1,21 +1,31 @@
 <x-guest-layout>
 
-    <div class="aligm_img">
-        <a href="/">
-            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-        </a>
+    <div class="aligm_img" style="margin-bottom: 1rem;">
+
+            <x-application-logo class="w-20 h-20 fill-current text-gray-500"  />
+
     </div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
+
         <!-- Alertas del Usuario -->
         <div class="flex flex-wrap -mx-3 mb-12">
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label :value="__(' ')" id="alert-area" class="font-semibold text-red-600" />
+                @if ($errors->any())
+                    <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
+
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Usuario*')" />
@@ -102,9 +112,6 @@
                 }else if(password === ''){
                     isValid = false;
                     errorMessages.push('* El campo contraseña es obligatorio.');
-                }else if(password !== password){
-                    isValid = false;
-                    errorMessages.push('* El campo contraseña es incorrecto.');
                 }
 
                 if (!isValid) {

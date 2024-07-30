@@ -23,6 +23,8 @@ class CategoriaController extends Controller
             return $query->where('name', 'like', "%{$search}%");
         })->orderBy('created_at', 'desc')->paginate(5);
 
+        //dd(Category::orderBy('created_at', 'desc')->get());
+
         return view('categoria.index',compact('categoria', 'search'));
     }
 

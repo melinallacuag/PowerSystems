@@ -300,7 +300,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex items-center p-2 text-gray-900" style="justify-content: center">
-                        <p class="text-black font-bold margin-rigth">Contactanos al numero : </p>
+                        <p class="text-black font-bold margin-rigth">Contactanos al número : </p>
                         <p class="text-green-600 font-bold"> (+51) 901 716 475</p>
                         <div class="divider-datos"></div>
                         <p class=" text-black font-bold margin-rigth">Siguenos en nuestras redes :</p>
