@@ -111,12 +111,42 @@
                             <!-- Contraseña -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="password" :value="__('Contraseña *')" />
-                                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password"/>
+                                <div class="relative">
+                                    <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password"
+                                        placeholder="Ingresar Contraseña" />
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                                        onclick="togglePasswordVisibility('password', 'togglePassword')">
+                                        <svg id="togglePassword" class="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Ojo abierto -->
+                                            <path id="openEye" style="display:none;"
+                                                d="M12 4.5C7.30558 4.5 3.29936 7.76315 1.5 12C3.29936 16.2369 7.30558 19.5 12 19.5C16.6944 19.5 20.7006 16.2369 22.5 12C20.7006 7.76315 16.6944 4.5 12 4.5ZM12 17.25C9.10051 17.25 6.75 14.8995 6.75 12C6.75 9.10051 9.10051 6.75 12 6.75C14.8995 6.75 17.25 9.10051 17.25 12C17.25 14.8995 14.8995 17.25 12 17.25ZM12 8.25C10.4812 8.25 9.25 9.48122 9.25 11C9.25 12.5188 10.4812 13.75 12 13.75C13.5188 13.75 14.75 12.5188 14.75 11C14.75 9.48122 13.5188 8.25 12 8.25Z" />
+                                            <!-- Ojo cerrado -->
+                                            <path id="closedEye"
+                                                d="M12 4.5C7.30558 4.5 3.29936 7.76315 1.5 12C3.29936 16.2369 7.30558 19.5 12 19.5C16.6944 19.5 20.7006 16.2369 22.5 12C20.7006 7.76315 16.6944 4.5 12 4.5ZM12 17.25C9.10051 17.25 6.75 14.8995 6.75 12C6.75 9.10051 9.10051 6.75 12 6.75C14.8995 6.75 17.25 9.10051 17.25 12C17.25 14.8995 14.8995 17.25 12 17.25ZM2 12L22 12M2 12L4 10M2 12L4 14M22 12L20 10M22 12L20 14" />
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                             <!-- Confirmar Contraseña -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="password_confirmation" :value="__('Confirmar Contraseña *')" />
-                                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation"/>
+                                <div class="relative">
+                                    <x-text-input id="password_confirmation" class="block mt-1 w-full pr-10" type="password"
+                                        name="password_confirmation" placeholder="Confirmar Contraseña" />
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                                        onclick="togglePasswordVisibility('password_confirmation', 'togglePasswordConfirmation')">
+                                        <svg id="togglePasswordConfirmation" class="h-6 w-6 text-gray-900" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Ojo abierto -->
+                                            <path id="openEyeConfirmation" style="display:none;"
+                                                d="M12 4.5C7.30558 4.5 3.29936 7.76315 1.5 12C3.29936 16.2369 7.30558 19.5 12 19.5C16.6944 19.5 20.7006 16.2369 22.5 12C20.7006 7.76315 16.6944 4.5 12 4.5ZM12 17.25C9.10051 17.25 6.75 14.8995 6.75 12C6.75 9.10051 9.10051 6.75 12 6.75C14.8995 6.75 17.25 9.10051 17.25 12C17.25 14.8995 14.8995 17.25 12 17.25ZM12 8.25C10.4812 8.25 9.25 9.48122 9.25 11C9.25 12.5188 10.4812 13.75 12 13.75C13.5188 13.75 14.75 12.5188 14.75 11C14.75 9.48122 13.5188 8.25 12 8.25Z" />
+                                            <!-- Ojo cerrado -->
+                                            <path id="closedEyeConfirmation"
+                                                d="M12 4.5C7.30558 4.5 3.29936 7.76315 1.5 12C3.29936 16.2369 7.30558 19.5 12 19.5C16.6944 19.5 20.7006 16.2369 22.5 12C20.7006 7.76315 16.6944 4.5 12 4.5ZM12 17.25C9.10051 17.25 6.75 14.8995 6.75 12C6.75 9.10051 9.10051 6.75 12 6.75C14.8995 6.75 17.25 9.10051 17.25 12C17.25 14.8995 14.8995 17.25 12 17.25ZM2 12L22 12M2 12L4 10M2 12L4 14M22 12L20 10M22 12L20 14" />
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -135,7 +165,48 @@
     </div>
 </x-app-layout>
 
+<style>
+
+.relative .absolute {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0.75rem;
+        cursor: pointer;
+    }
+
+    #eyeClosedIcon,
+    #eyeClosedConfirmationIcon {
+        display: none;
+    }
+    .disabled-input {
+        background-color: #f0f0f0;
+        /* Color de fondo gris claro */
+        border: 1px solid #ccc;
+        /* Borde gris */
+        /* cursor: not-allowed;  Cursor de no permitido */
+    }
+
+    </style>
+
 <script>
+
+     /** Visualizar Contraseña **/
+
+     function togglePasswordVisibility(passwordFieldId, iconId) {
+        const passwordField = document.getElementById(passwordFieldId);
+        const icon = document.getElementById(iconId);
+        const openEyeIcon = icon.querySelector('path[id^="openEye"]');
+        const closedEyeIcon = icon.querySelector('path[id^="closedEye"]');
+
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+
+        if (openEyeIcon && closedEyeIcon) {
+            openEyeIcon.style.display = type === 'password' ? 'none' : 'block';
+            closedEyeIcon.style.display = type === 'password' ? 'block' : 'none';
+        }
+    }
 
     function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {
@@ -146,6 +217,7 @@
     document.getElementById('btnBuscarCliente').addEventListener('click', function () {
             let ruc = document.getElementById('ruc').value;
             const alertArea = document.getElementById('alert-area');
+            const razonSocialInput = document.getElementById('razon_social');
 
             if (ruc.length === 11) {
                 fetch('{{ route("usuarios.buscarCliente") }}', {
@@ -164,10 +236,14 @@
                         } else if (data.clientes) {
                             document.getElementById('razon_social').value = data.clientes.razon_social;
                         }
+                        razonSocialInput.disabled = true;
+                        razonSocialInput.classList.add('disabled-input');
                         alertArea.classList.add('hidden');
                         alertArea.textContent = '';
                     } else {
                         document.getElementById('razon_social').value = '';
+                        razonSocialInput.disabled = false;
+                        razonSocialInput.classList.remove('disabled-input');
                         alertArea.textContent = '* Razón Social no encontrado.';
                         alertArea.classList.remove('hidden');
                     }

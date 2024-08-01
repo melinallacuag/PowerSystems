@@ -21,14 +21,14 @@
                     <!-- Videos -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('tutoriales')" :active="request()->routeIs('tutoriales')">
-                            {{ __('Videos') }}
+                            {{ __('Videos Tutoriales') }}
                         </x-nav-link>
                     </div>
 
                     <!-- Documentos -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('documentos')" :active="request()->routeIs('documentos')">
-                            {{ __('Documentos') }}
+                            {{ __('Manuales Guias del Sistema') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -157,13 +157,13 @@
 
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('tutoriales')" :active="request()->routeIs('tutorialess')">
-                    {{ __('Videos') }}
+                    {{ __('Videos Tutoriales') }}
                 </x-responsive-nav-link>
             </div>
 
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('documentos')" :active="request()->routeIs('documentos')">
-                    {{ __('Documentos') }}
+                    {{ __('Manuales Guias del Sistema') }}
                 </x-responsive-nav-link>
             </div>
         @endif

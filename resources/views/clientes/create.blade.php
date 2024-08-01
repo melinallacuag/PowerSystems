@@ -153,6 +153,19 @@
     </div>
 </x-app-layout>
 
+<style>
+
+
+    .disabled-input {
+        background-color: #f0f0f0;
+        /* Color de fondo gris claro */
+        border: 1px solid #ccc;
+        /* Borde gris */
+        /* cursor: not-allowed;  Cursor de no permitido */
+    }
+
+    </style>
+
 <script>
 
     function limitDigits(element, maxDigits) {
@@ -257,6 +270,7 @@
     function buscarCliente() {
         let ruc = document.getElementById('ruc').value;
         const alertArea = document.getElementById('alert-area');
+        const razonSocialInput = document.getElementById('razon_social');
 
         if (ruc.length === 11) {
             fetch('{{ route("clientes.buscarCliente") }}', {
@@ -275,10 +289,14 @@
                     } else if (data.clientes) {
                         document.getElementById('razon_social').value = data.clientes.razon_social;
                     }
+                    razonSocialInput.disabled = true;
+                    razonSocialInput.classList.add('disabled-input');
                     alertArea.classList.add('hidden');
                     alertArea.textContent = '';
                 } else {
                     document.getElementById('razon_social').value = '';
+                    razonSocialInput.disabled = false;
+                    razonSocialInput.classList.remove('disabled-input');
                     alertArea.textContent = '* Razón Social no encontrado.';
                     alertArea.classList.remove('hidden');
                 }

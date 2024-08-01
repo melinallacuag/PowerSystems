@@ -1,6 +1,10 @@
 <?php
 
 use App\Models\Category;
+use App\Models\VideoProgress;
+use App\Models\DocumentProgress;
+use App\Models\DocumentoProgress;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\VideosController;
@@ -10,8 +14,11 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\VideoViewController;
 use App\Http\Controllers\DocumentosController;
+use App\Http\Controllers\VideoProgressController;
 use App\Http\Middleware\ValidationRoleMiddleware;
+use App\Http\Controllers\DocumentoProgressController;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -23,23 +30,34 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/tutoriales', function () {
+
+    $userId = Auth::id();
+
     $categories = Category::with(['videos' => function($query) {
         $query->where('is_visible', 1);
     }])->whereHas('videos', function($query) {
         $query->where('is_visible', 1);
     })->get();
 
-    return view('tutoriales', compact('categories'));
+    $videoProgress = VideoProgress::where('user_id', $userId)->get()->keyBy('video_id');
+
+   // $video = $categories->first()->videos->first();
+
+    return view('tutoriales', compact('categories', 'videoProgress'));
 })->middleware(['auth', 'verified'])->name('tutoriales');
 
 Route::get('/documentos', function () {
+
+    $userId = Auth::id();
+
     $categories = Category::with(['documentos' => function($query) {
         $query->where('is_visible', 1);
     }])->whereHas('documentos', function($query) {
         $query->where('is_visible', 1);
     })->get();
+    $documentProgress = DocumentProgress::where('user_id', $userId)->get()->keyBy('documento_id');
 
-    return view('documentos', compact('categories'));
+    return view('documentos', compact('categories','documentProgress'));
 })->middleware(['auth', 'verified'])->name('documentos');
 
 /* Pagina de información */
@@ -96,6 +114,8 @@ Route::get('/controlador-dys', function () {
 Route::get('/sistema-telemedicion', function () {
     return view('layouts.web.soluciones.sistemaTelemedicion.index');
 });
+
+
 
 Route::middleware('auth')->group(function () {
 
@@ -186,6 +206,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'updateConfirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
         Route::post('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'confirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
 
+        Route::post('/update-progress', [VideoProgressController::class, 'updateProgress'])->name('update-progress');
+        Route::post('/update-document-progress', [DocumentoProgressController::class, 'updateProgress'])->name('update-document-progress');
 
 });
 

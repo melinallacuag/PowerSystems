@@ -19,12 +19,8 @@
 
                     <div class="containers">
                         <div class="main-video-container">
-                            <video src="{{ asset('cliente/img/videos/clip.mp4') }}" loop autoplay controls controlsList="nodownload" class="main-video"></video>
+                            <video  id="mainVideo" src="{{ asset('cliente/img/videos/clip.mp4') }}" loop autoplay controls controlsList="nodownload" class="main-video"></video>
                             <h3 class="main-vid-title">APPSVEN</h3>
-                        </div>
-
-                        <div class="percentage-viewed">
-                            <p id="percentage-viewed-text">0% de videos vistos</p>
                         </div>
 
                         <div class="div">
@@ -40,11 +36,19 @@
                                     <div class="collapsible-text">
                                         <div class="video-list-container" id="videosList{{ $category->id }}">
                                             @foreach($category->videos as $video)
-                                            <div class="list">
-                                                <video src="{{ asset('storage/' . $video->url) }}" class="list-video"></video>
+                                            <div class="list" data-id="{{ $video->id }}">
+                                                <video  src="{{ asset('storage/' . $video->url) }}" class="list-video"></video>
                                                 <h3 class="list-title">{{ $video->name }}</h3>
+                                                    @if($videoProgress->has($video->id))
+                                                        <p class="progress">Visualizado</p>
+                                                    @else
+                                                        <p class="progress">No Visualizado</p>
+                                                    @endif
+                                                    <p class="progress" id="progress{{ $video->id }}" style="display: none;">
+                                                        {{ $videoProgress->get($video->id)->progress ?? '0%' }} visto
+                                                    </p>
                                             </div>
-                            @endforeach
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -61,16 +65,51 @@
 
     </div>
 </x-app-layout>
-<style>
-    .percentage-viewed {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-    color: #4caf50;
-}
-    </style>
-
 <script>
+
+function sendProgressToServer(videoId, progress) {
+    fetch('{{ route('update-progress') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            videoId: videoId,
+            progress: progress
+        })
+    }).then(response => {
+        if (!response.ok) {
+            console.error('Error al enviar el progreso:', response.statusText);
+        }
+    }).catch(error => {
+        console.error('Error al enviar el progreso:', error);
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('video');
+
+    videos.forEach(video => {
+        video.addEventListener('timeupdate', () => {
+            // Asegúrate de que el elemento de progreso existe
+            const progressElement = document.getElementById(`progress${video.id.slice(-1)}`);
+            if (progressElement) {
+                const duration = video.duration;
+                const currentTime = video.currentTime;
+
+                // Asegúrate de que duration y currentTime sean válidos antes de calcular el porcentaje
+                if (duration > 0) {
+                    const percentage = ((currentTime / duration) * 100).toFixed(0);
+                    progressElement.textContent = `${percentage}% visto`;
+
+                    sendProgressToServer(video.id.slice(-1), percentage);
+                }
+            }
+        });
+    });
+});
 
     document.querySelectorAll('.collapsible').forEach(collapsible => {
         collapsible.addEventListener('click', function(event) {
@@ -133,11 +172,15 @@
     }
 
     document.querySelectorAll('.list').forEach(vid => {
+        const mainVideo = document.querySelector('.main-video-container .main-video');
         vid.addEventListener('click', () => {
+
             let src = vid.querySelector('.list-video').src;
             let title = vid.querySelector('.list-title').innerHTML;
+            let videoId = vid.dataset.id;
 
             document.querySelector('.main-video-container .main-video').src = src;
+            mainVideo.id = `video${videoId}`;
             document.querySelector('.main-video-container .main-vid-title').innerHTML = title;
 
             const mainVideoContainer = document.querySelector('.main-video-container');

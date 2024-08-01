@@ -28,7 +28,7 @@ class Clientes extends Model
         'fecha_fin',
         'estado',
         'cargos_id',
-        'service_id	',
+        'service_id',
     ];
 
     public function cargos()

@@ -180,6 +180,11 @@
     .color-left-documento {
         border-left: 10px solid rgb(7 208 192);
     }
+    .cont-bg-gray{
+        background: #7b7a7a;
+        padding: 0.75rem;
+        font-size: 0.75rem;
+    }
 </style>
 
 <x-app-layout>
@@ -216,7 +221,11 @@
                                             <h2 class="text-xls font-bold mb-2 text-center text-black">
                                                 {{ $cliente->razon_social }}</h2>
                                             <p class="text-xl mb-4 font-bold text-gray-600">{{ $cliente->ruc }}</p>
+
+                                            <p class="rounded-full mb-6 cont-bg-gray font-bold text-white text-center uppercase ">  FECHA DE CONTRATO</p>
+
                                             <div class="flex space-evenly w-full mb-4">
+
                                                 <div class="text-center align-text-fecha">
                                                     <p class="text-x2 font-bold mb-1 text-green-600">
                                                         {{ $cliente->fecha_inicio_dia }}</p>
@@ -235,9 +244,17 @@
                                             </div>
                                             <p class="text-xsls mb-4 font-bold text-center text-black uppercase">
                                                 {{ $cliente->service->name }}</p>
-                                            <p
-                                                class="rounded-full button-estados-{{ $cliente->estado }} font-bold text-white text-center uppercase ">
-                                                {{ $cliente->estado }}</p>
+                                            <p class="rounded-full button-estados-{{ $cliente->estado }} font-bold text-white text-center uppercase ">
+                                                @if ($cliente->estado === 'normal')
+                                                PAGOS AL DIA
+                                                @elseif ($cliente->estado === 'deuda')
+                                                DEUDA PENDIENTE
+                                                @elseif ($cliente->estado === 'pagar')
+                                                PENDIENTES DE PAGO
+                                                @else
+                                                    {{ $cliente->estado }}
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +282,7 @@
                                             <p class="text-xls font-bold text-center mb-2 text-color-irvideo ">Ir a ver
                                             </p>
                                             <hr class="styled-hr-video">
-                                            <p class="text-x2s font-bold text-center text-black mb-6 ">Videos</p>
+                                            <p class="text-x2s font-bold text-center text-black mb-6 ">Videos Tutoriales</p>
                                         </div>
                                     </div>
                                 </a>
@@ -285,7 +302,7 @@
                                             <p class="text-xls font-bold text-center mb-2 text-color-irdocument ">Ir a
                                                 ver</p>
                                             <hr class="styled-hr-document">
-                                            <p class="text-x2s font-bold text-center text-black mb-6 ">Documentos</p>
+                                            <p class="text-x2s font-bold text-center text-black mb-6 ">Manuales Guias del Sistema</p>
                                         </div>
                                     </div>
                                 </a>
@@ -463,7 +480,7 @@
     var clientesChart = new Chart(ctx1, {
         type: 'pie', // Cambiado a 'pie' para gráfico circular
         data: {
-            labels: ['Deuda', 'Normal', 'Pagar'],
+            labels: ['DEUDA PENDIENTE', 'PAGOS AL DIA ', 'PENDIENTES DE PAGO '],
             datasets: [{
                 label: 'Clientes',
                 data: [

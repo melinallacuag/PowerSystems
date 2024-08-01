@@ -59,7 +59,16 @@
                                 <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_inicio . ' / ' . $cliente->fecha_fin}}</td>
                                 <td class="border px-4 py-2 mobile-hidden">
                                     <div class="card-status text-center {{ 'estado-' . $cliente->estado }}">
+                                        @if ($cliente->estado === 'normal')
+                                        PAGOS AL DIA
+                                        @elseif ($cliente->estado === 'deuda')
+                                        DEUDA PENDIENTE
+                                        @elseif ($cliente->estado === 'pagar')
+                                        PENDIENTES DE PAGO
+                                        @else
                                         {{ ucfirst($cliente->estado) }}
+                                        @endif
+
                                     </div>
                                 </td>
 
@@ -103,7 +112,15 @@
                                     <div>
                                         <br>
                                         <div class="card-status text-center {{ 'estado-' . $cliente->estado }}">
+                                            @if ($cliente->estado === 'normal')
+                                            PAGOS AL DIA
+                                            @elseif ($cliente->estado === 'deuda')
+                                            DEUDA PENDIENTE
+                                            @elseif ($cliente->estado === 'pagar')
+                                            PENDIENTES DE PAGO
+                                            @else
                                             {{ ucfirst($cliente->estado) }}
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

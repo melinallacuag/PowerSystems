@@ -85,17 +85,14 @@
                                     local. Esta versión trabaja con redes locales WIFI O CABLEADO y nos brinda varias
                                     bondades dentro las cuales podemos destacar: </p>
                                 <ul class="circulo">
-                                    <li>Emisión de comprobantes electrónicos (factura, boleta, nota de crédito, nota de
-                                        débito).</li>
+                                    <li>Emisión de comprobantes electrónicos (factura, boleta, nota de crédito, nota de débito).</li>
                                     <li>Emisión de comprobantes de control interno (notas de despacho, etc.).</li>
                                     <li>Control de ventas por formas de pago (contados, tarjetas, créditos, etc.).</li>
                                     <li>Control de reporte de ventas por terminal en los cambios de tuno e inicios de día.
                                     </li>
                                     <li>Anulación y reimpresión de comprobantes desde terminales de venta y oficina.</li>
                                     <li>Consulta RUC SUNAT - DNI RENIEC.</li>
-                                    <li>Control de los créditos, saldos en soles, facturación y cobranzas de los créditos.
-                                    </li>
-                                    <li>Módulo de fidelización (acumulación y canje de puntos).</li>
+                                    <li>Control de los créditos, saldos en soles, facturación y cobranzas de los créditos.</li>
                                     <li>Reporte de productos y tipos de clientes.</li>
                                     <li>Reporte de Ingresos y salidas de productos. </li>
                                     <li>Reportes con opción a exportar a diferentes formatos.</li>
