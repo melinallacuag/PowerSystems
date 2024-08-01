@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\VideosController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ClientesController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\DocumentosController;
 use App\Http\Controllers\VideoProgressController;
 use App\Http\Middleware\ValidationRoleMiddleware;
 use App\Http\Controllers\DocumentoProgressController;
+
+Route::post('/enviar-formulario', [ContactController::class, 'sendContactForm'])->name('contact.send');
 
 Route::get('/welcome', function () {
     return view('welcome');

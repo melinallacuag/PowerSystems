@@ -124,72 +124,49 @@
                 </div>
 
                 <!-- Form Column -->
-                <div class="form-column col-lg-8 col-md-12 col-sm-12">
+                <div class="form-column col-lg-8 col-md-12 col-sm-12 mx-auto">
                     <div id="fondo-formulario" class="inner-column"
-                        style="background-image: url(images/resource/news-2.jpg); background-size: cover;">
-                        <div class="row g-3 needs-validation" novalidate id="formulario-contacto">
+                         style="background-image: url('images/resource/news-2.jpg'); background-size: cover;">
+                         <form class="row g-3 needs-validation" novalidate id="formulario-contacto"  action="{{ route('contact.send') }}" method="POST">
+                            @csrf
+                            <div id="alert-area" class="alert alert-danger col-12 hidden"></div>
+                            <div id="success-area" class="alert alert-success col-12 hidden"></div>
                             <div class="col-md-4">
-                                <label for="nombres" class="form-label fw-bold text-colors">Nombres: </label>
-                                <input type="text" class="form-control border-input" id="nombres" placeholder="Nombres"
-                                    required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="apellidos" class="form-label fw-bold text-colors">Apellidos: </label>
-                                <input type="text" class="form-control border-input" id="apellidos"
-                                    placeholder="Apellidos" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <label for="nombres" class="form-label fw-bold text-colors">* Nombres: </label>
+                                <input type="text" class="form-control border-input" id="nombres" name="nombres" maxlength="30" placeholder="Ingresar Nombres" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="nombres" class="form-label fw-bold text-colors">Teléfono: </label>
-                                <input type="text" class="form-control border-input" id="telefono"
-                                    placeholder="Teléfono" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <label for="apellidos" class="form-label fw-bold text-colors">* Apellidos: </label>
+                                <input type="text" class="form-control border-input" id="apellidos" name="apellidos" maxlength="50" placeholder="Ingresar Apellidos" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="nombres" class="form-label fw-bold text-colors">Empresa: </label>
-                                <input type="text" class="form-control border-input" id="empresa"
-                                    placeholder="Empresa" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <label for="telefono" class="form-label fw-bold text-colors">* Teléfono: </label>
+                                <input type="number" class="form-control border-input" id="telefono" name="telefono" maxlength="9" oninput="limitDigits(this, 9)" placeholder="Ingresar Teléfono">
                             </div>
                             <div class="col-md-4">
-                                <label for="nombres" class="form-label fw-bold text-colors">RUC: </label>
-                                <input type="text" class="form-control border-input" id="ruc" placeholder="RUC"
-                                    required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <label for="empresa" class="form-label fw-bold text-colors">* Empresa: </label>
+                                <input type="text" class="form-control border-input" id="empresa" name="empresa" maxlength="100" placeholder="Ingresar Empresa">
                             </div>
                             <div class="col-md-4">
-                                <label for="ciudad" class="form-label fw-bold text-colors">Ciudad: </label>
-                                <input type="text" class="form-control border-input" id="ciudad"
-                                    placeholder="Ciudad" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <label for="ruc" class="form-label fw-bold text-colors">* RUC: </label>
+                                <input type="number" class="form-control border-input" id="ruc" name="ruc" placeholder="Ingresar RUC" maxlength="11" oninput="limitDigits(this, 11)">
                             </div>
-                            <div class="z mb-3">
-                                <label for="correo" class="form-label fw-bold text-colors">Correo Electrónico: </label>
-                                <input type="email" class="form-control border-input" id="correo"
-                                    placeholder="name@example.com">
+                            <div class="col-md-4">
+                                <label for="ciudad" class="form-label fw-bold text-colors">* Ciudad: </label>
+                                <input type="text" class="form-control border-input" id="ciudad" name="ciudad" maxlength="30" placeholder="Ingresar Ciudad">
                             </div>
-                            <div class="mb-3">
-                                <label for="mensaje" class="form-label fw-bold text-colors">Mensaje: </label>
-                                <textarea class="form-control border-input" id="mensaje" placeholder="Mensaje..."></textarea>
+                            <div class="col-md-12 mb-3">
+                                <label for="correo" class="form-label fw-bold text-colors">* Correo Electrónico: </label>
+                                <input type="email" class="form-control border-input" id="correo" name="correo" maxlength="100" placeholder="name@example.com">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="mensaje" class="form-label fw-bold text-colors">* Mensaje: </label>
+                                <textarea class="form-control border-input" id="mensaje" name="mensaje" maxlength="150" placeholder="Mensaje..."></textarea>
                             </div>
                             <div class="col-12 d-flex justify-content-center">
-                                <button class="btn btn-primary fw-bold btn-lg" onclick="enviarCorreo()"
-                                    style="background: #1aa700; width: 100%;">Enviar</button>
+                                <button class="btn btn-primary fw-bold btn-lg" style="background: #1aa700; width: 100%;" type="submit">Enviar</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -197,3 +174,89 @@
     </section>
     <!-- End Contact One -->
 @endsection
+<style>
+    .hidden {
+            display: none;
+        }
+</style>
+<script>
+    function limitDigits(element, maxDigits) {
+        if (element.value.length > maxDigits) {
+            element.value = element.value.slice(0, maxDigits);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('formulario-contacto').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const form = event.target;
+                const alertArea = document.getElementById('alert-area');
+                const successArea = document.getElementById('success-area');
+                let isValid = true;
+                let errorMessages = [];
+
+            const nombres = document.getElementById('nombres').value.trim();
+            const apellidos = document.getElementById('apellidos').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const ruc = document.getElementById('ruc').value.trim();
+            const empresa = document.getElementById('empresa').value.trim();
+            const ciudad = document.getElementById('ciudad').value.trim();
+            const correo = document.getElementById('correo').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            if (nombres === '') {
+                isValid = false;
+                errorMessages.push('* El campo Nombres es obligatorio.');
+            }
+            if (apellidos === '') {
+                isValid = false;
+                errorMessages.push('* El campo Apellidos es obligatorio.');
+            }
+            if (telefono === '' || !/^\d{9}$/.test(telefono)) {
+                isValid = false;
+                errorMessages.push('* El Teléfono debe tener 9 dígitos.');
+            }
+            if (ruc === '' || !/^\d{11}$/.test(ruc)) {
+                isValid = false;
+                errorMessages.push('* El RUC debe tener 11 dígitos.');
+            }
+            if (empresa === '') {
+                isValid = false;
+                errorMessages.push('* El campo Empresa es obligatorio.');
+            }
+            if (ciudad === '') {
+                isValid = false;
+                errorMessages.push('* El campo Ciudad es obligatorio.');
+            }
+            if (correo === '' || !/^\S+@\S+\.\S+$/.test(correo)) {
+                isValid = false;
+                errorMessages.push('* El Correo Electrónico debe ser válido.');
+            }
+            if (mensaje === '') {
+                isValid = false;
+                errorMessages.push('* El campo Mensaje es obligatorio.');
+            }
+
+
+            if (!isValid) {
+                successArea.classList.add('hidden');
+                alertArea.innerHTML = errorMessages.join('<br>');
+                alertArea.classList.remove('hidden');
+            } else {
+                alertArea.classList.add('hidden');
+                successArea.innerHTML = '¡Correo enviado correctamente!';
+                successArea.classList.remove('hidden');
+
+                form.submit();
+
+                form.reset();
+
+                setTimeout(function() {
+                    successArea.classList.add('hidden');
+                }, 5000);
+            }
+
+        });
+    });
+</script>

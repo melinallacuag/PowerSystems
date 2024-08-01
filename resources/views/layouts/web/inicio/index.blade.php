@@ -202,7 +202,7 @@
                 <!-- Feature Block One -->
                 <div class="feature-block_one d-flex justify-content-center">
                     <div class="feature-block_one-inner">
-                        <a class="overlay-link" href="{{ asset('servicios') }}"></a>
+                        <a class="overlay-link" href="{{ url('servicios#desarrollo-software') }}"></a>
                         <span class="color-layer"></span>
                         <span class="feature-block_one-icon">
                             <img src="{{ asset('cliente/img/icons/icons8-desarrollo-de-software-100.png') }} "
@@ -216,7 +216,7 @@
                 <!-- Feature Block One -->
                 <div class="feature-block_one d-flex justify-content-center">
                     <div class="feature-block_one-inner">
-                        <a class="overlay-link" href="{{ asset('servicios') }}"></a>
+                        <a class="overlay-link" href="{{ url('servicios#mesa-ayuda') }}"></a>
                         <span class="color-layer"></span>
                         <span class="feature-block_one-icon">
                             <img src="{{ asset('cliente/img/icons/icons8-online-support-100.png') }}"
@@ -230,7 +230,7 @@
                 <!-- Feature Block One -->
                 <div class="feature-block_one d-flex justify-content-center">
                     <div class="feature-block_one-inner">
-                        <a class="overlay-link" href="{{ asset('servicios') }}"></a>
+                        <a class="overlay-link" href="{{ url('servicios#facturacion-electronica') }}"></a>
                         <span class="color-layer"></span>
                         <span class="feature-block_one-icon">
                             <img src="{{ asset('cliente/img/icons/icons8-cuenta-100.png') }}"
@@ -244,7 +244,7 @@
                 <!-- Feature Block One -->
                 <div class="feature-block_one d-flex justify-content-center">
                     <div class="feature-block_one-inner">
-                        <a class="overlay-link" href="{{ asset('servicios') }}"></a>
+                        <a class="overlay-link" href="{{ url('servicios#hardware-computo') }}"></a>
                         <span class="color-layer"></span>
                         <span class="feature-block_one-icon">
                             <img src="{{ asset('cliente/img/icons/icons8-computadora-100.png') }}"
@@ -258,7 +258,7 @@
                 <!-- Feature Block One -->
                 <div class="feature-block_one d-flex justify-content-center">
                     <div class="feature-block_one-inner">
-                        <a class="overlay-link" href="{{ asset('servicios') }}"></a>
+                        <a class="overlay-link" href="{{ url('servicios#consultoria-ti') }}"></a>
                         <span class="color-layer"></span>
                         <span class="feature-block_one-icon">
                             <img src="{{ asset('cliente/img/icons/icons8-meeting-room-100.png') }}"
@@ -465,9 +465,9 @@
                                         src=" {{ asset('cliente/img/icons/icons8-desarrollo-de-software-100.png') }}"
                                         width="50px"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | Software" /></span>
-                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios') }}">Desarrollo de
+                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios#desarrollo-software') }}">Desarrollo de
                                         Software</a></h5>
-                                <a class="service-block_three-learn" href="{{ asset('servicios') }}">Saber Más!</a>
+                                <a class="service-block_three-learn" href="{{ asset('servicios#desarrollo-software') }}">Saber Más!</a>
                             </div>
                         </div>
                     </div>
@@ -484,9 +484,9 @@
                                 <span class="service-block_three-icon-two"><img
                                         src="{{ asset('cliente/img/icons/icons8-online-support-100.png') }}" width="50px"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | mesa de ayuda" /></span>
-                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios') }}">Mesa de
+                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios#mesa-ayuda') }}">Mesa de
                                         Ayuda</a></h5>
-                                <a class="service-block_three-learn" href="{{ asset('servicios') }}">Saber Más!</a>
+                                <a class="service-block_three-learn" href="{{ asset('servicios#mesa-ayuda') }}">Saber Más!</a>
                             </div>
                         </div>
                     </div>
@@ -506,9 +506,9 @@
                                         src="{{ asset('cliente/img/icons/icons8-desarrollo-de-software-100.png') }}"
                                         width="50px"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | facturación-electronica" /></span>
-                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios') }}">Facturación
+                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios#facturacion-electronica') }}">Facturación
                                         Electrónica</a></h5>
-                                <a class="service-block_three-learn" href="{{ asset('servicios') }}">Saber Más!</a>
+                                <a class="service-block_three-learn" href="{{ asset('servicios#facturacion-electronica') }}">Saber Más!</a>
                             </div>
                         </div>
                     </div>
@@ -525,9 +525,9 @@
                                 <span class="service-block_three-icon-two"><img
                                         src="{{ asset('cliente/img/icons/icons8-computadora-100.png') }}" width="50px"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | hardware" /></span>
-                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios') }}">Hardware de
+                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios#hardware-computo') }}">Hardware de
                                         Cómputo</a></h5>
-                                <a class="service-block_three-learn" href="{{ asset('servicios') }}">Saber Más!</a>
+                                <a class="service-block_three-learn" href="{{ asset('servicios#hardware-computo') }}">Saber Más!</a>
                             </div>
                         </div>
                     </div>
@@ -545,9 +545,9 @@
                                 <span class="service-block_three-icon-two"><img
                                         src="{{ asset('cliente/img/icons/icons8-meeting-room-100.png') }}" width="50px"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | servicios" /></span>
-                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios') }}">Consultoría en
+                                <h5 class="service-block_three-heading alternate"><a href="{{ asset('servicios#consultoria-ti') }}">Consultoría en
                                         TI</a></h5>
-                                <a class="service-block_three-learn" href="{{ asset('servicios') }}">Saber Más!</a>
+                                <a class="service-block_three-learn" href="{{ asset('servicios#consultoria-ti') }}">Saber Más!</a>
                             </div>
                         </div>
                     </div>

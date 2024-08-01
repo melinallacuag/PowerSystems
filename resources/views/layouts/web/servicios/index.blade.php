@@ -13,138 +13,439 @@
     </section>
     <!-- End Page Title -->
 
-    <!-- Fluid Section One -->
-    <section class="fluid-one">
-        <div class="outer-container d-flex">
+     <section class="testimonial-section" id="desarrollo-software">
 
-            <!-- Carousel Column -->
-            <div class="fluid-one_carousel-column">
-                <div class="fluid-one_carousel-inner">
-                    <div class="single-item-carousel owl-carousel owl-theme">
+        <div class="auto-container margin-botton" >
+            <div class="row clearfix">
 
-                        <!-- Slide -->
-                        <div class="slide">
-                            <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/img/negocios/desarrollo.webp') }}"
-                                    alt="Sistema para Estaciones de Servicios | Power Group System | desarrollo"></figure>
-                            <div class="fluid-one_content">
+                <!-- Title Column -->
+                <div class="title-column col-lg-5 col-md-12 col-sm-12">
+                    <div class="inner-column wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 
-                                <!-- Sec Title -->
-                                <div class="sec-title light">
-                                    <h2 class="sec-title_heading">Desarrollo de Software </h2>
-                                    <div class="pt-4 d-flex justify-content-center">
-                                        <a href="{{ asset('contactanos') }}"><button class="btn-detalle-servicio">
-                                                <span>Contáctanos</span>
-                                            </button></a>
-
-                                    </div>
+                        <!-- Sec Title -->
+                        <div class="sec-title_two">
+                            <div class="sec-title_two-title">Servicios</div>
+                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            </h2>
+                            <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                                <div class="btn-wrap">
+                                    <span class="text-one">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                    <span class="text-two">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
-                        <!-- Slide -->
-                        <div class="slide">
-                            <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/img/negocios/mesadeayuda_resultado.webp') }}"
-                                    alt="Sistema para Estaciones de Servicios | Power Group System | ayuda"
-                                    style="height: 100%"></figure>
-                            <div class="fluid-one_content">
+                        <!-- Button Box -->
+                    </div>
+                </div>
 
-                                <!-- Sec Title -->
-                                <div class="sec-title light">
-                                    <h2 class="sec-title_heading">Mesa de Ayuda</h2>
-                                    <div class="pt-4 d-flex justify-content-center">
-                                        <a href="{{ asset('contactanos') }}"><button class="btn-detalle-servicio">
-                                                <span>Contáctanos</span>
-                                            </button></a>
-                                    </div>
-                                </div>
+                <!-- Carousel Column -->
+                <div class="carousel-column col-lg-7 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="authors-outer">
+                            <div class="author-one">
+                                <img src=" {{ asset('cliente/img/clients/dispensador_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
                             </div>
+                            <div class="author-two">
+                                <img src=" {{ asset('cliente/img/clients/tanquevacio_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-three">
+                                <img src=" {{ asset('cliente/img/clients/tanqueado_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-four">
+                                <img src=" {{ asset('cliente/img/clients/author-5.jpg') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
                         </div>
+                        <div class="single-item-carousels owl-carousel owl-theme">
 
-                        <!-- Slide -->
-                        <div class="slide">
-                            <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/img/negocios/servicios-sunat.png') }}"
-                                    alt="Sistema para Estaciones de Servicios | Power Group System | facturacion-resultado"
-                                    style="height: 100%"></figure>
-                            <div class="fluid-one_content">
-
-                                <!-- Sec Title -->
-                                <div class="sec-title light">
-                                    <h2 class="sec-title_heading">Facturación Electrónica</h2>
-                                    <div class="pt-4 d-flex justify-content-center">
-                                        <a href="{{ asset('contactanos') }}"><button class="btn-detalle-servicio">
-                                                <span>Contáctanos</span>
-                                            </button></a>
+                               <!-- Testimonial Block -->
+                               <div class="testimonial-block">
+                                <div class="author-box">
+                                    <div class="box-inner">
+                                        <span class="author-image">
+                                            <img src="{{ asset('cliente/img/icons/icons8-desarrollo-de-software-100.png') }}"
+                                                alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
+                                        </span>
+                                        <h3>Desarrollo de Software</h3>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="inner-box">
 
-                        <!-- Slide -->
-                        <div class="slide">
-                            <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/img/negocios/hardware.png') }}"
-                                    alt="Sistema para Estaciones de Servicios | Power Group System | computadora"
-                                    style="height: 100%"></figure>
-                            <div class="fluid-one_content">
-
-                                <!-- Sec Title -->
-                                <div class="sec-title light">
-                                    <h2 class="sec-title_heading">Hardware de Cómputo</h2>
-                                    <div class="pt-4 d-flex justify-content-center">
-                                        <a href="{{ asset('contactanos') }}"><button class="btn-detalle-servicio">
-                                                <span>Contáctanos</span>
-                                            </button></a>
+                                    <div class="text">“Transformamos ideas en soluciones de software para escritorio, web y móvil, trabajamos con los mejores estándares y buenas practicas exigidas por el mercado.
+                                        Contamos con un equipo de desarrolladores en constante capacitación para poder atender las solicitudes y desafíos más exigentes.”</div>
+                                    <div class="rating">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Slide -->
-                        <div class="slide">
-                            <figure class="fluid-one_image img-tamañop"><img
-                                    src="{{ asset('cliente/img/negocios/rt.webp') }}"
-                                    alt="Sistema para Estaciones de Servicios | Power Group System | rt"
-                                    style="height: 100%"></figure>
-                            <div class="fluid-one_content">
-
-                                <!-- Sec Title -->
-                                <div class="sec-title light">
-                                    <h2 class="sec-title_heading">Consultoría en TI</h2>
-                                    <div class="pt-4 d-flex justify-content-center">
-                                        <a href="{{ asset('contactanos') }}"><button class="btn-detalle-servicio">
-                                                <span>Contáctanos</span>
-                                            </button></a>
-                                    </div>
-                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Content Column -->
-            <div class="fluid-one_content-column" style="display: flex; align-items: center;">
-                <div class="fluid-one_column-inner py-0 py-md-4">
-                    <!-- Sec Title -->
-                    <div class="sec-title">
-                        <h2 class="sec-title_heading" style="opacity: 1;" id="nombre-servicio">Desarrollo de <span
-                                class='theme_color'>Software</span></h2>
-                        <div class="sec-title_text" style="opacity: 1;" id="descripcion-servicio">
-                            <p>Transformamos ideas en soluciones de software para escritorio, web y móvil,
-                                trabajamos con los mejores estándares y buenas practicas exigidas por el mercado.<br>
-                                Contamos con un
-                                equipo de desarrolladores en constante capacitación para poder atender las solicitudes y
-                                desafíos más
-                                exigentes.</p>
+    </section>
+
+    <section class="testimonial-section" id="mesa-ayuda">
+
+        <div class="auto-container margin-botton">
+            <div class="row clearfix">
+
+                <!-- Carousel Column -->
+                <div class="carousel-column col-lg-7 col-md-12 col-sm-12">
+                    <div class="inner-column"
+                        style="background-image: url({{ asset('cliente/img/main-slider/pattern-26.png') }} )">
+                        <div class="authors-outer">
+                            <div class="author-one">
+                                <img src=" {{ asset('cliente/img/clients/dispensador_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-two">
+                                <img src=" {{ asset('cliente/img/clients/tanquevacio_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
+                        </div>
+                        <div class="single-item-carousels owl-carousel owl-theme">
+
+                            <!-- Testimonial Block -->
+                            <div class="testimonial-block">
+                                <div class="author-box">
+                                    <div class="box-inner">
+                                        <span class="author-image">
+                                            <img src="{{ asset('cliente/img/icons/icons8-online-support-100.png') }}"
+                                                alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
+                                        </span>
+                                        <h3>Mesa de Ayuda</h3>
+                                    </div>
+                                </div>
+                                <div class="inner-box">
+
+                                    <div class="text">“Brindamos asistencia 24/7 en las soluciones implementadas, nuestro trabajo exige modalidades presencial y remota según los tipos y escalados de Incidentes reportados. Contamos con personal altamente capacitado que sabrá brindar las respuestas en los tiempos exigidos por el negocio.”</div>
+                                    <div class="rating">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Title Column -->
+                <div class="title-column col-lg-5 col-md-12 col-sm-12">
+                    <div class="inner-column wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                        <!-- Sec Title -->
+                        <div class="sec-title_two">
+                            <div class="sec-title_two-title">Servicios</div>
+                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            </h2>
+                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                                <div class="btn-wrap">
+                                    <span class="text-one">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                    <span class="text-two">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Button Box -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="testimonial-section" id="facturacion-electronica">
+
+        <div class="auto-container margin-botton">
+            <div class="row clearfix">
+
+                <!-- Title Column -->
+                <div class="title-column col-lg-5 col-md-12 col-sm-12">
+                    <div class="inner-column wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                        <!-- Sec Title -->
+                        <div class="sec-title_two">
+                            <div class="sec-title_two-title">Servicios</div>
+                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            </h2>
+                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                                <div class="btn-wrap">
+                                    <span class="text-one">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                    <span class="text-two">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Button Box -->
+                    </div>
+                </div>
+
+                <!-- Carousel Column -->
+                <div class="carousel-column col-lg-7 col-md-12 col-sm-12">
+                    <div class="inner-column"
+                        style="background-image: url({{ asset('cliente/img/main-slider/pattern-26.png') }} )">
+                        <div class="authors-outer">
+                            <div class="author-one">
+                                <img src=" {{ asset('cliente/img/clients/dispensador_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-two">
+                                <img src=" {{ asset('cliente/img/clients/tanquevacio_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
+                            <div class="author-three">
+                                <img src=" {{ asset('cliente/img/clients/tanqueado_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-four">
+                                <img src=" {{ asset('cliente/img/clients/author-5.jpg') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
+                        </div>
+                        <div class="single-item-carousels owl-carousel owl-theme">
+
+                               <!-- Testimonial Block -->
+                               <div class="testimonial-block">
+                                <div class="author-box">
+                                    <div class="box-inner">
+                                        <span class="author-image">
+                                            <img src="{{ asset('cliente/img/icons/icons8-cuenta-100.png') }}"
+                                                alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
+                                        </span>
+                                        <h3>Facturación Electrónica</h3>
+                                    </div>
+                                </div>
+                                <div class="inner-box">
+
+                                    <div class="text">“Brindamos el servicio de transporte y validación de comprobantes electrónicos con las mejores tarifas del mercado. Nuestro servicio diferencia de otros por la validación e informe de los sucesos (control de estados de comprobantes electrónicos) en los tiempos establecidos por SUNAT.
+                                        Trabajamos con nuestro aliado estratégico NUBEFACT para servicios OSE / PSE. También hacemos el envío directo de los comprobantes a través del FACTURADOR SUNAT, para cualquiera de los dos servicios nuestro personal hace la validación e informa de los sucesos para las acciones correctivas.”</div>
+                                    <div class="rating">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
+    </section>
+
+    <section class="testimonial-section" id="hardware-computo">
+
+        <div class="auto-container margin-botton">
+            <div class="row clearfix">
+
+                <!-- Carousel Column -->
+                <div class="carousel-column col-lg-7 col-md-12 col-sm-12">
+                    <div class="inner-column"
+                        style="background-image: url({{ asset('cliente/img/main-slider/pattern-26.png') }} )">
+                        <div class="authors-outer">
+                            <div class="author-one">
+                                <img src=" {{ asset('cliente/img/clients/dispensador_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-two">
+                                <img src=" {{ asset('cliente/img/clients/tanquevacio_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
+                        </div>
+                        <div class="single-item-carousels owl-carousel owl-theme">
+
+                            <!-- Testimonial Block -->
+                            <div class="testimonial-block">
+                                <div class="author-box">
+                                    <div class="box-inner">
+                                        <span class="author-image">
+                                            <img src="{{ asset('cliente/img/icons/icons8-computadora-100.png') }}"
+                                                alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
+                                        </span>
+                                        <h3>Hardware de Cómputo</h3>
+                                    </div>
+                                </div>
+                                <div class="inner-box">
+
+                                    <div class="text">“Vendemos equipos de computo como; Pc para puntos de ventas, Pc para oficina (trabajos administrativos), servidores de datos, equipos AIO, equipos GAMER, impresoras para oficina, impresoras térmicas para punto de venta, monitores, mouse, teclados, cargadores, UPS, estabilizadores, router, switch, cámaras de seguridad, según las características y necesidades exigidas.”</div>
+                                    <div class="rating">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Title Column -->
+                <div class="title-column col-lg-5 col-md-12 col-sm-12">
+                    <div class="inner-column wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                        <!-- Sec Title -->
+                        <div class="sec-title_two">
+                            <div class="sec-title_two-title">Servicios</div>
+                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            </h2>
+                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                                <div class="btn-wrap">
+                                    <span class="text-one">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                    <span class="text-two">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Button Box -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="testimonial-section" id="consultoria-ti">
+
+        <div class="auto-container margin-botton">
+            <div class="row clearfix">
+
+                <!-- Title Column -->
+                <div class="title-column col-lg-5 col-md-12 col-sm-12">
+                    <div class="inner-column wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                        <!-- Sec Title -->
+                        <div class="sec-title_two">
+                            <div class="sec-title_two-title">Servicios</div>
+                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            </h2>
+                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                                <div class="btn-wrap">
+                                    <span class="text-one">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                    <span class="text-two">Contáctanos <i
+                                            class="fa-solid fa-arrow-right fa-fw"></i></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Button Box -->
+                    </div>
+                </div>
+
+                <!-- Carousel Column -->
+                <div class="carousel-column col-lg-7 col-md-12 col-sm-12">
+                    <div class="inner-column"
+                        style="background-image: url({{ asset('cliente/img/main-slider/pattern-26.png') }} )">
+                        <div class="authors-outer">
+                            <div class="author-one">
+                                <img src=" {{ asset('cliente/img/clients/dispensador_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-two">
+                                <img src=" {{ asset('cliente/img/clients/tanquevacio_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
+                            <div class="author-three">
+                                <img src=" {{ asset('cliente/img/clients/tanqueado_resultado.webp') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+                            <div class="author-four">
+                                <img src=" {{ asset('cliente/img/clients/author-5.jpg') }}"
+                                    alt="Sistema para Estaciones de Servicios | Power Group System | grifo" />
+                            </div>
+
+                        </div>
+                        <div class="single-item-carousels owl-carousel owl-theme">
+
+                               <!-- Testimonial Block -->
+                               <div class="testimonial-block">
+                                <div class="author-box">
+                                    <div class="box-inner">
+                                        <span class="author-image">
+                                            <img src="{{ asset('cliente/img/icons/icons8-meeting-room-100.png') }}"
+                                                alt="Sistema para Estaciones de Servicios | Power Group System | Testimonios" />
+                                        </span>
+                                        <h3>Consultoría en TI</h3>
+                                    </div>
+                                </div>
+                                <div class="inner-box">
+
+                                    <div class="text">“Brindamos asesoría en innovación de herramientas y recursos tecnológicos como, sistemas de control de inventarios, sistemas contables, control de flotas, hardware para automatizaciones del negocio.”</div>
+                                    <div class="rating">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- End Fluid Section One -->
 @endsection
+
+<style>
+    .margin-botton{
+        margin-bottom: 5rem !important;
+    }
+    .btn-mm {
+        padding: 15px 50px !important;
+        margin-top: 1rem;
+    }
+    .single-item-carousels {
+    cursor: default !important;
+    pointer-events: none !important;/* Cambia el cursor a un puntero por defecto */
+}
+</style>
+

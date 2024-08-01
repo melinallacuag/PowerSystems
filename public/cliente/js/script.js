@@ -1,24 +1,24 @@
 (function($) {
-	
+
 	"use strict";
-	
-	
+
+
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		if($('.preloader').length){
 			$('.preloader').delay(200).fadeOut(200);
 		}
 	}
-	
-	
-	
+
+
+
 	//Update Header Style and Scroll to Top
 	function headerStyle() {
 		if($('.main-header').length){
 			var windowpos = $(window).scrollTop();
 			var siteHeader = $('.main-header');
 			var scrollLink = $('.scroll-to-top');
-			
+
 			var HeaderHight = $('.main-header').height();
 			if (windowpos >= HeaderHight) {
 				siteHeader.addClass('fixed-header');
@@ -27,35 +27,35 @@
 				siteHeader.removeClass('fixed-header');
 				scrollLink.fadeOut(50);
 			}
-			
+
 		}
 	}
-	
+
 	headerStyle();
-	
-	
-	
+
+
+
 	//Submenu Dropdown Toggle
 	if($('.main-header li.dropdown ul').length){
 		$('.main-header li.dropdown').append('<div class="dropdown-btn"><span class="fa-solid fa-chevron-down fa-fw"></span></div>');
-		
+
 		//Dropdown Button
 		$('.main-header li.dropdown .dropdown-btn').on('click', function() {
 			$(this).prev('ul').slideToggle(500);
 		});
-		
+
 		//Disable dropdown parent link
 		$('.navigation li.dropdown > a').on('click', function(e) {
 			e.preventDefault();
 		});
-		
+
 		$('.xs-sidebar-group .close-button').on('click', function(e) {
 			$('.xs-sidebar-group.info-group').removeClass('isActive');
 		});
-		
+
 	}
-	
-	
+
+
 	// Add Current Class Auto
 	function dynamicCurrentMenuClass(selector) {
 		let FileName = window.location.href.split("/").reverse()[0];
@@ -77,24 +77,24 @@
 			selector.find("li").eq(0).addClass("current");
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	//Mobile Nav Hide Show
 	if($('.mobile-menu').length){
-		
+
 		//$('.mobile-menu .menu-box').mCustomScrollbar();
-		
+
 		var mobileMenuContent = $('.main-header .nav-outer .main-menu').html();
 		$('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
 		$('.sticky-header .main-menu').append(mobileMenuContent);
-		
+
 		//Hide / Show Submenu
 		$('.mobile-menu .navigation > li.dropdown > .dropdown-btn').on('click', function(e) {
 			e.preventDefault();
 			var target = $(this).parent('li').children('ul');
-			
+
 			if ($(target).is(':visible')){
 				$(this).parent('li').removeClass('open');
 				$(target).slideUp(500);
@@ -113,7 +113,7 @@
 		$('.mobile-menu .navigation > li.dropdown > ul  > li.dropdown > .dropdown-btn').on('click', function(e) {
 			e.preventDefault();
 			var targetInner = $(this).parent('li').children('ul');
-			
+
 			if ($(targetInner).is(':visible')){
 				$(this).parent('li').removeClass('open');
 				$(targetInner).slideUp(500);
@@ -148,12 +148,12 @@
 			$('.mobile-menu .navigation li ul').slideUp(0);
         	}
 	    });
-		
+
 	}
-	
-	
-	
-	
+
+
+
+
 	//Parallax Scene for Icons
 	if($('.parallax-scene-1').length){
 		var scene = $('.parallax-scene-1').get(0);
@@ -171,21 +171,21 @@
 		var scene = $('.parallax-scene-4').get(0);
 		var parallaxInstance = new Parallax(scene);
 	}
-	
-	
-	
+
+
+
 	if($('.paroller').length){
 		$('.paroller').paroller({
-			  factor: 0.2,            // multiplier for scrolling speed and offset, +- values for direction control  
-			  factorLg: 0.4,          // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control  
-			  type: 'foreground',     // background, foreground  
-			  direction: 'horizontal' // vertical, horizontal  
+			  factor: 0.2,            // multiplier for scrolling speed and offset, +- values for direction control
+			  factorLg: 0.4,          // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control
+			  type: 'foreground',     // background, foreground
+			  direction: 'horizontal' // vertical, horizontal
 		});
 	}
-	
-	
-	
-	
+
+
+
+
 	//Progress Bar
 	if($('.progress-line').length){
 		$('.progress-line').appear(function(){
@@ -194,15 +194,15 @@
 			$(el).css('width',percent+'%');
 		},{accY: 0});
 	}
-	
+
 	//Fact Counter + Text Count
 	if($('.count-box').length){
 		$('.count-box').appear(function(){
-	
+
 			var $t = $(this),
 				n = $t.find(".count-text").attr("data-stop"),
 				r = parseInt($t.find(".count-text").attr("data-speed"), 10);
-				
+
 			if (!$t.hasClass("counted")) {
 				$t.addClass("counted");
 				$({
@@ -220,22 +220,34 @@
 					}
 				});
 			}
-			
+
 		},{accY: 0});
 	}
-	
-	
-	
-	
+
+
+
+
 	//Gallery Filters
 	if($('.filter-list').length){
 		$('.filter-list').mixItUp({});
 	}
-	
-	
-	
-	
+
+
+
+
 	// Single Item Carousel
+	if ($('.single-item-carousels').length) {
+		var slider = $('.single-item-carousels').owlCarousel({
+            loop: false,
+            items: 1,
+            nav: true,
+            dots: true,
+
+		});
+	}
+
+
+    	// Single Item Carousel
 	if ($('.single-item-carousel').length) {
 		var slider = $('.single-item-carousel').owlCarousel({
 			//animateOut: 'fadeOut',
@@ -277,8 +289,8 @@
 			slider.trigger('stop.owl.autoplay');
 		});
 	}
-	
-	
+
+
 	// Three Item Carousel
 	if ($('.three-item-carousel').length) {
 		$('.three-item-carousel').owlCarousel({
@@ -310,9 +322,9 @@
 			}
 		});
 	}
-	
-	
-	
+
+
+
 	// Services Carousel
 	if ($('.services-carousel').length) {
 		$('.services-carousel').owlCarousel({
@@ -344,8 +356,8 @@
 			}
 		});
 	}
-	
-	
+
+
 	// Four Item Carousel
 	if ($('.four-item-carousel').length) {
 		$('.four-item-carousel').owlCarousel({
@@ -377,9 +389,9 @@
 			}
 		});
 	}
-	
-	
-	
+
+
+
 	// Case Carousel
 	if ($('.case-carousel').length) {
 		var slider = $('.case-carousel').owlCarousel({
@@ -425,10 +437,10 @@
 			slider.trigger("next.owl.carousel");
 		})
 	}
-	
-	
-	
-	
+
+
+
+
 	// Case Carousel Two
 	if ($('.case-carousel-two').length) {
 		$('.case-carousel-two').owlCarousel({
@@ -461,10 +473,10 @@
 			}
 		});
 	}
-	
-	
-	
-	
+
+
+
+
 	// News Carousel
 	if ($('.news-carousel').length) {
 		$('.news-carousel').owlCarousel({
@@ -496,10 +508,10 @@
 			}
 		});
 	}
-	
-	
-	
-	
+
+
+
+
 	// Sponsors Carousel
 	if ($('.sponsors-carousel').length) {
 		$('.sponsors-carousel').owlCarousel({
@@ -526,10 +538,10 @@
 					items:5
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	// Sponsors Carousel Two
 	if ($('.sponsors-carousel-two').length) {
 		$('.sponsors-carousel-two').owlCarousel({
@@ -556,13 +568,13 @@
 					items:4
 				}
 			}
-		});    		
+		});
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	// Odometer
 	if ($(".odometer").length) {
 		$('.odometer').appear();
@@ -577,15 +589,15 @@
 			};
 		});
 	}
-	
-	
-	
+
+
+
 	//Tabs Box
 	if($('.tabs-box').length){
 		$('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
 			e.preventDefault();
 			var target = $($(this).attr('data-tab'));
-			
+
 			if ($(target).is(':visible')){
 				return false;
 			}else{
@@ -598,9 +610,9 @@
 			}
 		});
 	}
-	
-	
-	
+
+
+
 	//Header Search
 	if($('.search-box-outer').length) {
 		$('.search-box-outer').on('click', function() {
@@ -610,9 +622,9 @@
 			$('body').removeClass('search-active');
 		});
 	}
-	
-	
-	
+
+
+
 	// LightBox Image
 	if($('.lightbox-image').length) {
 		$('.lightbox-image').magnificPopup({
@@ -622,9 +634,9 @@
 		  }
 		});
 	}
-	
-	
-	
+
+
+
 	//LightBox Video
 	if($('.lightbox-video').length) {
 		$('.lightbox-video').magnificPopup({
@@ -646,9 +658,9 @@
 	      fixedContentPos: false
 	    });
 	}
-	
-	
-	
+
+
+
 	//Contact Form Validation
 	if($('#contact-form').length){
 		$('#contact-form').validate({
@@ -671,9 +683,9 @@
 			}
 		});
 	}
-	
-	
-	
+
+
+
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").on('click', function() {
@@ -682,12 +694,12 @@
 		   $('html, body').animate({
 			   scrollTop: $(target).offset().top
 			 }, 1500);
-	
+
 		});
 	}
-	
-	
-	
+
+
+
 	// Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
@@ -701,24 +713,24 @@
 		);
 		wow.init();
 	}
-	
+
 
 
 /* ==========================================================================
    When document is Scrollig, do
    ========================================================================== */
-	
+
 	$(window).on('scroll', function() {
 		headerStyle();
 	});
-	
+
 /* ==========================================================================
    When document is loading, do
    ========================================================================== */
-	
+
 	$(window).on('load', function() {
 		handlePreloader();
-	});	
+	});
 
 })(window.jQuery);
 
@@ -731,7 +743,7 @@ function desplegarMenu(){
 		elemento.style.left="0px";
 		elemento.style.visibility="visible";
 	}
-} 
+}
 
 function centrarIconoMenu(){
 	if(document.querySelector(".menu-desplegable")){
@@ -765,37 +777,37 @@ function cargarInformacionServicio(servicio){
 			switch (servicio) {
 				case 3:
 					titulo.innerHTML = "Desarrollo de <span class='theme_color'>Software</span><br>";
-					descripcion.innerHTML =`<p>Transformamos ideas en soluciones de software para escritorio, web y móvil, 
-					trabajamos con los mejores estándares y buenas practicas exigidas por el mercado.<br> Contamos con un 
-					equipo de desarrolladores en constante capacitación para poder atender las solicitudes y desafíos más 
+					descripcion.innerHTML =`<p>Transformamos ideas en soluciones de software para escritorio, web y móvil,
+					trabajamos con los mejores estándares y buenas practicas exigidas por el mercado.<br> Contamos con un
+					equipo de desarrolladores en constante capacitación para poder atender las solicitudes y desafíos más
 					exigentes.</p>`;
 				break;
 				case 4:
 					titulo.innerHTML = "Mesa de Ayuda";
-					descripcion.innerHTML =`<p>Brindamos asistencia 24/7 en las soluciones implementadas, nuestro trabajo exige 
-					modalidades presencial y remota según los tipos y escalados de Incidentes reportados. Contamos con personal 
+					descripcion.innerHTML =`<p>Brindamos asistencia 24/7 en las soluciones implementadas, nuestro trabajo exige
+					modalidades presencial y remota según los tipos y escalados de Incidentes reportados. Contamos con personal
 					altamente capacitado que sabrá brindar las respuestas en los tiempos exigidos por el negocio.</p>`;
 				break;
 				case 5:
 					titulo.innerHTML = "Facturación <span class='theme_color'>Electrónica</span><br>";
-					descripcion.innerHTML =`<p>Brindamos el servicio de transporte y validación de comprobantes electrónicos 
-					con las mejores tarifas del mercado. Nuestro servicio diferencia de otros por la validación e informe 
-					de los sucesos (control de estados de comprobantes electrónicos) en los tiempos establecidos por SUNAT. 
-					<br> Trabajamos con nuestro aliado estratégico NUBEFACT para servicios OSE / PSE. También hacemos el 
-					envío directo de los comprobantes a través del FACTURADOR SUNAT, para cualquiera de los dos servicios 
+					descripcion.innerHTML =`<p>Brindamos el servicio de transporte y validación de comprobantes electrónicos
+					con las mejores tarifas del mercado. Nuestro servicio diferencia de otros por la validación e informe
+					de los sucesos (control de estados de comprobantes electrónicos) en los tiempos establecidos por SUNAT.
+					<br> Trabajamos con nuestro aliado estratégico NUBEFACT para servicios OSE / PSE. También hacemos el
+					envío directo de los comprobantes a través del FACTURADOR SUNAT, para cualquiera de los dos servicios
 					nuestro personal hace la validación e informa de los sucesos para las acciones correctivas.</p>`;
 				break;
 				case 6:
 					titulo.innerHTML = "Hardware de <span class='theme_color'>Cómputo</span><br>";
-					descripcion.innerHTML =`<p>Vendemos equipos de computo como; Pc para puntos de ventas, Pc para oficina 
-					(trabajos administrativos), servidores de datos, equipos AIO, equipos GAMER, impresoras para oficina, 
-					impresoras térmicas para punto de venta, monitores, mouse, teclados, cargadores, UPS, estabilizadores, 
+					descripcion.innerHTML =`<p>Vendemos equipos de computo como; Pc para puntos de ventas, Pc para oficina
+					(trabajos administrativos), servidores de datos, equipos AIO, equipos GAMER, impresoras para oficina,
+					impresoras térmicas para punto de venta, monitores, mouse, teclados, cargadores, UPS, estabilizadores,
 					router, switch, cámaras de seguridad, según las características y necesidades exigidas.</p>`;
 				break;
 				case 7:
 					titulo.innerHTML = "Consultoría en <span class='theme_color'>TI</span><br>";
-					descripcion.innerHTML =`<p>Brindamos asesoría en innovación de herramientas y recursos tecnológicos como, 
-					sistemas de control de inventarios, sistemas contables, control de flotas, hardware para automatizaciones 
+					descripcion.innerHTML =`<p>Brindamos asesoría en innovación de herramientas y recursos tecnológicos como,
+					sistemas de control de inventarios, sistemas contables, control de flotas, hardware para automatizaciones
 					del negocio.</p>`;
 				break;
 			}
@@ -822,7 +834,7 @@ function ubicarControlesSliderCasos(){
 		let btnAnterior = document.querySelector("#btn-slider-anterior");
 		let btnPosterior = document.querySelector("#btn-slider-posterior");
 		let slider = document.querySelector("#slider-sistemas");
-	
+
 		let medidas = slider.getBoundingClientRect();
 		btnAnterior.style.left = (medidas.left - 90) + "px";
 		btnPosterior.style.left = (medidas.right + 30) + "px";

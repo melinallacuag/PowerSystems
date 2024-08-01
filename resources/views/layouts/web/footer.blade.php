@@ -79,17 +79,17 @@
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | facebook"></a>
                                         </li>
-                                        <li><a target="_blank" href="https://www.facebook.com/"><img
+                                        <li><a target="_blank" href="https://www.facebook.com/profile.php?id=100092632664470&sfnsn=wa&mibextid=RUbZ1f"><img
                                                     src="{{ asset('cliente/img/icons/twitter.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | twitter"></a>
                                         </li>
-                                        <li><a target="_blank" href="https://www.linkedin.com/"><img
+                                        <li><a target="_blank" href="https://www.facebook.com/profile.php?id=100092632664470&sfnsn=wa&mibextid=RUbZ1f"><img
                                                     src="{{ asset('cliente/img/icons/linkedin.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | linkedin"></a>
                                         </li>
-                                        <li><a target="_blank" href="https://instagram.com/"><img
+                                        <li><a target="_blank" href="https://www.facebook.com/profile.php?id=100092632664470&sfnsn=wa&mibextid=RUbZ1f"><img
                                                     src="{{ asset('cliente/img/icons/instagram.webp') }}"
                                                     width="45px"
                                                     alt="Sistema para Estaciones de Servicios | Power Group System | instagram"></a>
