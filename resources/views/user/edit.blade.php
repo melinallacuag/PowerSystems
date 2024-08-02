@@ -263,8 +263,12 @@
         let btnRegister = document.querySelectorAll('.btn-register');
         const userForm = document.getElementById('user-form');
 
+        const razonSocialInput = document.getElementById('razon_social');
+
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
+
+                razonSocialInput.disabled = false;
 
                 const alertArea = document.getElementById('alert-area');
                 const name = document.getElementById('name').value.trim();

@@ -76,7 +76,6 @@ class ClientesController extends Controller
 
         $clientes = Clientes::when($search, function ($query, $search) {
             return $query->where('razon_social', 'like', "%{$search}%")
-                        ->orWhere('estado', 'like', "%{$search}%")
                         ->orWhere('ruc', 'like', "%{$search}%");
         })->with('pagos')->orderBy('created_at', 'desc')->paginate(5);
 
@@ -133,6 +132,8 @@ class ClientesController extends Controller
             'correo' => ['nullable', 'string', 'email', 'max:255'],
             'fecha_inicio' => ['required', 'date'],
             'fecha_fin' => ['required', 'date'],
+            'fecha_instalacion' => ['required', 'date'],
+            'fecha_apertura' => ['required', 'date'],
             'cargos_id' => 'required|string',
             'service_id' => 'required|string',
         ]);
@@ -147,6 +148,8 @@ class ClientesController extends Controller
         $clientes->correo = $request->correo;
         $clientes->fecha_inicio = $request->fecha_inicio;
         $clientes->fecha_fin = $request->fecha_fin;
+        $clientes->fecha_instalacion = $request->fecha_instalacion;
+        $clientes->fecha_apertura = $request->fecha_apertura;
         $clientes->cargos_id = $request->cargos_id;
         $clientes->service_id = $request->service_id;
 
@@ -184,6 +187,8 @@ class ClientesController extends Controller
             'correo' => ['nullable', 'string', 'email', 'max:255'],
             'fecha_inicio' => ['required', 'date'],
             'fecha_fin' => ['required', 'date'],
+            'fecha_instalacion' => ['required', 'date'],
+            'fecha_apertura' => ['required', 'date'],
             'cargos_id' => 'required|string',
             'service_id' => 'required|string',
         ]);
@@ -197,6 +202,8 @@ class ClientesController extends Controller
         $clientes->correo = $request->correo;
         $clientes->fecha_inicio = $request->fecha_inicio;
         $clientes->fecha_fin = $request->fecha_fin;
+        $clientes->fecha_instalacion = $request->fecha_instalacion;
+        $clientes->fecha_apertura = $request->fecha_apertura;
         $clientes->cargos_id = $request->cargos_id;
         $clientes->service_id = $request->service_id;
 

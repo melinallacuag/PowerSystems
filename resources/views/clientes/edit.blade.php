@@ -110,6 +110,24 @@
                         </div>
                     </div>
 
+                    <!-- Fecha del Instalación y Apertura -->
+                    <div class="flex flex-wrap -mx-3 mb-12">
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <x-input-label for="name" :value="__('Fecha del Instalación y Apertura: ')" class="font-semibold text-green-600" />
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-12">
+                        <!-- Fecha de Instalación -->
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <x-input-label for="fecha_instalacion" :value="__('Fecha de Instalación *')" />
+                            <x-text-input id="fecha_instalacion" class="block mt-1 w-full" type="date" name="fecha_instalacion" :value="$clientes->fecha_instalacion" required autocomplete="username" />
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <x-input-label for="fecha_apertura" :value="__('Fecha de Apertura *')" />
+                            <x-text-input id="fecha_apertura" class="block mt-1 w-full" type="date" name="fecha_apertura" :value="$clientes->fecha_apertura" required autocomplete="username" />
+                        </div>
+                    </div>
 
                         <!-- Credencial del Cliente -->
                         <div class="flex flex-wrap -mx-3 mb-12">
@@ -125,7 +143,7 @@
                                 <x-text-input id="fecha_inicio" class="block mt-1 w-full" type="date" name="fecha_inicio" :value="$clientes->fecha_inicio" required autocomplete="username" />
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="fecha_fin" :value="__('Ffecha Fin *')" />
+                                <x-input-label for="fecha_fin" :value="__('Fecha Fin *')" />
                                 <x-text-input id="fecha_fin" class="block mt-1 w-full" type="date" name="fecha_fin" :value="$clientes->fecha_fin" required autocomplete="username" />
                             </div>
                         </div>
@@ -214,8 +232,12 @@
             let btnRegister = document.querySelectorAll('.btn-register');
             const userForm = document.getElementById('user-form');
 
+            let razonSocialInput = document.getElementById('razon_social');
+
             btnRegister.forEach(btn => {
                 btn.addEventListener('click', function (e) {
+
+                    razonSocialInput.disabled = false;
 
                     const alertArea = document.getElementById('alert-area');
                     const ruc = document.getElementById('ruc').value.trim();
@@ -252,6 +274,12 @@
                     }else if(service_id === ''){
                         isValid = false;
                         errorMessages.push('* Seleccionar Sservicio.');
+                    }else if (fecha_instalacion === '') {
+                        isValid = false;
+                        errorMessages.push('* El campo fecha de instalación es obligatorio.');
+                    }else if (fecha_apertura === '') {
+                        isValid = false;
+                        errorMessages.push('* El campo fecha fin de apertura es obligatorio.');
                     }else if(fecha_inicio === ''){
                         isValid = false;
                         errorMessages.push('* El campo fecha inicio de contrata es obligatorio');

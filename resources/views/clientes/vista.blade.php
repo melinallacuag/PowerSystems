@@ -85,6 +85,27 @@
                             </div>
                         </div>
 
+                           <!-- Fecha del Instalación y Apertura -->
+                           <div class="flex flex-wrap -mx-3 mb-12">
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="name" :value="__('Fecha del Instalación y Apertura: ')" class="font-semibold text-green-600" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                            <!-- Fecha de Instalación -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="fecha_instalacion" :value="__('Fecha de Instalación')" />
+                                <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_instalacion" disabled />
+                            </div>
+                            <!-- Fecha de Apertura -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="fecha_apertura" :value="__('Fecha de Apertura')" />
+                                <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_apertura" disabled />
+                            </div>
+
+                        </div>
+
                         <!-- Credencial del Cliente -->
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">

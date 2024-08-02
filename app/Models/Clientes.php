@@ -26,6 +26,8 @@ class Clientes extends Model
         'correo',
         'fecha_inicio',
         'fecha_fin',
+        'fecha_instalacion',
+        'fecha_apertura',
         'estado',
         'cargos_id',
         'service_id',
@@ -44,6 +46,8 @@ class Clientes extends Model
     protected $dates = [
         'fecha_inicio',
         'fecha_fin',
+        'fecha_instalacion',
+        'fecha_apertura',
     ];
 
     public function pagos()

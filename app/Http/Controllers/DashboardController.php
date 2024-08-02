@@ -66,6 +66,7 @@ class DashboardController extends Controller
 
             $fechaInicio = new \DateTime($cliente->fecha_inicio);
             $fechaFin = new \DateTime($cliente->fecha_fin);
+            $fecha_apertura = new \DateTime($cliente->fecha_apertura);
 
             $cliente->fecha_inicio_dia = $fechaInicio->format('d');
             $cliente->fecha_inicio_mes = $meses_espanol[$fechaInicio->format('n')];
@@ -74,6 +75,10 @@ class DashboardController extends Controller
             $cliente->fecha_fin_dia = $fechaFin->format('d');
             $cliente->fecha_fin_mes = $meses_espanol[$fechaFin->format('n')];
             $cliente->fecha_fin_ano = $fechaFin->format('Y');
+
+            $cliente->fecha_apertura_dia = $fecha_apertura->format('d');
+            $cliente->fecha_apertura_mes = $meses_espanol[$fecha_apertura->format('n')];
+            $cliente->fecha_apertura_ano = $fecha_apertura->format('Y');
 
             switch ($cliente->estado) {
                 case 'deuda':

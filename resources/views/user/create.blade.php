@@ -240,11 +240,15 @@
 
         let inputContinueRegister = document.querySelector('#continue-register');
         let btnRegister = document.querySelectorAll('.btn-register');
+        let razonSocialInput = document.getElementById('razon_social');
 
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 if (validateForm()) {
+
+                    razonSocialInput.disabled = false;
+
                     if (btn.getAttribute('data-continue-register') == 'enabled') {
                         inputContinueRegister.value = 'enabled';
                     } else {

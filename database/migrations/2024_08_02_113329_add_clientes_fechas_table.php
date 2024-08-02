@@ -12,12 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->string('nom_comercial')->after('razon_social');
-            $table->text('nom_contacto')->after('nom_comercial');
-            $table->unsignedBigInteger('cargos_id');
-            $table->foreign('cargos_id')->references('id')->on('cargos');
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->date('fecha_instalacion')->nullable(false)->after('fecha_fin');
+            $table->date('fecha_apertura')->nullable(false)->after('fecha_instalacion');
         });
     }
 
@@ -26,8 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+
         Schema::table('clientes', function (Blueprint $table) {
-            //
+            $table->date('fecha_instalacion')->nullable()->change();
+            $table->date('fecha_apertura')->nullable()->change();
         });
     }
 };

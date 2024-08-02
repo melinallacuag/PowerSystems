@@ -108,6 +108,27 @@
                                 <span class="txt-mensaje">  *Ejemplo de usuario: usuario@ejemplo.com </span>
                             </div>
                         </div>
+
+                         <!-- Fecha de Instalación y Apertura -->
+                         <div class="flex flex-wrap -mx-3 mb-12">
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="name" :value="__('Fecha del Instalación y Apertura: ')" class="font-semibold text-green-600" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                            <!-- Fecha Inicio de instalacion -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="fecha_instalacion" :value="__('Fecha de Instalación *')" />
+                                <x-text-input id="fecha_instalacion" class="block mt-1 w-full" type="date" name="fecha_instalacion" :value="old('fecha_instalacion')" />
+                            </div>
+                            <!-- Fecha Fin de apertura-->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="fecha_apertura" :value="__('Fecha de Apertura*')" />
+                                <x-text-input id="fecha_apertura" class="block mt-1 w-full" type="date" name="fecha_apertura" :value="old('fecha_apertura')" />
+                            </div>
+                        </div>
+
                         <!-- Fecha de Contrato -->
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -190,12 +211,15 @@
 
         let inputContinueRegister = document.querySelector('#continue-register');
         let btnRegister = document.querySelectorAll('.btn-register');
-
+        let razonSocialInput = document.getElementById('razon_social');
 
         btnRegister.forEach(btn => {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 if (validateForm()) {
+
+                    razonSocialInput.disabled = false;
+
                     if (btn.getAttribute('data-continue-register') == 'enabled') {
                         inputContinueRegister.value = 'enabled';
                     } else {
@@ -223,6 +247,8 @@
         const service_id = document.getElementById('service_id').value.trim();
         const fecha_inicio = document.getElementById('fecha_inicio').value.trim();
         const fecha_fin = document.getElementById('fecha_fin').value.trim();
+        const fecha_instalacion = document.getElementById('fecha_instalacion').value.trim();
+        const fecha_apertura = document.getElementById('fecha_apertura').value.trim();
 
         let isValid = true;
         let errorMessages = [];
@@ -248,6 +274,12 @@
         }else if (service_id === '') {
             isValid = false;
             errorMessages.push('* Seleccionar Tipo de Servicio.');
+        }else if (fecha_instalacion === '') {
+            isValid = false;
+            errorMessages.push('* El campo fecha de instalación es obligatorio.');
+        }else if (fecha_apertura === '') {
+            isValid = false;
+            errorMessages.push('* El campo fecha fin de apertura es obligatorio.');
         }else if (fecha_inicio === '') {
             isValid = false;
             errorMessages.push('* El campo fecha inicio de contrato es obligatorio.');

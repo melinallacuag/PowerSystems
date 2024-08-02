@@ -34,9 +34,10 @@
                         <thead class="text-white">
                             <tr class="bg-green-800">
                                 <th class="px-4 py-2 border-b">Empresa</th>
-                                <th class="px-4 py-2 border-b mobile-hidden">Contacto</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Nombre Comercial</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">Cargo</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">Servicio</th>
+                                <th class="px-4 py-2 border-b mobile-hidden">Fecha Instalación / Apertura</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">Fecha Inicio / Fin</th>
                                 <th class="px-4 py-2 border-b mobile-hidden">Estado</th>
                                 <th class="px-4 py-2 border-b">Opciones</th>
@@ -53,9 +54,10 @@
                                      {{ $cliente->ruc }} - {{ $cliente->razon_social }}
 
                                 </td>
-                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->nom_contacto  }}</td>
+                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->nom_comercial  }}</td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $cliente->cargos->name  }}</td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $cliente->service->name }}</td>
+                                <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_instalacion . ' / ' . $cliente->fecha_apertura}}</td>
                                 <td class="border px-4 py-2 mobile-hidden">{{ $cliente->fecha_inicio . ' / ' . $cliente->fecha_fin}}</td>
                                 <td class="border px-4 py-2 mobile-hidden">
                                     <div class="card-status text-center {{ 'estado-' . $cliente->estado }}">
@@ -104,9 +106,11 @@
 
                             <tr id="details{{ $index }}" class="details-row">
                                 <td colspan="5" class="border px-4 py-2">
-                                    <div>Nom. Contacto: {{ $cliente->nom_contacto  }}</div>
+                                    <div>Nom. Comercial: {{ $cliente->nom_comercial  }}</div>
                                     <div>Cargo: {{ $cliente->cargos->name }}</div>
                                     <div>Servicio: {{ $cliente->service->name }}</div>
+                                    <div>Fecha Instalación: {{ $cliente->fecha_instalacion }}</div>
+                                    <div>Fecha Apertura: {{ $cliente->fecha_apertura }}</div>
                                     <div>Fecha Inicio: {{ $cliente->fecha_inicio }}</div>
                                     <div>Fecha Fin: {{ $cliente->fecha_fin }}</div>
                                     <div>
