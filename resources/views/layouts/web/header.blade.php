@@ -83,7 +83,7 @@
         <div class="auto-container">
             <div class="inner-container d-flex justify-content-center">
                 <!-- Logo Box -->
-                <div class="logo"><a href="index.html"><img src="{{ asset('cliente/img/logos/LOGO-PAG-BLANCO.png') }} "
+                <div class="logo"><a href="{{ asset('/') }}"><img src="{{ asset('cliente/img/logos/LOGO-PAG-BLANCO.png') }} "
                             alt="Sistema para Estaciones de Servicios | Power Group System | logo img"
                             title=""></a></div>
 
@@ -144,11 +144,11 @@
                                         @if (Route::has('login'))
                                         <nav class="-mx-3 flex flex-1 justify-end">
                                             @auth
-                                                <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                                <a target="_blank"  href="{{ url('/dashboard') }}" class="btn btn-login-cyan rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                                     Ingresar
                                                 </a>
                                             @else
-                                                <a href="{{ route('login') }}" class="btn btn-login-cyan rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                                <a target="_blank" href="{{ route('login') }}" class="btn btn-login-cyan rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                                     Iniciar Sesión
                                                 </a>
                                             @endauth
@@ -174,7 +174,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html" title="">
+                    <a href="{{ asset('/') }}" title="">
                         <img class="logo-secundario" src="{{ asset('cliente/img/logos/LOGO-PAG.png') }}"
                             alt="Sistema para Estaciones de Servicios | Power Group System | 2do logo" title="">
                     </a>

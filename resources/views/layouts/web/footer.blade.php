@@ -14,7 +14,7 @@
                         <div class="footer-column aligm_footer">
                             <div class="footer-widget logo-widget">
                                 <div class="logo-iconoimg">
-                                    <a href="index.html" class="aligm_img"><img
+                                    <a href="{{ asset('/') }}" class="aligm_img"><img
                                             src=" {{ asset('cliente/img/logos/LOGO-PAG-BLANCO.png') }}"
                                             alt="Sistema para Estaciones de Servicios | Power Group System | logo-empresa"
                                             width="50%" /></a>

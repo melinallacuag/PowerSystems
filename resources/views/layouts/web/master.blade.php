@@ -64,7 +64,6 @@
                 <img src=" {{ asset('cliente/img/avatar/avatrChat.png') }} " alt="Whatsapp" class="img-fluid">
             </a>
         </div>
-        @stack('scripts')
 
         <script src="{{ asset('cliente/js/jquery.js') }}" type='text/javascript'></script>
         <script src="{{ asset('cliente/js/appear.js') }}" type='text/javascript'></script>
