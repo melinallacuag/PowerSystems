@@ -18,7 +18,7 @@
                     <div class="containers">
                         <div class="main-video-container">
                             <object id="main-document" type="application/pdf"
-                                data="{{ asset('cliente/img/videos/APPSVEN Documentación de Versiones.pdf#toolbar=0') }}"
+                                data="{{ asset('cliente/img/videos/CARTA DE PRESENTACION SFESVEN 2024-I.pdf#toolbar=0') }}"
                                 class="main-video" width="500" height="500" sandbox="allow-same-origin"
                                 data-id="main-document-id"></object>
                         </div>

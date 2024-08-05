@@ -19,7 +19,7 @@
 
                     <div class="containers">
                         <div class="main-video-container">
-                            <video  id="mainVideo" src="{{ asset('cliente/img/videos/clip.mp4') }}" loop autoplay controls controlsList="nodownload" class="main-video"></video>
+                            <video  id="mainVideo" src="{{ asset('cliente/img/videos/videoclip.mp4') }}" loop autoplay controls controlsList="nodownload" class="main-video"></video>
                             <h3 class="main-vid-title">APPSVEN</h3>
                         </div>
 
