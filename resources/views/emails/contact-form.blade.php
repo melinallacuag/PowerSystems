@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto</title>
+    <title>Nuevo Cliente</title>
 </head>
 <style>
     body {
@@ -34,14 +34,12 @@
 </style>
 <body>
     <div class="container">
-        <h1>Nuevo Formulario de Contacto</h1>
-        <p><span class="highlight">Nombres:</span> {{ $data['nombres'] }}</p>
-        <p><span class="highlight">Apellidos:</span> {{ $data['apellidos'] }}</p>
-        <p><span class="highlight">Teléfono:</span> {{ $data['telefono'] }}</p>
-        <p><span class="highlight">Empresa:</span> {{ $data['empresa'] }}</p>
-        <p><span class="highlight">RUC:</span> {{ $data['ruc'] }}</p>
+        <h1>Nuevo Cliente </h1>
+        <p><span class="highlight">Nombres y Apellidos:</span> {{ $data['nombres'] }} {{ $data['apellidos'] }}</p>
+        <p><span class="highlight">Empresa:</span> {{ $data['ruc'] }} -  {{ $data['empresa'] }}</p>
         <p><span class="highlight">Ciudad:</span> {{ $data['ciudad'] }}</p>
         <p><span class="highlight">Correo Electrónico:</span> {{ $data['correo'] }}</p>
+        <p><span class="highlight">Teléfono:</span> {{ $data['telefono'] }}</p>
         <p><span class="highlight">Mensaje:</span> {{ $data['mensaje'] }}</p>
     </div>
 </body>

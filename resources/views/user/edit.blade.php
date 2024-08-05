@@ -37,7 +37,7 @@
                             <!-- Nombres y Apellidos -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Nombres y Apellidos *')" />
-                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="$user->name"/>
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="$user->name" oninput="validateNameInput(this)"/>
                             </div>
                             <!-- DNI -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -191,6 +191,10 @@
 
 <script>
 
+    function validateNameInput(input) {
+        // Solo permite letras y espacios
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+    }
      /** Visualizar Contraseña **/
 
      function togglePasswordVisibility(passwordFieldId, iconId) {

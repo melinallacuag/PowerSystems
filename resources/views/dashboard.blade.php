@@ -185,6 +185,12 @@
         padding: 0.75rem;
         font-size: 0.75rem;
     }
+    .text-transform-uppercase{
+        text-transform: uppercase;
+    }
+    .text-sice{
+        font-size: 1rem;
+    }
 </style>
 
 <x-app-layout>
@@ -197,13 +203,12 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex items-center p-4 text-gray-900">
                         @if ($cliente)
-                        <p class="font-semibold text-xl text-gray-900 leading-tight">
-                            Nos complace presentar a la empresa
-                            <span class="text-green-600 font-bold">{{ $cliente->ruc }} - {{ $cliente->razon_social }}</span>, conocida comercialmente como
-                            <span class="text-green-600 font-bold">{{ $cliente->nom_comercial }}</span>.<br>
-                            Han estado con nosotros desde el
-                            <span class="font-bold text-green-600">{{ $cliente->fecha_apertura_dia }} de {{ $cliente->fecha_apertura_mes }} del {{ $cliente->fecha_apertura_ano }}</span>,
-                            y estamos muy contentos de continuar ofreciendo nuestros servicios.
+                        <p class="font-semibold text-xl text-gray-900 leading-tight text-transform-uppercase">
+                            Empresa:<span class="text-green-600 font-bold  "> {{ $cliente->razon_social }}</span><br>
+                            Local/Sucursal:<span class="text-green-600 font-bold"> {{ $cliente->nom_comercial }}</span><br>
+                            RUC:<span class="text-green-600 font-bold"> {{ $cliente->ruc }}</span><br>
+                            Estan con nosotros desde el <span class="font-bold text-green-600">{{ $cliente->fecha_apertura_dia }} de {{ $cliente->fecha_apertura_mes }} del {{ $cliente->fecha_apertura_ano }}</span>
+                           <!-- y estamos muy contentos de continuar ofreciendo nuestros servicios.-->
                         </p>
                         @endif
                     </div>
@@ -216,8 +221,8 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex items-center p-4 text-gray-900">
                         <p class="font-semibold text-sm text-gray-900 leading-tight">
-                            ¡ Bienvenido, <span class="text-green-600 font-bold">{{ Auth::user()->name }} !</span> Nos alegra
-                            tenerte de vuelta en <span class="font-bold text-green-600">Power Group System</span>.
+                            ¡ Bienvenido, <span class="text-green-600 font-bold text-transform-uppercase text-sice">{{ Auth::user()->name }} !</span> Nos alegra
+                            tenerte de vuelta en <span class="font-bold text-green-600 text-transform-uppercase text-sice">Power Group System</span>.
                         </p>
                     </div>
                 </div>
@@ -377,8 +382,8 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex items-center p-4 text-gray-900">
                         <p class="font-semibold text-sm text-gray-900 leading-tight">
-                            ¡ Bienvenido, <span class="text-green-600 font-bold">{{ Auth::user()->name }} !</span> Nos alegra
-                            tenerte de vuelta en <span class="font-bold text-green-600">Power Group System</span>.
+                            ¡ Bienvenido, <span class="text-green-600 font-bold text-transform-uppercase text-sice">{{ Auth::user()->name }} !</span> Nos alegra
+                            tenerte de vuelta en <span class="font-bold text-green-600 text-transform-uppercase text-sice">Power Group System</span>.
                         </p>
                     </div>
                 </div>

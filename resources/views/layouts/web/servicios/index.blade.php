@@ -24,8 +24,8 @@
 
                         <!-- Sec Title -->
                         <div class="sec-title_two">
-                            <div class="sec-title_two-title">Servicios</div>
-                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            <img src="{{ asset('cliente/img/negocios/desarrollo.webp') }}" alt="Desarrollo" class="img-servce">
+                            <h2 class="sec-title_two-heading text-size-frase">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
                             </h2>
                             <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
                                 <div class="btn-wrap">
@@ -156,10 +156,10 @@
 
                         <!-- Sec Title -->
                         <div class="sec-title_two">
-                            <div class="sec-title_two-title">Servicios</div>
-                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            <img src="{{ asset('cliente/img/negocios/mesadeayuda_resultado.webp') }}" alt="Desarrollo" class="img-servce">
+                            <h2 class="sec-title_two-heading text-size-frase">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
                             </h2>
-                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                            <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
                                 <div class="btn-wrap">
                                     <span class="text-one">Contáctanos <i
                                             class="fa-solid fa-arrow-right fa-fw"></i></span>
@@ -190,10 +190,10 @@
 
                         <!-- Sec Title -->
                         <div class="sec-title_two">
-                            <div class="sec-title_two-title">Servicios</div>
-                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            <img src="{{ asset('cliente/img/negocios/servicios-sunat.png') }}" alt="Desarrollo" class="img-servce" style="height: 350px  !important">
+                            <h2 class="sec-title_two-heading text-size-frase">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
                             </h2>
-                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                            <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
                                 <div class="btn-wrap">
                                     <span class="text-one">Contáctanos <i
                                             class="fa-solid fa-arrow-right fa-fw"></i></span>
@@ -324,10 +324,10 @@
 
                         <!-- Sec Title -->
                         <div class="sec-title_two">
-                            <div class="sec-title_two-title">Servicios</div>
-                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            <img src="{{ asset('cliente/img/negocios/hardware.png') }}" alt="Desarrollo" class="img-servce" style="height: 300px  !important">
+                            <h2 class="sec-title_two-heading text-size-frase">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
                             </h2>
-                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                            <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
                                 <div class="btn-wrap">
                                     <span class="text-one">Contáctanos <i
                                             class="fa-solid fa-arrow-right fa-fw"></i></span>
@@ -358,10 +358,10 @@
 
                         <!-- Sec Title -->
                         <div class="sec-title_two">
-                            <div class="sec-title_two-title">Servicios</div>
-                            <h2 class="sec-title_two-heading">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
+                            <img src="{{ asset('cliente/img/negocios/rt.webp') }}" alt="Desarrollo" class="img-servce">
+                            <h2 class="sec-title_two-heading text-size-frase">Nos enorgullece ofrecer <br> <span>productos y servicios </span>de la más alta calidad.
                             </h2>
-                           <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
+                            <a class="btn-style-three btn-mm theme-btn btn-item" href="{{ asset('contactanos') }}">
                                 <div class="btn-wrap">
                                     <span class="text-one">Contáctanos <i
                                             class="fa-solid fa-arrow-right fa-fw"></i></span>
@@ -446,6 +446,16 @@
     .single-item-carousels {
     cursor: default !important;
     pointer-events: none !important;/* Cambia el cursor a un puntero por defecto */
-}
+    }
+    .img-servce{
+        width: 100% !important;
+        height: 250px !important;
+        object-fit: cover;
+        border-radius: 1rem
+    }
+    .text-size-frase{
+        font-size: 1.75rem !important;
+        line-height: 2.5rem !important;
+    }
 </style>
 

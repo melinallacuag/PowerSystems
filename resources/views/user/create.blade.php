@@ -41,7 +41,7 @@
                             <!-- Nombres y Apellidos -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Nombres y Apellidos *')" />
-                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" autofocus placeholder="Ingresar Nombres y Apellidos" />
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" oninput="validateNameInput(this)"  autofocus placeholder="Ingresar Nombres y Apellidos" />
                             </div>
                             <!-- DNI -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -200,6 +200,11 @@
     </style>
 
 <script>
+
+function validateNameInput(input) {
+        // Solo permite letras y espacios
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+    }
 
      /** Visualizar Contraseña **/
 

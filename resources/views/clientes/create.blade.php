@@ -68,7 +68,7 @@
                             <!-- Nombre de Contacto -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="nom_contacto" :value="__('Nombre de Contacto *')" />
-                                <x-text-input id="nom_contacto" class="block mt-1 w-full" type="text" name="nom_contacto" :value="old('nom_contacto')" placeholder="Ingresar Nombre de Contacto"/>
+                                <x-text-input id="nom_contacto" class="block mt-1 w-full" type="text" name="nom_contacto" :value="old('nom_contacto')" oninput="validateNameInput(this)" placeholder="Ingresar Nombre de Contacto"/>
                             </div>
                        </div>
 
@@ -188,6 +188,11 @@
     </style>
 
 <script>
+
+    function validateNameInput(input) {
+        // Solo permite letras y espacios
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+    }
 
     function limitDigits(element, maxDigits) {
         if (element.value.length > maxDigits) {

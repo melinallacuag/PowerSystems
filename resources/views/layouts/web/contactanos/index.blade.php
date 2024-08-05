@@ -133,31 +133,36 @@
                             <div id="success-area" class="alert alert-success col-12 hidden"></div>
                             <div class="col-md-4">
                                 <label for="nombres" class="form-label fw-bold text-colors">* Nombres: </label>
-                                <input type="text" class="form-control border-input" id="nombres" name="nombres" maxlength="30" placeholder="Ingresar Nombres" required>
+                                <input type="text" class="form-control border-input" id="nombres" name="nombres" maxlength="30" placeholder="Ingresar Nombres" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+">
                             </div>
                             <div class="col-md-4">
                                 <label for="apellidos" class="form-label fw-bold text-colors">* Apellidos: </label>
-                                <input type="text" class="form-control border-input" id="apellidos" name="apellidos" maxlength="50" placeholder="Ingresar Apellidos" required>
+                                <input type="text" class="form-control border-input" id="apellidos" name="apellidos" maxlength="50" placeholder="Ingresar Apellidos" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+">
                             </div>
                             <div class="col-md-4">
                                 <label for="telefono" class="form-label fw-bold text-colors">* Teléfono: </label>
                                 <input type="number" class="form-control border-input" id="telefono" name="telefono" maxlength="9" oninput="limitDigits(this, 9)" placeholder="Ingresar Teléfono">
                             </div>
                             <div class="col-md-4">
-                                <label for="empresa" class="form-label fw-bold text-colors">* Empresa: </label>
-                                <input type="text" class="form-control border-input" id="empresa" name="empresa" maxlength="100" placeholder="Ingresar Empresa">
-                            </div>
-                            <div class="col-md-4">
                                 <label for="ruc" class="form-label fw-bold text-colors">* RUC: </label>
                                 <input type="number" class="form-control border-input" id="ruc" name="ruc" placeholder="Ingresar RUC" maxlength="11" oninput="limitDigits(this, 11)">
                             </div>
                             <div class="col-md-4">
+                                <label for="empresa" class="form-label fw-bold text-colors">* Empresa: </label>
+                                <input type="text" class="form-control border-input" id="empresa" name="empresa" maxlength="100" placeholder="Ingresar Empresa">
+                            </div>
+
+                            <div class="col-md-4">
                                 <label for="ciudad" class="form-label fw-bold text-colors">* Ciudad: </label>
-                                <input type="text" class="form-control border-input" id="ciudad" name="ciudad" maxlength="30" placeholder="Ingresar Ciudad">
+                                <input type="text" class="form-control border-input" id="ciudad" name="ciudad" maxlength="30" placeholder="Ingresar Ciudad" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="correo" class="form-label fw-bold text-colors">* Correo Electrónico: </label>
                                 <input type="email" class="form-control border-input" id="correo" name="correo" maxlength="100" placeholder="name@example.com">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="asunto" class="form-label fw-bold text-colors">* Asunto: </label>
+                                <input type="text" class="form-control border-input" id="asunto" name="asunto" maxlength="200" placeholder="Ingresar Asunto">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="mensaje" class="form-label fw-bold text-colors">* Mensaje: </label>
@@ -178,6 +183,9 @@
     .hidden {
             display: none;
         }
+        #mensaje {
+    height: 100px; /* Ajusta este valor según tus necesidades */
+}
 </style>
 <script>
     function limitDigits(element, maxDigits) {
@@ -187,6 +195,32 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('nombres').addEventListener('input', function (event) {
+        const input = event.target;
+        const pattern = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/;
+
+        if (!pattern.test(input.value)) {
+            input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúñÑ\s]/g, '');
+        }
+    });
+
+    document.getElementById('apellidos').addEventListener('input', function (event) {
+        const input = event.target;
+        const pattern = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/;
+
+        if (!pattern.test(input.value)) {
+            input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúñÑ\s]/g, '');
+        }
+    });
+
+    document.getElementById('ciudad').addEventListener('input', function (event) {
+        const input = event.target;
+        const pattern = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/;
+
+        if (!pattern.test(input.value)) {
+            input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúñÑ\s]/g, '');
+        }
+    });
         document.getElementById('formulario-contacto').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -203,6 +237,7 @@
             const empresa = document.getElementById('empresa').value.trim();
             const ciudad = document.getElementById('ciudad').value.trim();
             const correo = document.getElementById('correo').value.trim();
+            const asunto = document.getElementById('asunto').value.trim();
             const mensaje = document.getElementById('mensaje').value.trim();
 
             if (nombres === '') {
@@ -232,6 +267,10 @@
             if (correo === '' || !/^\S+@\S+\.\S+$/.test(correo)) {
                 isValid = false;
                 errorMessages.push('* El Correo Electrónico debe ser válido.');
+            }
+            if (asunto === '') {
+                isValid = false;
+                errorMessages.push('* El campo Asunto es obligatorio.');
             }
             if (mensaje === '') {
                 isValid = false;

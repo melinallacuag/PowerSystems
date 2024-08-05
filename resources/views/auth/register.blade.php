@@ -33,7 +33,7 @@
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label for="name" :value="__('Nombres y Apellidos*')" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
-                    placeholder="Ingresar Nombres y Apellidos" />
+                    placeholder="Ingresar Nombres y Apellidos" oninput="validateNameInput(this)"  maxlength="100"  />
             </div>
         </div>
 
@@ -59,7 +59,7 @@
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <x-input-label for="razon_social" :value="__('Razón Social *')" />
                 <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social"
-                    :value="old('razon_social')" placeholder="Ingresar Razón Social" />
+                    :value="old('razon_social')" placeholder="Ingresar Razón Social"  maxlength="125" />
             </div>
         </div>
 
@@ -210,6 +210,12 @@
     }
 </style>
 <script>
+
+    function validateNameInput(input) {
+        // Solo permite letras y espacios
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+    }
+
     /** Visualizar Contraseña **/
 
     function togglePasswordVisibility(passwordFieldId, iconId) {

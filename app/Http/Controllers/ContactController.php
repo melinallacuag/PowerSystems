@@ -12,7 +12,7 @@ class ContactController extends Controller
     public function sendContactForm(Request $request)
     {
 
-       // dd($request->all());
+      //  dd($request->all());
 
         $data = $request->validate([
             'nombres' => 'required|string|max:30',
@@ -22,6 +22,7 @@ class ContactController extends Controller
             'empresa' => 'required|string|max:100',
             'ciudad' => 'required|string|max:30',
             'correo' => 'required|email|max:100',
+            'asunto' => 'required|string|max:200',
             'mensaje' => 'required|string|max:150',
         ]);
 

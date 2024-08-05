@@ -9113,11 +9113,11 @@
     }
 }
 
-  .lista-soluciones:hover, .lista-soluciones ul:hover, .lista-soluciones li:hover, .lista-soluciones a:hover{
+ /** .lista-soluciones:hover, .lista-soluciones ul:hover, .lista-soluciones li:hover, .lista-soluciones a:hover{
 	cursor: url(../iconos/cursor.png), auto;
 	cursor-size: 20px 20px;
 	cursor-position: 10px 10px;
-  }
+  }**/
   .video-clip{
 	position: absolute;
 	left: 0px;
