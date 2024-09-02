@@ -71,7 +71,7 @@
 
                         <input type="hidden" id="continue-register" name="continue_register" value="false">
 
-                        <div  class="flex flex-wrap -mx-3 mb-12">
+                        <div  class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                             <!-- Boton Registrar Documentos -->
                             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
                                 <x-segundary-button data-continue-register="disabled" class="btn-register w-full text-center btn-large">
@@ -83,6 +83,12 @@
                                 <x-primary-button data-continue-register="enabled" class="btn-register w-full text-center btn-small" >
                                     <span class="w-full">SEGUIR REGISTRANDO</span>
                                 </x-primary-button>
+                            </div>
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0 ">
+                                <x-danger-button id="btnCancelar" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">CANCELAR</span>
+                                </x-danger-button>
                             </div>
                         </div>
                     </form>
@@ -109,6 +115,13 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
+        const btnCancelar = document.getElementById('btnCancelar');
+        if (btnCancelar) {
+            btnCancelar.addEventListener('click', function () {
+                window.location.href = '{{ route('archivos.index') }}';
+            });
+        }
+
         const notification = document.getElementById('notification');
         if (notification) {
             if (notification.innerText.trim() !== '') {

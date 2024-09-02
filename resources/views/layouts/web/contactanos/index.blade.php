@@ -82,7 +82,7 @@
                                 </svg>
                                 <div class="text-contect">
                                     <strong>Número de teléfono</strong>
-                                    (+51) 901 716 475 <br> (+51) 915 173 761 <br> (+51) 951 684 791
+                                    (+51) 901 716 475 <br> (+51) 915 173 761 <br> (+51) 971 413 612
                                 </div>
                             </div>
                         </div>

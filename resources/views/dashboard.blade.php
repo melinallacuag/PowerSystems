@@ -235,7 +235,7 @@
                     <div class="px-6 text-gray-900">
                         <div class="flex flex-wrap -mx-3 flex-inputs" style="align-items: center">
                             @if ($cliente)
-                                <div class="w-full md:w-1/3 px-3 mb-2 md:mb-0">
+                                <div class="w-full md:w-1/3 px-3 mb-2 md:mb-0 mb-8">
                                     <div
                                         class="bg-white bg-card text-card-foreground shadow-lg color-border-botton-{{ $cliente->estado }} border-radius-20">
                                         <div class="card-background">
@@ -295,7 +295,7 @@
                                 </div>
                             @endif
 
-                            <div class="w-full md:w-1/3 px-6 mb-2 md:mb-0">
+                            <div class="w-full md:w-1/3 px-6 mb-2 md:mb-0 mb-8">
                                 <a href="{{ route('tutoriales') }}" class="card-link">
                                     <div
                                         class="bg-white bg-card text-card-foreground shadow-lg color-button-video border-radius-20">

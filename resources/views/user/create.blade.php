@@ -154,18 +154,24 @@
 
                         <input type="hidden" id="continue-register" name="continue_register" value="false">
 
-                        <div  class="flex flex-wrap -mx-3 mb-12">
-                            <!-- Boton Registrar Usuario -->
-                            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                        <div  class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                             <!-- Boton Registrar Usuario -->
+                             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
                                 <x-segundary-button data-continue-register="disabled" class="btn-register w-full text-center btn-large">
                                     <span class="w-full">AGREGAR</span>
                                 </x-segundary-button>
                             </div>
-                            <!-- Boton Seguir Registrando Usuario -->
-                            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                             <!-- Boton Seguir Registrando Usuario -->
+                             <div class="w-full md:w-1/3 px-3  mb-4 md:mb-0">
                                 <x-primary-button data-continue-register="enabled" class="btn-register w-full text-center btn-small" >
                                     <span class="w-full">SEGUIR AGREGANDO</span>
                                 </x-primary-button>
+                            </div>
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0 ">
+                                <x-danger-button id="btnCancelar" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">CANCELAR</span>
+                                </x-danger-button>
                             </div>
                         </div>
                     </form>
@@ -230,6 +236,13 @@ function validateNameInput(input) {
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        const btnCancelar = document.getElementById('btnCancelar');
+        if (btnCancelar) {
+            btnCancelar.addEventListener('click', function () {
+                window.location.href = '{{ route('usuarios.index') }}';
+            });
+        }
+
         const notification = document.getElementById('notification');
         if (notification) {
             if (notification.innerText.trim() !== '') {
@@ -356,6 +369,9 @@ function validateNameInput(input) {
             }else if(email === ''){
                 isValid = false;
                 errorMessages.push('* El campo correo electrónico del usuario es obligatorio');
+            }else if (!validateEmail(email)) {
+                isValid = false;
+                errorMessages.push('* El correo electrónico no tiene un formato válido.');
             }else if(password === ''){
                 isValid = false;
                 errorMessages.push('* El campo contraseña es obligatorio');
@@ -379,6 +395,11 @@ function validateNameInput(input) {
             }
 
             return isValid;
+    }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
     }
 
 </script>

@@ -87,6 +87,12 @@
                                     <span class="w-full">EDITAR</span>
                                 </x-primary-button>
                             </div>
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0 ">
+                                <x-danger-button id="btnCancelar" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">CANCELAR</span>
+                                </x-danger-button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -98,6 +104,12 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function () {
+        const btnCancelar = document.getElementById('btnCancelar');
+        if (btnCancelar) {
+            btnCancelar.addEventListener('click', function () {
+                window.location.href = '{{ route('videos.index') }}';
+            });
+        }
 
     let inputContinueRegister = document.querySelector('#continue-register');
     let btnRegister = document.querySelectorAll('.btn-register');

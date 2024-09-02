@@ -79,7 +79,16 @@
                             <!-- Usuario -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="email" :value="__('Usuario')" />
-                                <x-text-input class="block mt-1 w-full" type="text" :value="$user->email"/>
+                                <x-text-input class="block mt-1 w-full" type="text" :value="$user->email" disabled/>
+                            </div>
+                        </div>
+
+                        <div  class="flex flex-wrap -mx-3 mb-12">
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                                <x-segundary-button id="btnVolver" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">VOLVER</span>
+                                </x-segundary-button>
                             </div>
                         </div>
                 </div>
@@ -87,3 +96,15 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const btnVolver = document.getElementById('btnVolver');
+        if (btnVolver) {
+            btnVolver.addEventListener('click', function () {
+                window.location.href = '{{ route('usuarios.index') }}';
+            });
+        }
+    });
+</script>

@@ -51,7 +51,7 @@
 
                                 <ul class="contact-list">
                                     <li><span class="icon fa fa-phone"></span> (+51) 901 716 475 <br> (+51) 915 173 761
-                                        <br> (+51) 951 684 791
+                                        <br> (+51) 971 413 612
                                     </li>
                                     <li><span class="icon fa fa-envelope"></span> comercial@sosfact.com</li>
                                     <li><span class="icon fa fa-brands"></span> Jr. Los Precursores Mz.102 Lt.2 AA.HH,

@@ -76,28 +76,38 @@
 
                                 <td class="border px-4 py-2">
                                     <div>
+                                        <div class="tooltip-container">
                                         <x-primary-button class="text-center py-2 btn-botton">
                                             <a href="{{ route('clientes.edit', ['clientes' => $cliente]) }}">
                                                 <img src="{{ asset('cliente/iconos/btn_edit.png') }}" alt="">
                                             </a>
+                                            <span class="tooltip-text">Editar</span>
                                         </x-primary-button>
+                                    </div>
+                                    <div class="tooltip-container">
                                         <x-danger-button class="text-center py-2 btn-botton">
                                             <a href="{{ route('clientes.delete', ['clientes' => $cliente]) }}">
                                                 <img src="{{ asset('cliente/iconos/btn_delete.png') }}" alt="">
                                             </a>
+                                            <span class="tooltip-text">Eliminar</span>
                                         </x-danger-button>
-
+                                    </div>
+                                    <div class="tooltip-container">
                                         <x-segundary-button class="text-center py-2 btn-botton">
                                             <a href="{{ route('clientes.confirmarPago', ['clientes' => $cliente]) }}">
                                                 <img src="{{ asset('cliente/iconos/btn_confirmar.png') }}" alt="">
                                             </a>
+                                            <span class="tooltip-text">confirmar Pago</span>
                                         </x-segundary-button>
-
+                                    </div>
+                                    <div class="tooltip-container">
                                         <x-secondary-button class="text-center py-2 btn-botton" style="background: black">
                                             <a href="{{ route('clientes.vista', ['clientes' => $cliente]) }}">
                                                 <img src="{{ asset('cliente/iconos/btn_ver.png') }}" alt="">
                                             </a>
+                                            <span class="tooltip-text">Visualizar</span>
                                         </x-secondary-button>
+                                    </div>
                                     </div>
 
 

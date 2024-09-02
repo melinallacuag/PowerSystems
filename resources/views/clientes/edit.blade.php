@@ -155,6 +155,12 @@
                                     <span class="w-full">EDITAR</span>
                                 </x-primary-button>
                             </div>
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                                <x-danger-button id="btnCancelar" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">CANCELAR</span>
+                                </x-danger-button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -233,6 +239,12 @@
         });
 
         document.addEventListener('DOMContentLoaded', function () {
+            const btnCancelar = document.getElementById('btnCancelar');
+            if (btnCancelar) {
+                btnCancelar.addEventListener('click', function () {
+                    window.location.href = '{{ route('clientes.index') }}';
+                });
+            }
 
             let btnRegister = document.querySelectorAll('.btn-register');
             const userForm = document.getElementById('user-form');

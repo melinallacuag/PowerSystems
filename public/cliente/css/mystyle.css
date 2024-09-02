@@ -1,3 +1,46 @@
+/**Boton emergente para los botones de operaciones**/
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+
+}
+
+.tooltip-container .tooltip-text {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.874) ;
+    border: 1.5px solid rgb(0 152 0 / var(--tw-bg-opacity));
+    color: rgb(0 152 0 / var(--tw-bg-opacity));
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 115%; /* Coloca el tooltip arriba del botón */
+    left: 50%;
+    margin-left: -50px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    box-shadow: 5px 5px 50px rgba(0,0,0,.10);
+}
+
+.tooltip-container .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Coloca la flecha debajo del tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(0 152 0 / var(--tw-bg-opacity)) transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+/***/
+
 .color-text{
     color:  #3b3b3b !important;
     font-weight: 600;

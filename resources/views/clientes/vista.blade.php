@@ -42,8 +42,8 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-                            <!-- Nombre Comercial -->
+                      <!--  <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+
                             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
                                 <div class="flex-inputs">
                                     <div class="w-full md:w-1/3 mb-4 md:mb-0">
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Razón Social -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="nom_contacto" :value="__('Nombre de Contacto')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->nom_contacto" disabled />
@@ -60,12 +60,12 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12">
-                            <!-- Cargo -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="cargo" :value="__('Cargo')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->cargos->name" disabled />
                             </div>
-                            <!-- Servicio -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="servicio" :value="__('Tipo de Servicio')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->service->name" disabled />
@@ -73,19 +73,19 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-                            <!-- Telefono -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="telefono" :value="__('Teléfono')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->telefono" disabled />
                             </div>
-                            <!-- Correo Electrónico -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="correo" :value="__('Correo Electrónico')" />
                                 <x-text-input class="block mt-1 w-full" type="email" :value="$clientes->correo" disabled />
                             </div>
                         </div>
 
-                           <!-- Fecha del Instalación y Apertura -->
+
                            <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Fecha del Instalación y Apertura: ')" class="font-semibold text-green-600" />
@@ -93,12 +93,12 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-                            <!-- Fecha de Instalación -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_instalacion" :value="__('Fecha de Instalación')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_instalacion" disabled />
                             </div>
-                            <!-- Fecha de Apertura -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_apertura" :value="__('Fecha de Apertura')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_apertura" disabled />
@@ -106,7 +106,7 @@
 
                         </div>
 
-                        <!-- Credencial del Cliente -->
+
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="name" :value="__('Fecha del Contrato: ')" class="font-semibold text-green-600" />
@@ -114,18 +114,18 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
-                            <!-- Fecha Inicio -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_inicio" :value="__('Fecha Inicio')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_inicio" disabled />
                             </div>
-                            <!-- Fecha Fin -->
+
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_fin" :value="__('Fecha Fin')" />
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_fin" disabled />
                             </div>
 
-                        </div>
+                        </div>-->
                         <!-- Historial de Pago -->
                         <div class="flex flex-wrap -mx-3 mb-12">
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -133,7 +133,7 @@
                             </div>
                         </div>
 
-                        <table style="flex: auto" class="w-full">
+                        <table style="flex: auto" class="w-full mb-4">
                             <thead class="text-white">
                                 <tr class="bg-green-800">
                                     <th class="px-4 py-2 border-b mobile-hidden">Fecha de Confirmación de Pago</th>
@@ -154,8 +154,28 @@
                                 @endif
                             </tbody>
                         </table>
+
+                        <div  class="flex flex-wrap -mx-3 mb-12">
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                                <x-segundary-button id="btnVolver" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">VOLVER</span>
+                                </x-segundary-button>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const btnVolver = document.getElementById('btnVolver');
+        if (btnVolver) {
+            btnVolver.addEventListener('click', function () {
+                window.location.href = '{{ route('clientes.index') }}';
+            });
+        }
+    });
+</script>

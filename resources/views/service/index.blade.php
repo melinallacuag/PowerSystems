@@ -46,16 +46,22 @@
                             <tr>
                                 <td class="border px-4 py-2">{{ $services->name }}</td>
                                 <td class="border px-4 py-2">
+                                    <div class="tooltip-container">
                                     <x-primary-button class="text-center py-2">
                                         <a href="{{ route('service.edit', ['service' => $services]) }}">
                                             <img src="{{ asset('cliente/iconos/btn_edit.png') }}" alt="">
                                         </a>
+                                        <span class="tooltip-text">Editar</span>
                                     </x-primary-button>
+                                    </div>
+                                    <div class="tooltip-container">
                                     <x-danger-button class="text-center py-2">
                                         <a href="{{ route('service.delete', ['service' => $services]) }}">
                                             <img src="{{ asset('cliente/iconos/btn_delete.png') }}" alt="">
                                         </a>
+                                        <span class="tooltip-text">Eliminar</span>
                                     </x-danger-button>
+                                </div>
                                 </td>
                             </tr>
                             @endforeach

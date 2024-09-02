@@ -157,6 +157,12 @@
                                     <span class="w-full">EDITAR</span>
                                 </x-primary-button>
                             </div>
+                            <!-- Boton Cancelar Registro -->
+                            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                                <x-danger-button id="btnCancelar" class="w-full text-center btn-small" type="button">
+                                    <span class="w-full">CANCELAR</span>
+                                </x-danger-button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -264,6 +270,13 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
+        const btnCancelar = document.getElementById('btnCancelar');
+        if (btnCancelar) {
+            btnCancelar.addEventListener('click', function () {
+                window.location.href = '{{ route('usuarios.index') }}';
+            });
+        }
+
         let btnRegister = document.querySelectorAll('.btn-register');
         const userForm = document.getElementById('user-form');
 
@@ -315,6 +328,9 @@
                 }else if(email === ''){
                     isValid = false;
                     errorMessages.push('* El campo correo electrónico es obligatorio');
+                }else if (!validateEmail(email)) {
+                    isValid = false;
+                    errorMessages.push('* El correo electrónico no tiene un formato válido.');
                 }else if(password === ''){
                     isValid = false;
                     errorMessages.push('* El campo contraseña es obligatorio');
@@ -345,5 +361,10 @@
         });
 
     });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
 
 </script>
