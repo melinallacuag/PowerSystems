@@ -61,7 +61,7 @@
         <div id="chat-whatsapp">
             <a target="_blank"
                 href="https://api.whatsapp.com/send?phone=+51901716475&text=Hola!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.">
-                <img src=" {{ asset('cliente/img/avatar/avatrChat.png') }} " alt="Whatsapp" class="img-fluid">
+                <img src=" {{ asset('cliente/img/avatar/avatarChat2.png') }} " alt="Whatsapp" class="img-fluid">
             </a>
         </div>
 

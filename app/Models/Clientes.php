@@ -22,6 +22,7 @@ class Clientes extends Model
         'razon_social',
         'nom_comercial',
         'nom_contacto',
+        'observacion',
         'telefono',
         'correo',
         'fecha_inicio',

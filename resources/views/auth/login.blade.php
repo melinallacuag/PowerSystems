@@ -2,7 +2,7 @@
 
     <div class="aligm_img" style="margin-bottom: 1rem;">
 
-        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+        <x-application-login class="w-20 h-20 fill-current text-gray-500"/>
 
     </div>
     <!-- Session Status -->

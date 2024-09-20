@@ -60,12 +60,12 @@
                             <!-- Fecha Inicio -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_inicio" :value="__('Fecha Inicio *')" />
-                                <x-text-input id="fecha_inicio" class="block mt-1 w-full" type="date" name="fecha_inicio" :value="old('fecha_inicio', $clientes->fecha_inicio)" />
+                                <x-text-input id="fecha_inicio" class="block mt-1 w-full" type="date" name="fecha_inicio" :value="old('fecha_inicio', $clientes->fecha_inicio)" data-old-fecha_inicio="{{ $clientes->fecha_inicio }}" />
                             </div>
                             <!-- Fecha Fin -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="fecha_fin" :value="__('Fecha Fin *')" />
-                                <x-text-input id="fecha_fin" class="block mt-1 w-full" type="date" name="fecha_fin" :value="old('fecha_fin', $clientes->fecha_fin)" />
+                                <x-text-input id="fecha_fin" class="block mt-1 w-full" type="date" name="fecha_fin" :value="old('fecha_fin', $clientes->fecha_fin)" data-old-fecha_fin="{{ $clientes->fecha_fin }}" />
                             </div>
                         </div>
 
@@ -93,6 +93,55 @@
 </x-app-layout>
 
 <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const fechaInicioInput = document.getElementById('fecha_inicio');
+    const fechaFinInput = document.getElementById('fecha_fin');
+
+    // Obtener la fecha actual almacenada en los campos
+    const currentFechaInicio = fechaInicioInput.value;
+    const currentFechaFin = fechaFinInput.value;
+
+    // Establecer la fecha mínima en el campo de selección de fecha de inicio
+    if (currentFechaInicio) {
+        fechaInicioInput.setAttribute('min', currentFechaInicio);
+    }
+
+    // Establecer la fecha mínima en el campo de selección de fecha de fin
+    if (currentFechaFin) {
+        fechaFinInput.setAttribute('min', currentFechaFin);
+    }
+
+    // Evitar la selección de una fecha de inicio anterior a la mínima permitida
+    fechaInicioInput.addEventListener('change', function () {
+        const selectedFechaInicio = fechaInicioInput.value;
+
+        if (new Date(selectedFechaInicio) < new Date(currentFechaInicio)) {
+            alert('No puedes seleccionar una fecha anterior a la fecha de inicio actual.');
+            fechaInicioInput.value = currentFechaInicio;
+        } else {
+            // Establecer el límite mínimo para la fecha de fin
+            const newFechaFinMin = new Date(selectedFechaInicio);
+            newFechaFinMin.setMonth(newFechaFinMin.getMonth() + 1); // Añadir un mes
+            const formattedNewFechaFinMin = newFechaFinMin.toISOString().split('T')[0];
+
+            fechaFinInput.setAttribute('min', formattedNewFechaFinMin);
+            fechaFinInput.value = formattedNewFechaFinMin; // Actualizar fecha fin automáticamente
+        }
+    });
+
+    // Evitar la selección de una fecha de fin anterior a la mínima permitida
+    fechaFinInput.addEventListener('change', function () {
+        const selectedFechaFin = fechaFinInput.value;
+        const minFechaFin = fechaFinInput.getAttribute('min');
+
+        if (new Date(selectedFechaFin) < new Date(minFechaFin)) {
+            alert('La fecha fin debe ser al menos un mes posterior a la fecha de inicio.');
+            fechaFinInput.value = minFechaFin;
+        }
+    });
+});
+
     function updateFechaHora() {
         const now = new Date();
         const year = now.getFullYear();
@@ -130,6 +179,10 @@
                 const fecha_inicio = document.getElementById('fecha_inicio').value.trim();
                 const fecha_fin = document.getElementById('fecha_fin').value.trim();
 
+                const oldFechaInicio = document.getElementById('fecha_inicio').getAttribute('data-old-fecha_inicio');
+                const oldFechaFin = document.getElementById('fecha_fin').getAttribute('data-old-fecha_fin');
+
+
                 let isValid = true;
                 let errorMessages = [];
 
@@ -139,6 +192,12 @@
                 }else if(fecha_fin === ''){
                     isValid = false;
                     errorMessages.push('* El campo fecha fin de contrata  es obligatorio');
+                }else if (fecha_inicio === oldFechaInicio) {
+                    isValid = false;
+                    errorMessages.push('* Debes seleccionar una nueva fecha de inicio antes de confirmar el pago.');
+                }else if (fecha_fin === oldFechaFin) {
+                    isValid = false;
+                    errorMessages.push('* Debes seleccionar una nueva fecha de fin antes de confirmar el pago.');
                 }
 
                 if (!isValid) {

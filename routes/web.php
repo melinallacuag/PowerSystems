@@ -205,6 +205,7 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/clientes/buscarCliente', [ClientesController::class, 'buscarCliente'])->name('clientes.buscarCliente');
 
+        Route::get('/clientes/{clientes}/historialPago', [ClientesController::class, 'historialPago'])->name('clientes.historialPago')->middleware([ValidationRoleMiddleware::class]);
         Route::get('/clientes/{clientes}/vista', [ClientesController::class, 'vista'])->name('clientes.vista')->middleware([ValidationRoleMiddleware::class]);
         Route::get('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'updateConfirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);
         Route::post('/clientes/{clientes}/confirmarPago', [ClientesController::class, 'confirmarPago'])->name('clientes.confirmarPago')->middleware([ValidationRoleMiddleware::class]);

@@ -211,6 +211,11 @@
 </style>
 <script>
 
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
     function validateNameInput(input) {
         // Solo permite letras y espacios
         input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
@@ -342,6 +347,9 @@
                     isValid = false;
                     errorMessages.push(
                         '* El campo correo electrónico del usuario es obligatorio');
+                }else if (!validateEmail(email)) {
+                    isValid = false;
+                    errorMessages.push('* El correo electrónico no tiene un formato válido.');
                 } else if (password === '') {
                     isValid = false;
                     errorMessages.push('* El campo contraseña es obligatorio');

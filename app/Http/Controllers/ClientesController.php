@@ -79,6 +79,10 @@ class ClientesController extends Controller
                         ->orWhere('ruc', 'like', "%{$search}%");
         })->with('pagos')->orderBy('created_at', 'desc')->paginate(5);
 
+        foreach ($clientes as $cliente) {
+            $cliente->actualizarEstado();
+        }
+
         return view('clientes.index',compact('clientes', 'search'));
     }
 
@@ -144,6 +148,7 @@ class ClientesController extends Controller
         $clientes->razon_social = $request->razon_social;
         $clientes->nom_comercial = $request->nom_comercial;
         $clientes->nom_contacto = $request->nom_contacto;
+        $clientes->observacion = $request->observacion;
         $clientes->telefono = $request->telefono;
         $clientes->correo = $request->correo;
         $clientes->fecha_inicio = $request->fecha_inicio;
@@ -168,6 +173,11 @@ class ClientesController extends Controller
     public function vista(Clientes $clientes)
     {
         return view('clientes.vista', compact('clientes'));
+    }
+
+    public function historialPago(Clientes $clientes)
+    {
+        return view('clientes.historialPago', compact('clientes'));
     }
 
     public function edit(Clientes $clientes)
@@ -198,6 +208,7 @@ class ClientesController extends Controller
         $clientes->razon_social = $request->razon_social;
         $clientes->nom_comercial = $request->nom_comercial;
         $clientes->nom_contacto = $request->nom_contacto;
+        $clientes->observacion = $request->observacion;
         $clientes->telefono = $request->telefono;
         $clientes->correo = $request->correo;
         $clientes->fecha_inicio = $request->fecha_inicio;

@@ -96,6 +96,14 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                            <!-- Observación -->
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                               <x-input-label for="observacion" :value="__('Observación ')" />
+                               <x-text-input id="observacion" class="block mt-1 w-full" type="text" name="observacion" :value="old('observacion')" placeholder="Ingresar Observación"/>
+                           </div>
+                       </div>
+
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
                             <!-- Telefono -->
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="telefono" :value="__('Teléfono ')" />

@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                      <!--  <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+                        <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
 
                             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
                                 <div class="flex-inputs">
@@ -73,6 +73,11 @@
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-12 flex-inputs">
+
+                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                <x-input-label for="observacion" :value="__('Observación')" />
+                                <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->observacion" disabled />
+                            </div>
 
                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                 <x-input-label for="telefono" :value="__('Teléfono')" />
@@ -125,35 +130,8 @@
                                 <x-text-input class="block mt-1 w-full" type="text" :value="$clientes->fecha_fin" disabled />
                             </div>
 
-                        </div>-->
-                        <!-- Historial de Pago -->
-                        <div class="flex flex-wrap -mx-3 mb-12">
-                            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                <x-input-label for="name" :value="__('Historial de Pago: ')" class="font-semibold text-green-600" />
-                            </div>
                         </div>
 
-                        <table style="flex: auto" class="w-full mb-4">
-                            <thead class="text-white">
-                                <tr class="bg-green-800">
-                                    <th class="px-4 py-2 border-b mobile-hidden">Fecha de Confirmación de Pago</th>
-                                    <th class="px-4 py-2 border-b">Fecha Inicio y Fin de Contrato</th>
-                                </tr>
-                            </thead>
-
-                            <tbody class="text-gray-600">
-                                @if ($clientes->pagos)
-                                    @foreach ($clientes->pagos as $pago)
-                                    <tr>
-                                        <td class="border px-4 py-2 mobile-hidden text-center">{{ $pago->fecha_pago }}</td>
-                                        <td class="border px-4 py-2 mobile-hidden text-center">{{ $pago->fecha_inicio . ' / ' . $pago->fecha_fin}}</td>
-                                    </tr>
-                                    @endforeach
-                                @else
-                                    <p>No hay pagos registrados.</p>
-                                @endif
-                            </tbody>
-                        </table>
 
                         <div  class="flex flex-wrap -mx-3 mb-12">
                             <!-- Boton Cancelar Registro -->

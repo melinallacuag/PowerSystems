@@ -63,11 +63,15 @@
         top: 0;
         left: 0;
         position: relative;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('{{ asset('cliente/img/background/grifo.jpg') }}');
         height: 180px;
         width: 100%;
-        background-size: cover;
+    }
+
+    .background-video{
         border-radius: 15px 15px 0 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
     }
 
     .card-content {
@@ -239,6 +243,10 @@
                                     <div
                                         class="bg-white bg-card text-card-foreground shadow-lg color-border-botton-{{ $cliente->estado }} border-radius-20">
                                         <div class="card-background">
+                                            <video autoplay muted loop class="background-video">
+                                                <source src="{{ asset('cliente/img/videos/videoclip.mp4') }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
                                         </div>
                                         <div class="card-content flex flex-col items-center p-6">
                                             <div class="w-90 h-90 bg-white user-avatar shadow-lgs content-avatar mb-4">
