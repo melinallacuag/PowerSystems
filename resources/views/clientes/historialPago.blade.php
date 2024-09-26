@@ -52,7 +52,7 @@
                         <table style="flex: auto" class="w-full mb-4">
                             <thead class="text-white">
                                 <tr class="bg-green-800">
-                                    <th class="px-4 py-2 border-b mobile-hidden">Fecha de Confirmación de Pago</th>
+                                    <th class="px-4 py-2 border-b">Fecha de Confirmación de Pago</th>
                                     <th class="px-4 py-2 border-b">Fecha Inicio y Fin de Contrato</th>
                                 </tr>
                             </thead>
@@ -61,8 +61,8 @@
                                 @if ($clientes->pagos)
                                     @foreach ($clientes->pagos as $pago)
                                     <tr>
-                                        <td class="border px-4 py-2 mobile-hidden text-center">{{ $pago->fecha_pago }}</td>
-                                        <td class="border px-4 py-2 mobile-hidden text-center">{{ $pago->fecha_inicio . ' / ' . $pago->fecha_fin}}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $pago->fecha_pago }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $pago->fecha_inicio . ' / ' . $pago->fecha_fin}}</td>
                                     </tr>
                                     @endforeach
                                 @else
