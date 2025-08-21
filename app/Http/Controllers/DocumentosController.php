@@ -44,6 +44,18 @@ class DocumentosController extends Controller
 
         if ($request->hasFile('documento')) {
             $path = $request->file('documento')->store('documents', 'public');
+
+            // Copiar el archivo a public/storage/documents
+        $source = storage_path("app/public/{$path}");
+        $destination = public_path("storage/{$path}");
+
+        // Crear el directorio de destino si no existe
+        if (!file_exists(dirname($destination))) {
+            mkdir(dirname($destination), 0755, true);
+        }
+
+        // Copiar el archivo
+        copy($source, $destination);
         }else {
             return back()->withErrors(['documento' => 'No se ha subido ningún archivo de video.']);
         }
@@ -82,6 +94,15 @@ class DocumentosController extends Controller
 
         if ($request->hasFile('documento')) {
             $path = $request->file('documento')->store('documents', 'public');
+            $source = storage_path("app/public/{$path}");
+            $destination = public_path("storage/{$path}");
+
+            if (!file_exists(dirname($destination))) {
+                mkdir(dirname($destination), 0755, true);
+            }
+
+            copy($source, $destination);
+
             $documento->documento = $path;
         } elseif ($request->input('remove_documento')) {
             $documento->documento = null;
@@ -103,6 +124,25 @@ class DocumentosController extends Controller
 
      public function destroy(Documento $documento)
      {
+
+        if ($documento->documento) {
+            // Ruta del archivo en storage/app/public/documents
+            $storagePath = storage_path("app/public/{$documento->documento}");
+
+            // Ruta del archivo en public/storage/documents
+            $publicPath = public_path("storage/{$documento->documento}");
+
+            // Eliminar el archivo de storage/app/public/documents
+            if (file_exists($storagePath)) {
+                unlink($storagePath);
+            }
+
+            // Eliminar el archivo de public/storage/documents
+            if (file_exists($publicPath)) {
+                unlink($publicPath);
+            }
+        }
+
         $documento->delete();
 
         return redirect(route('archivos.index'))->with('message', 'Se elimino correctamente.');

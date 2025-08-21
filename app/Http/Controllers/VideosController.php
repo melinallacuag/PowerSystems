@@ -43,7 +43,18 @@ class VideosController extends Controller
         ]);
 
         if ($request->hasFile('url')) {
+
             $path = $request->file('url')->store('videos', 'public');
+
+            // Copiar el archivo a public/storage/documents
+            $source = storage_path("app/public/{$path}");
+            $destination = public_path("storage/{$path}");
+
+            if (!file_exists(dirname($destination))) {
+                mkdir(dirname($destination), 0755, true);
+            }
+
+            copy($source, $destination);
         }else {
             return back()->withErrors(['url' => 'No se ha subido ningún archivo de video.']);
         }
@@ -81,6 +92,13 @@ class VideosController extends Controller
 
         if ($request->hasFile('url')) {
             $path = $request->file('url')->store('videos', 'public');
+            $source = storage_path("app/public/{$path}");
+            $destination = public_path("storage/{$path}");
+
+            if (!file_exists(dirname($destination))) {
+                mkdir(dirname($destination), 0755, true);
+            }
+            copy($source, $destination);
             $video->url = $path;
         } elseif ($request->input('remove_video')) {
             $video->url = null;
@@ -101,6 +119,24 @@ class VideosController extends Controller
 
      public function destroy(Video $video)
      {
+        if ($video->video) {
+            // Ruta del archivo en storage/app/public/documents
+            $storagePath = storage_path("app/public/{$video->url}");
+
+            // Ruta del archivo en public/storage/documents
+            $publicPath = public_path("storage/{$video->url}");
+
+            // Eliminar el archivo de storage/app/public/documents
+            if (file_exists($storagePath)) {
+                unlink($storagePath);
+            }
+
+            // Eliminar el archivo de public/storage/documents
+            if (file_exists($publicPath)) {
+                unlink($publicPath);
+            }
+        }
+
         $video->delete();
 
         return redirect(route('videos.index'))->with('message', 'Se elimino correctamente.');

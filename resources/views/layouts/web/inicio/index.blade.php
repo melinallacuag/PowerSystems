@@ -292,103 +292,31 @@
                     <ul class="sponsors-carousel-two owl-carousel owl-theme">
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoMolina.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoOasisIca.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoRobles.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoGama.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src=" {{ asset('cliente/img/clients/logoLINZAR.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoSamusa.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src=" {{ asset('cliente/img/clients/logoAngulo.png') }}"
+                                        src="{{ asset('cliente/img/clients/logo-najah.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src=" {{ asset('cliente/img/clients/logoT&P.png') }} "
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoVictoria.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoSanLuis.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoSanPedro.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoJhonLenon.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoMazechi.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoPetromar.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoMovilGas.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoFabiolita.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoKaori.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoShatu.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoBellavista.png') }}"
-                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
-                            </figure>
-                        </li>
-                        <li class="slide-item">
-                            <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoCentralX.png') }}"
+                                        src="{{ asset('cliente/img/clients/logo-ollen.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
@@ -400,55 +328,154 @@
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoMilagros.png') }}"
+                                        src="{{ asset('cliente/img/clients/Grifo_Robles_SAC.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoExplorium.png') }}"
+                                        src="{{ asset('cliente/img/clients/Movil_Gas.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoGlobal.png') }}"
+                                        src=" {{ asset('cliente/img/clients/Angulo.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoTrebolFarma.png') }}"
+                                        src=" {{ asset('cliente/img/clients/Hermanos_Angulos.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoEcogas.png') }}"
+                                        src="{{ asset('cliente/img/clients/Servicentro_Robles.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoPalianPetrox.png') }}"
+                                        src="{{ asset('cliente/img/clients/El_Milagro.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoSanMiguel.png') }}"
+                                        src="{{ asset('cliente/img/clients/San_Pedro.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoAleris.png') }}"
+                                        src="{{ asset('cliente/img/clients/Aga_Petroles.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoPauval.png') }}"
+                                        src=" {{ asset('cliente/img/clients/T&P.png') }} "
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/San_Luis.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/San_Pec.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/logoMazechi.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/Shatu_Barrio.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src=" {{ asset('cliente/img/clients/Grifo_Bellavista.png') }} "
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src=" {{ asset('cliente/img/clients/Servicios_Petrox.png') }} "
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src=" {{ asset('cliente/img/clients/Pauval.png') }} "
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src=" {{ asset('cliente/img/clients/Estacion_Suri.png') }} "
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/Grifo_Fabiolita.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/logoCautivo.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/logoPishu.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/Perez.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/Jhon_Lenon.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/logoMolina.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/San_Miguel.png') }}"
+                                        alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
+                            </figure>
+                        </li>
+                        <li class="slide-item">
+                            <figure class="client-one_image-box"><a><img
+                                        src="{{ asset('cliente/img/clients/Vesna.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
@@ -460,31 +487,31 @@
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoSanPec.png') }}"
+                                        src="{{ asset('cliente/img/clients/Linzar.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoRaliz.png') }}"
+                                        src="{{ asset('cliente/img/clients/Central_X.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoPrimax.png') }}"
+                                        src="{{ asset('cliente/img/clients/Milagros.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoTriunfo.png') }}"
+                                        src="{{ asset('cliente/img/clients/Kaori.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoAga.png') }}"
+                                        src="{{ asset('cliente/img/clients/El_Triunfo.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
@@ -496,49 +523,49 @@
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoCautivo.png') }}"
+                                        src="{{ asset('cliente/img/clients/Petromar.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoAsension.png') }}"
+                                        src="{{ asset('cliente/img/clients/Eco_Gas.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logo22Marzo.png') }}"
+                                        src="{{ asset('cliente/img/clients/Ascension.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoVesna.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoRaliz.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoGranados.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoGlobal.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoValleHermoso.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoAleris.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoSuri.png') }}"
+                                        src="{{ asset('cliente/img/clients/logoExplorium.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
                         <li class="slide-item">
                             <figure class="client-one_image-box"><a><img
-                                        src="{{ asset('cliente/img/clients/logoPishu.png') }}"
+                                        src="{{ asset('cliente/img/clients/Servikya.png') }}"
                                         alt="Sistema para Estaciones de Servicios | Power Group System | cliente"></a>
                             </figure>
                         </li>
